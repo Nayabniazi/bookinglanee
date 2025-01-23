@@ -1,29 +1,177 @@
+import Cta1 from "./Cta1";
 
 export default function Bgmap() {
+
+
+    
+
     return (
         <>
+
+
+
+
+<Cta1/>
+
+
+
+
+
+
+
+<section className="section-container"style={{marginLeft:'100px',marginRight:'100px',marginBottom:'100px',height:'350px'}}>
+
+      <div className="section-left">
+      
+        <h2 style={{marginTop:'20px',}}>Are you an executive car service provider?</h2>
+        <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn" >Optimize your business operations with our mobile CRM. Stay ahead with real-time access to your calendar, client invoices, fleet tracking, and driver payouts—all from the palm of your hand. Seamlessly transition between mobile and desktop platforms to access your profile. Plus, enjoy the benefits of global affiliate network at no extra cost.</p>
+      
+      
+        <a href="https://b2b.bookinglane.com/">
+                            <button className="search-btn" style={{width:'200px',height:'40px',borderRadius:'20px',background: 'rgb(29, 19, 134)',color:'white',}}>Become our Partner </button>
+                              </a>
+      
+      </div>
+      <div className="section-right">
+        <img src="/img/picty.png
+        " alt="Description of image" style={{height:'360px',width:'400px',marginLeft:'200px'}}/>
+      </div>
+    </section>
+  <style jsx>{
+    `
+    /* CSS file: styles.css */
+
+/* Section with light grey background and flex layout */
+.section-container {
+  display: flex;
+  background-color: #d3d3d3;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Left side with text */
+.section-left {
+  flex: 1;
+  padding: 20px;
+}
+
+.section-left h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.section-left p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Right side with image */
+.section-right {
+  flex: 1;
+  padding: 20px;
+}
+
+.section-right img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+    @media screen and (max-width: 1024px) {
+  .section-container {
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .section-left h2 {
+    font-size: 24px;
+  }
+
+  .section-left p {
+    font-size: 14px;
+  }
+
+  .section-left .search-btn {
+    width: 180px;
+    height: 40px;
+  }
+}
+
+/* Small Screens (Mobile) */
+@media screen and (max-width: 768px) {
+  .section-container {
+    flex-direction: column; /* Stacks the text and image vertically */
+    text-align: center; /* Centers content for better visibility */
+  }
+
+  .section-left,
+  .section-right {
+    flex: none;
+    width: 100%; /* Makes each section occupy the full width */
+  }
+
+  .section-left h2 {
+    font-size: 20px;
+  }
+
+  .section-left p {
+    font-size: 14px;
+  }
+
+  .section-left .search-btn {
+    width: 100%; /* Full-width button */
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .section-right .responsive-img {
+    margin-top: 20px;
+  }
+}
+
+/* Extra Small Screens (Phones) */
+@media screen and (max-width: 480px) {
+  .section-left h2 {
+    font-size: 18px;
+  }
+
+  .section-left p {
+    font-size: 12px;
+  }
+
+  .section-left .search-btn {
+    width: 100%;
+    height: 50px; /* Larger button for easier taps */
+    font-size: 14px;
+  }
+
+  .section-right .responsive-img {
+    max-width: 90%; /* Limits image size */
+    margin: 0 auto; /* Centers the image */
+  }
+}
+    
+    `}
+
+  </style>
+
+
+
+
             <div className="section bg-map d-block">
-                <div className="container">
+                <div className="container"style={{width:'5000px'}}>
                     <div className="box-map">
-                                      <iframe className="wow animate__animated animate__fadeIn" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3179.960389549842!2d-83.76408938441998!3d37.15364135542302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884352a00e70879f%3A0x1ad06ed33b7003c!2sIangar!5e0!3m2!1svi!2s!4v1678013229780!5m2!1svi!2s" height={420} style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"/>
-                        <div className="map-info"><img className="mb-25 wow animate__animated animate__fadeIn" src="/img/bear.png.png"width={200} height={100}  alt="transp" />
+                                      <iframe   className="wow animate__animated animate__fadeIn" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3179.960389549842!2d-83.76408938441998!3d37.15364135542302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884352a00e70879f%3A0x1ad06ed33b7003c!2sIangar!5e0!3m2!1svi!2s!4v1678013229780!5m2!1svi!2s" height={420} style={{ border: 0 ,height:'500px'}} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"/>
+                        <div className="map-info"style={{background:'black'}}>
+                            <h5 style={{color: 'rgb(108, 96, 247)'}}>Looking for executive car service?</h5>
                             <p className="color-grey-700 mb-25 wow animate__animated animate__fadeIn">
-                               Headquarters in Frisco, Texas</p>
-                            <p className="color-grey-700 mb-10 wow animate__animated animate__fadeIn">
-                                <svg className="icon-16 mr-10 color-brand-1" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z">
-                                    </path>
-                                </svg>Phone: +214 901 4769 (Any time 24/7)
+                               </p>
+                            <p className="color-white-700 mb-10 wow animate__animated animate__fadeIn"style={{color:'white'}}>
+                            Instantly reserve premier chauffeur service on our platform or mobile app with all-inclusive pricing. Powered by AI, our dynamic pricing ensures you receive the best quotes for your destination. Say goodbye to waiting for quotes and navigating complicated booking processes. With us, your journey starts with ease.
                             </p>
-                            <p className="color-grey-700 mb-30 wow animate__animated animate__fadeIn">
-                                <svg className="icon-16 mr-10 color-brand-1" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75">
-                                    </path>
-                                </svg>Email: contact@binbears.com
-                            </p>
-                            <div className="line-border mb-25 wow animate__animated animate__fadeIn" />
-                            <p className="color-grey-700 font-md-bold wow animate__animated animate__fadeIn">Hours: 8:00 -
-                                17:00, Mon - Sat</p>
+                            <a href="/your-target-page">
+                            <button className="search-btn" style={{width:'200px',height:'40px',borderRadius:'20px',background: 'rgb(108, 96, 247)',color:'white'}}>Ready to Book </button>
+                              </a>
                         </div>
                     </div>
                 </div>

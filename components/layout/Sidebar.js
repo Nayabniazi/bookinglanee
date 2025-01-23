@@ -24,7 +24,7 @@ export default function Sidebar({ openClass, handleMobileMenuClose }) {
                         <Link
                             className="btn btn-brand-1 hover-up"
                             href="/Booking"
-                            style={{ backgroundColor: "orange" }}
+                            style={{ backgroundColor: "white" }}
                         >
                             <svg
                                 fill="none"
@@ -90,7 +90,7 @@ export default function Sidebar({ openClass, handleMobileMenuClose }) {
                                             <svg
                                                 className="w-6 h-6 icon-16"
                                                 fill="none"
-                                                stroke="currentColor"
+                                                stroke=""
                                                 viewBox="0 0 24 24"
                                                 xmlns="http://www.w3.org/2000/svg"
                                             >

@@ -19,16 +19,16 @@ export default function Footer1({ }) {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-3 width-23 mb-30">
-                                <Link className="mb-20" href="/">
-                                    <img
-                                    
-                                        src="/img/bear.png.png"
-                                        width={150}
-                                        height={60}
-                                        alt="transp"
-                                    />
-                                </Link>
-                                <p className="font-xs mb-20 color-white">
+     
+                            <div className="header-logo">
+  <Link className="d-flex align-items-center" href="">
+    <img alt="Ecom" src="/img/logo.png" />
+    <span className="logo-text"style={{color:'white',fontSize:'20px'}}>Bookinglane</span>
+  </Link>
+</div>
+
+
+                                <p className="font-xs mb-20 color-white"style={{marginTop:'50px',}}>
                                     We fuse our global network with our depth of
                                     expertise in air freight, ocean freight, railway
                                     transportation, trucking, and multimode
@@ -51,7 +51,8 @@ export default function Footer1({ }) {
                                     <a href="/Booking" style={{ textDecoration: 'none', width: '100%' }}>
                                         <button
                                             style={{
-                                                backgroundColor: 'orange',
+                                                background:' rgb(255, 255, 255)',
+                                              borderRadius:'20px',
                                                 color: 'black',
                                                 border: 'none',
                                                 padding: '10px 20px',
@@ -69,8 +70,9 @@ export default function Footer1({ }) {
                                     <a href="/contact" style={{ textDecoration: 'none', width: '100%' }}>
                                         <button
                                             style={{
-                                                backgroundColor: 'orange',
-                                                color: 'black',
+                                                color:'black',
+                                                background:' rgb(255, 255, 255)',
+                                               borderRadius:'20px',
                                                 border: 'none',
                                                 padding: '10px 20px',
                                                 cursor: 'pointer',
@@ -87,8 +89,9 @@ export default function Footer1({ }) {
                                     <a href="/register" style={{ textDecoration: 'none', width: '100%' }}>
                                         <button
                                             style={{
-                                                backgroundColor: 'orange',
-                                                color: 'black',
+                                                color:'black',
+                                                background:' rgb(255, 255, 255)',
+                                               borderRadius:'20px',
                                                 border: 'none',
                                                 padding: '10px 20px',
                                                 cursor: 'pointer',
@@ -106,28 +109,28 @@ export default function Footer1({ }) {
                             </div>
 
                             <div className="col-lg-3 width-16 mb-30" style={{ backgroundColor: 'black' }}>
-                                <h5 className="mb-10 color-brand-1">Services</h5>
-                                <ul className="menu-footer">
+                                <h5 className="mb-10 color-white">Services</h5>
+                                <ul className="menu-footer"style={{marginTop:'50px',}}>
                                     <li>
-                                        <Link href="/Item-we-take">Item we take</Link>
+                                        <Link href="#">Top destination</Link>
                                     </li>
                                     <li>
-                                        <Link href="/JK-Removal">Junk removal</Link>
+                                        <Link href="#">Support</Link>
                                     </li>
                                     <li>
-                                        <Link href="/Dumpster-Rental">Dumpster Rental</Link>
+                                        <Link href="#">FAQ</Link>
                                     </li>
                                     <li>
-                                        <Link href="/JK-bags">Jk Dumpster Bag</Link>
+                                        <Link href="#">Solutions</Link>
                                     </li>
                                     <li>
-                                        <Link href="/Estimate">National Accounts</Link>
+                                        <Link href="#">National Accounts</Link>
                                     </li>
                                 </ul>
                             </div>
                             <div className="col-lg-3 width-16 mb-30" style={{ backgroundColor: 'black' }}>
-                                <h5 className="mb-10 color-brand-1">Company</h5>
-                                <ul className="menu-footer">
+                                <h5 className="mb-10 color-white">Company</h5>
+                                <ul className="menu-footer"style={{marginTop:'50px',}}>
                                     <li>
                                         <Link href="/about"> About us</Link>
                                     </li>
@@ -141,14 +144,14 @@ export default function Footer1({ }) {
                                         <Link href="#">Neighbory</Link>
                                     </li>
                                     <li>
-                                        <Link href="/register">Contact us</Link>
+                                        <Link href="/login page">Contact us</Link>
                                     </li>
                                 </ul>
                             </div>
                             <div className="col-lg-3 width-16 mb-30" style={{ backgroundColor: 'black' }}>
-                                <h5 className="mb-10 color-brand-1">Other Links</h5>
-                                <ul className="menu-footer">
-                                    <li>
+                                <h5 className="mb-10 color-white">Top destination</h5>
+                                <ul className="menu-footer"style={{marginTop:'50px',}}>
+                                    <li >
                                         <Link href="#">Terms of use</Link>
                                     </li>
                                     <li>
@@ -169,66 +172,27 @@ export default function Footer1({ }) {
                                 </ul>
                             </div>
                             <div className="col-lg-3 width-20 mb-30" style={{ backgroundColor: 'black' }}>
-                                <h5 className="mb-10 color-brand-1">Gallery</h5>
-                                <div className="galleries-footer">
-                                    <ul className="list-imgs">
-                                        <li>
-                                            <img
-                                                src="/assets/imgs/page/homepage1/gal1.png"
-                                                alt="transp"
-                                            />
-                                        </li>
-                                        <li>
-                                            <img
-                                                src="/assets/imgs/page/homepage1/gal2.png"
-                                                alt="transp"
-                                            />
-                                        </li>
-                                        <li>
-                                            <img
-                                                src="/assets/imgs/page/homepage1/gal3.png"
-                                                alt="transp"
-                                            />
-                                        </li>
-                                        <li>
-                                            <img
-                                                src="/assets/imgs/page/homepage1/gal4.png"
-                                                alt="transp"
-                                            />
-                                        </li>
-                                        <li>
-                                            <img
-                                                src="/assets/imgs/page/homepage1/gal5.png"
-                                                alt="transp"
-                                            />
-                                        </li>
-                                        <li>
-                                            <img
-                                                src="/assets/imgs/page/homepage1/gal6.png"
-                                                alt="transp"
-                                            />
-                                        </li>
-                                        <li>
-                                            <img
-                                                src="/assets/imgs/page/homepage1/gal7.png"
-                                                alt="transp"
-                                            />
-                                        </li>
-                                        <li>
-                                            <img
-                                                src="/assets/imgs/page/homepage1/gal8.png"
-                                                alt="transp"
-                                            />
-                                        </li>
-                                        <li>
-                                            <img
-                                                src="/assets/imgs/page/homepage1/gal9.png"
-                                                alt="transp"
-                                            />
-                                        </li>
-                                    </ul>
-                                </div>
+                                <h5 className="mb-10 color-white">Top routers</h5>
+
+                                <ul className="menu-footer"style={{marginTop:'50px',}}>
+                                    <li>
+                                        <Link href="/about"> About us</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="Event">Events</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="#">Apply Locally</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="#">Neighbory</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/register">Contact us</Link>
+                                    </li>
+                                </ul>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -241,7 +205,7 @@ export default function Footer1({ }) {
                         paddingBottom: '50px',
                     }}
                 >
-                    <div className="footer-bottom">
+                    <div className="footer-bottom"style={{marginLeft:'60px',marginRight:'100px'}}>
                         <div className="row align-items-center">
                             <div className="col-sm-5 text-center text-sm-start">
                                 <span className="color-grey-300 font-xs">

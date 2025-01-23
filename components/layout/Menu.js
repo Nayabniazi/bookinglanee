@@ -1,120 +1,284 @@
-
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function Menu() {
-    const router = useRouter();
-    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    // Function to toggle mobile menu visibility
-    const handleMobileMenuToggle = () => {
-        setMobileMenuOpen(!isMobileMenuOpen);
-    };
+  // Function to toggle mobile menu visibility
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
 
-    // Check if the current route is active
-    const isActive = (path) => (router.pathname === path ? "active" : "");
+  // Check if the current route is active
+  const isActive = (path) => (router.pathname === path ? "active" : "");
 
-    return (
-        <>
-            <ul className={`main-menu ${isMobileMenuOpen ? "mobile-open" : ""}`}style={{  listStyle:'none',padding:'0px',margin:'0px',background:'black',color:'white',height:'100%'
-   }}>
-                {/* "What We Do" Menu */}
-                <li className="has-children">
-                    <Link
-                        className={`active ${isActive("/")}`}
-                        href="/"
-                        style={{ color: "white" }}
-                    >
-                        What We Do
-                    </Link>
-                    <ul className="sub-menu">
-                        <li>
-                            <Link href="/Item-we-take">Items we take</Link>
-                        </li>
-                        <li>
-                            <Link href="/history">Binbear Story</Link>
-                        </li>
-                        <li>
-                            <Link href="/Recycle">We Recycle</Link>
-                        </li>
-                        <li>
-                            <Link href="/"></Link>
-                        </li>
-                        <li>
-                            <Link href="/"></Link>
-                        </li>
-                        <li>
-                            <Link href="/"></Link>
-                        </li>
-                        <li>
-                            <Link href="/">
-                                
-                            </Link>
-                        </li>
-                    </ul>
+  return (
+    <>
+      <ul
+        className={`main-menu ${isMobileMenuOpen ? "mobile-open" : ""}`}
+        style={{
+         
+          listStyle: "none",
+          padding: "0px",
+          marginLeft: "60px",
+          background: "black",
+          color: "white", // Changed to light gray
+          height: "100%",
+        }}
+      >
+        {/* "What We Do" Menu */}
+        <li className="has-children" >
+          <Link
+            className={`active ${isActive("/")}`}
+            href="/"
+            style={{ color: "lightgray" }}
+          >
+            Top destinations
+          </Link>
+          <ul className="sub-menu">
+            <div className="dropdown-columns">
+              <div className="column">
+                <li>
+                  <Link href="/Austin">Austin, TX</Link>
+                </li>
+                <li>
+                  <Link href="/Dollas">Dallas, TX</Link>
+                </li>
+                <li>
+                  <Link href="/Los">Los,Angeles,CA</Link>
+                </li>
+                <li>
+                  <Link href="/Monterey">Monterey,CA</Link>
+                </li>
+                <li>
+                  <Link href="/Nashville">Nashville,TN</Link>
+                </li>
+                <li>
+                  <Link href="/Orlando">Orlando,FL</Link>
+                </li>
+                <li>
+                  <Link href="Sandiego">SanDiego,CA</Link>
+                </li>
+                <li>
+                  <Link href="/SanJose">SanJose,CA</Link>
+                </li>
+                <li>
+                  <Link href="/Walnut">Walnut Creek,CA</Link>
                 </li>
 
-                {/* "How it Works" Menu */}
-                <li className="has-children">
-                    <Link
-                        className={isActive("/workprocess")}
-                        href="/Residential"
-                        style={{ color: "white" }}
-                    >
-                        How It Works
-                    </Link>
-                    <ul className="sub-menu">
-                        <li>
-                            <Link href="/Residential">Residential</Link>
-                        </li>
-                       
-                        <li>
-                            <Link href="/Commercial">Commercial</Link>
-                        </li>
-                        <li>
-                            <Link href="/pricing">Estimate pricing</Link>
-                        </li>
-                        <li>
-                            <Link href="/"></Link>
-                        </li>
-                    </ul>
+              </div>
+              <div className="column">
+                
+                <li>
+                  <Link href="/chincago">Chicago, IL</Link>
                 </li>
-
-                {/* "Pricing" Menu */}
-                <li className="has-children">
-                    <Link
-                        className={isActive("/Estimate")}
-                        href="/Estimate"
-                        style={{ color: "white" }}
-                    >
-                        Pricing
-                    </Link>
-                    <ul className="sub-menu">
-                        <li>
-                            <Link href="/Estimateprice">Book Online</Link>
-                        </li>
-                        <li>
-                            <Link href="/jk-removal-price">
-                                JK Removal Pricing
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/"></Link>
-                        </li>
-                    </ul>
+                <li>
+                  <Link href="/houston">Houston,TX</Link>
                 </li>
+                <li>
+                  <Link href="/miami">Miami,FL</Link>
+                </li>
+                <li>
+                  <Link href="/napa">Napa Valley,CA</Link>
+                </li>
+                <li>
+                  <Link href="/newyork">New York,NY</Link>
+                </li>
+                <li>
+                  <Link href="/san">San Antonio,TX</Link>
+                </li>
+                <li>
+                  <Link href="/sanf">San Francisco,CA</Link>
+                </li>
+                
+              </div>
+            </div>
+          </ul>
+        </li>
 
-                {/* "More" Menu */}
-               
-            </ul>
+        {/* "How It Works" Menu */}
+        <li className="has-children">
+          <Link
+            className={isActive("/workprocess")}
+            href="/Residential"
+            style={{ color: "lightgray" }}
+          >
+            Oue services
+          </Link>
+          <ul className="sub-menu">
+            <li>
+              <Link href="Airport">Airport transfers</Link>
+            </li>
+            <li>
+              <Link href="/corporate">Corporate travel</Link>
+            </li>
+            <li>
+              <Link href="/grouptravel">Group travel</Link>
 
-            {/* Mobile menu toggle button */}
-            <button className="burger-icon" onClick={handleMobileMenuToggle}>
-                <span className="burger-icon-top" />
-                <span className="burger-icon-mid" />
-                <span className="burger-icon-bottom" />
-            </button>
-        </>
-    );
+            </li>
+            <li>
+              <Link href="/intercity">Innercity and intercity rides</Link>
+            </li>
+            <li>
+              <Link href="/tour">Special tours</Link>
+            </li>
+            
+            <li>
+              <Link href="/solution">Solutions</Link>
+            </li>
+            <li>
+              <Link href="/carservice">Car Services</Link>
+            </li>
+            <li>
+              <Link href="/chauffeur">Chauffeur Services</Link>
+              
+            </li>
+            <li>
+              <Link href="/limopagy">Limo Services</Link>
+            </li>
+            <li>
+              <Link href="/topdestination">Top destinations</Link>
+            </li>
+            <li>
+              <Link href="/routes">Top-Routes</Link>
+              
+            </li>
+            <li>
+              <Link href="/van">Van Services</Link>
+            </li>
+            <li>
+              <Link href="/ski">Ski transfers</Link>
+              
+            </li>
+
+          </ul>
+        </li>
+
+        {/* "Pricing" Menu */}
+        <li className="has-children">
+          <Link
+            className={isActive("/Estimate")}
+            href="/Estimate"
+            style={{ color: "lightgray" }}
+          >
+            Solutions
+          </Link>
+          <ul className="sub-menu">
+            <li>
+              <Link href="/transport">Corporate transportation platform</Link>
+            </li>
+            <li>
+              <Link href="https://b2b.bookinglane.com/">Drive with us</Link>
+            </li>
+          </ul>
+        </li>
+
+
+
+        <li className="">
+        
+          <Link
+            className={isActive("/Estimate")}
+            href="/loginpage"
+            style={{ color: "lightgray" }}
+          >
+            Support
+          </Link>
+          </li>
+       
+
+          <li className="">
+        
+        <Link
+          className={isActive("/Estimate")}
+          href="/FAQ"
+          style={{ color: "lightgray" }}
+        >
+          FAQ
+        </Link>
+        </li>
+
+
+
+
+
+      </ul>
+      
+      {/* Mobile menu toggle button */}
+      <button className="burger-icon" onClick={handleMobileMenuToggle}>
+        <span className="burger-icon-top" />
+        <span className="burger-icon-mid" />
+        <span className="burger-icon-bottom" />
+      </button>
+
+      <style jsx>{`
+        
+
+        .sub-menu {
+          display: none;
+          position: absolute;
+         
+          left: 0;
+          background: blue; /* Dropdown background color */
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+          z-index: 1000;
+          color: white; /* Light gray color for text */
+          min-width: 300px;
+        }
+
+        .has-children:hover .sub-menu {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .dropdown-columns {
+          display: flex;
+          justify-content: space-between;
+          gap: 0px;
+        }
+
+        .column {
+          flex: 1;
+          list-style: none;
+        }
+
+        .column li {
+          margin-bottom: 10px;
+        }
+
+        .column li a {
+          text-decoration: none;
+          color: lightgray; /* Ensure links are light gray */
+          transition: color 0.2s;
+        }
+
+        .column li a:hover {
+          color: darkgray; /* Subtle hover effect */
+        }
+
+        a:hover,
+        a:focus,
+        a:active {
+          color: darkgray !important; /* Override any unwanted hover colors */
+        }
+
+        .main-menu a {
+          color: lightgray !important; /* Default menu link color */
+          text-decoration: none;
+        }
+
+        .main-menu a:hover {
+          text-decoration: underline;
+          color: darkgray; /* Ensure no yellow or white appears */
+        }
+      `}</style>
+      
+
+     
+    </>
+  );
 }

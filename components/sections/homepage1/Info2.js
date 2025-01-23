@@ -3,40 +3,98 @@ import Link from "next/link";
 export default function Info2() {
     return (
         <>
-            <section className="section mt-55 bg- position-relative pt-90 pb-90"style={{backgroundColor:'black',}}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6"><span className="btn btn-tag wow animate__animated animate__fadeIn" style={{color: 'white', backgroundColor:'orange'}}>Get in
-                            touch</span>
-                            <h3 className="color- mb-20 mt-15 wow animate__animated animate__fadeIn"style={{color:'white'}}>Proud to Deliver<br className="d-none d-lg-block" />Excellence Every Time</h3>
-                            <p className="font-md color- mb-40 wow animate__animated animate__fadeIn"style={{color:'white'}}>At BinBear, we make junk removal effortless. Whether it’s a single item or a full property cleanout, our team is here to handle every step. With BinBear
-                            Know the cost before we start, with no hidden fees. We promise to beat any written estimate from a comparable service.
+            
 
-                               </p>
-                            <div className="row">
-                                <div className="col-lg-6 mb-30">
-                                    <h6 className="chart-title font-md-bold color- wow animate__animated animate__fadeIn"style={{color:'white'}}>
-                                    Eco-Friendly Solutions </h6>
-                                    <p className="font-xs color- wow animate__animated animate__fadeIn"style={{color:'white'}}>We recycle up to 60% of what we haul, helping to reduce landfill waste and protect the environment.
-                                        </p>
-                                </div>
-                                <div className="col-lg-6 mb-30">
-                                    <h6 className="feature-title font-md-bold color- wow animate__animated animate__fadeIn"style={{color:'white'}}>
-                                    Fast & Friendly Service </h6>
-                                    <p className="font-xs color- wow animate__animated animate__fadeIn"style={{color:'white'}}>
-                                    Our team arrives on time, ready to work with a smile.
-                                    .</p>
-                                </div>
-                            </div>
-                            <div className="mt-20"><Link className="btn btn link mr-20 wow animate__animated animate__fadeIn" href="/contact" style={{color: 'black', backgroundColor: 'orange',width:'150px'}}>Free Estimate</Link><Link className="btn btn-link-medium wow animate__animated animate__fadeIn"style={{color:'white'}} href="#">Learn More
-                                <svg className="w-6 h-6 icon-16 ml-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg></Link></div>
-                        </div>
-                    </div>
-                </div>
-                <div className="box-image-touch" />  
-            </section>
+<section className="unique-card-section"style={{marginTop:'50px',marginLeft:'120px',marginRight:'150px'}}>
+      <div className="unique-card">
+        <img src="/img/icon1.png" alt="Icon" className="unique-card-icon" />
+        <h2 className="unique-card-title">Instant Quote</h2>
+        <p className="unique-card-description">With just a few clicks, get your quote and book instantly.</p>
+        
+      </div>
+
+      <div className="unique-card">
+        <img src="/img/icon2.png" alt="Icon" className="unique-card-icon" />
+        <h2 className="unique-card-title">Chauffeur by hour</h2>
+        <p className="unique-card-description">Professional chauffeurs available for hourly hire or full-day service.</p>
+       
+      </div>
+
+      <div className="unique-card">
+        <img src="/img/icon3.png" alt="Icon" className="unique-card-icon" />
+        <h2 className="unique-card-title">Solo or group travel
+        </h2>
+        <p className="unique-card-description">Custom trip planning options available, ideal for both groups and individuals.</p>
+    
+      </div>
+    </section>
+
+<style jsx>{
+  `.unique-card-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.unique-card {
+  width: 30%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+}
+
+.unique-card-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.unique-card-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.unique-card-description {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.unique-card-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.unique-card-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .unique-card {
+    width: 100%; /* Two cards per row on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .unique-card {
+    width: 100%; /* One card per row on small screens */
+  }
+}
+
+  
+  `}
+
+</style>
         </>
     )
 }
