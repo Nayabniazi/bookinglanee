@@ -273,7 +273,7 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
     <div className="autocomplete">
       <input
         type="text"
-        placeholder="From"
+        placeholder="Flight"
         className="input"
         value={fromValue}
         onChange={handleFromChange}
@@ -297,7 +297,7 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
     <div className="autocomplete">
       <input
         type="text"
-        placeholder="Dropoff"
+        placeholder="Car Rental"
         className="input"
         value={dropoffValue}
         onChange={handleDropoffChange}

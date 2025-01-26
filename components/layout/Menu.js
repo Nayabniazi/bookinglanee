@@ -35,7 +35,7 @@ export default function Menu() {
             href="/"
             style={{ color: "lightgray" }}
           >
-            Top destinations
+            Flight
           </Link>
           <ul className="sub-menu">
             <div className="dropdown-columns">
@@ -56,16 +56,16 @@ export default function Menu() {
                   <Link href="/Nashville">Nashville,TN</Link>
                 </li>
                 <li>
-                  <Link href="/Orlando">Orlando,FL</Link>
+                  <Link href="/Orlando">Orlando, FL</Link>
                 </li>
                 <li>
-                  <Link href="Sandiego">SanDiego,CA</Link>
+                  <Link href="Sandiego">SanDiego, CA</Link>
                 </li>
                 <li>
-                  <Link href="/SanJose">SanJose,CA</Link>
+                  <Link href="/SanJose">SanJose, CA</Link>
                 </li>
                 <li>
-                  <Link href="/Walnut">Walnut Creek,CA</Link>
+                  <Link href="/Walnut">Walnut, Creek</Link>
                 </li>
 
               </div>
@@ -78,19 +78,19 @@ export default function Menu() {
                   <Link href="/houston">Houston,TX</Link>
                 </li>
                 <li>
-                  <Link href="/miami">Miami,FL</Link>
+                  <Link href="/miami">Miami, FL</Link>
                 </li>
                 <li>
-                  <Link href="/napa">Napa Valley,CA</Link>
+                  <Link href="/napa">Napa Valley</Link>
                 </li>
                 <li>
-                  <Link href="/newyork">New York,NY</Link>
+                  <Link href="/newyork">New York</Link>
                 </li>
                 <li>
-                  <Link href="/san">San Antonio,TX</Link>
+                  <Link href="/san">San Antonio</Link>
                 </li>
                 <li>
-                  <Link href="/sanf">San Francisco,CA</Link>
+                  <Link href="/sanf">San Francisco</Link>
                 </li>
                 
               </div>
@@ -129,7 +129,7 @@ export default function Menu() {
               <Link href="/solution">Solutions</Link>
             </li>
             <li>
-              <Link href="/carservice">Car Services</Link>
+              <Link href="/carservice">Car Rentals</Link>
             </li>
             <li>
               <Link href="/chauffeur">Chauffeur Services</Link>
