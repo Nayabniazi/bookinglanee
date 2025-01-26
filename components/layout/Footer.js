@@ -22,8 +22,8 @@ export default function Footer1({ }) {
      
                             <div className="header-logo">
   <Link className="d-flex align-items-center" href="">
-    <img alt="Ecom" src="/img/logo.png" />
-    <span className="logo-text"style={{color:'white',fontSize:'20px'}}>Bookinglane</span>
+    <img alt="Ecom" src="/img/logo.png" style={{width:'150PX'}}/>
+    <span className="logo-text"style={{color:'white',fontSize:'20px'}}></span>
   </Link>
 </div>
 
@@ -48,10 +48,10 @@ export default function Footer1({ }) {
                                         alignItems: 'center',
                                     }}
                                 >
-                                    <a href="/Booking" style={{ textDecoration: 'none', width: '100%' }}>
+                                    <a href="/loginpage" style={{ textDecoration: 'none', width: '100%' }}>
                                         <button
                                             style={{
-                                                background:' rgb(255, 255, 255)',
+                                                background:' rgb(255, 168, 37)',
                                               borderRadius:'20px',
                                                 color: 'black',
                                                 border: 'none',
@@ -64,14 +64,14 @@ export default function Footer1({ }) {
                                                 maxWidth: '200px',
                                             }}
                                         >
-                                            Book Online
+                                            My account
                                         </button>
                                     </a>
-                                    <a href="/contact" style={{ textDecoration: 'none', width: '100%' }}>
+                                    <a href="/loginpage" style={{ textDecoration: 'none', width: '100%' }}>
                                         <button
                                             style={{
                                                 color:'black',
-                                                background:' rgb(255, 255, 255)',
+                                                background:' rgb(255, 168, 37)',
                                                borderRadius:'20px',
                                                 border: 'none',
                                                 padding: '10px 20px',
@@ -86,12 +86,12 @@ export default function Footer1({ }) {
                                             Our Location
                                         </button>
                                     </a>
-                                    <a href="/register" style={{ textDecoration: 'none', width: '100%' }}>
+                                    <a href="/loginpage" style={{ textDecoration: 'none', width: '100%' }}>
                                         <button
                                             style={{
                                                 color:'black',
-                                                background:' rgb(255, 255, 255)',
-                                               borderRadius:'20px',
+                                          
+                                                background:' rgb(255, 168, 37)',     borderRadius:'20px',
                                                 border: 'none',
                                                 padding: '10px 20px',
                                                 cursor: 'pointer',
@@ -102,7 +102,7 @@ export default function Footer1({ }) {
                                                 maxWidth: '200px',
                                             }}
                                         >
-                                            Franchise
+                                            Meet us
                                         </button>
                                     </a>
                                 </div>

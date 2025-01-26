@@ -6,8 +6,8 @@ export default function Hero2Slider() {
     const [isOpen, setOpen] = useState(false)
     return (
         <>
+           <div className="swiper-pagination swiper-pagination-banner swiper-pagination-style-2" /> 
             
-            <div className="swiper-pagination swiper-pagination-banner swiper-pagination-style-2" />
         </>
     )
 }

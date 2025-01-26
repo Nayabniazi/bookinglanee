@@ -1,26 +1,55 @@
-import Link from "next/link";
-import React, { useState } from "react";
-import "react-datepicker/dist/react-datepicker.css";
 
+
+
+// /pages/history.js or /pages/history/index.js
 import Layout from "@/components/layout/Layout";
 
-export default function Hero1Slider() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
-
- // Unique state for this popup
- const [isNewPopupOpen, setNewPopupOpen] = useState(false);
-
- const toggleNewPopup = () => {
-   setNewPopupOpen(!isNewPopupOpen);
- };
+import { useState } from "react";
 
 
 
-  const [activeTab, setActiveTab] = useState("one-way");
+import "react-datepicker/dist/react-datepicker.css";
+
+
+
+
+
+
+
+const HistoryPage = () => {
+
+  
+      const [isOpen, setIsOpen] = useState(false);
+      const togglePopup = () => setIsOpen(!isOpen);
+  
+
+ const [activeCard, setActiveCard] = useState(null);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    // Sample card data
+    const cardData = [
+        { id: 1, title: "view Details", image: "/img/chic.png", info: "Bookinglane is premium chauffeier servive in Chicago." },
+        // other card data... { id: 1, title: "view Details", image: "/img/chic.png", info: "Bookinglane is premium chauffeier servive in chicago,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
+      { id: 2, title: "view Details", image: "/img/san.png", info: "Bookinglane is premium chauffeier servive in Scan Francisco,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
+      { id: 3, title: "view Details", image: "/img/mami.png", info: "Bookinglane is premium chauffeier servive in Miami,FL,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
+      { id: 4, title: "view Details", image: "/img/new.png", info: "Bookinglane is premium chauffeier servive in New York,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
+      { id: 5, title: "view Details", image: "/img/hou.png", info: "Bookinglane is premium chauffeier servive in Houston,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
+      { id: 6, title: "view Details", image: "/img/los.png", info: "Bookinglane is premium chauffeier servive in Los Angeles,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
+
+    ];
+
+    
+
+   // Unique state for this popup
+   const [isNewPopupOpen, setNewPopupOpen] = useState(false);
+  
+   const toggleNewPopup = () => {
+     setNewPopupOpen(!isNewPopupOpen);
+   };
+  
+    
+
+ const [activeTab, setActiveTab] = useState("one-way");
   const [suggestions, setSuggestions] = useState([]);
   const [locationInput, setLocationInput] = useState("");
 
@@ -121,54 +150,55 @@ export default function Hero1Slider() {
 
 
 
-  const reviews = [
-    { id: 1, image: '/img/dip1.png', rating: 4, text: ' The doctor and techs informed me of the medical issue and gave treatment on site including a demonstration of how to administer.' },
-    { id: 2, image: '/img/dip2.png', rating: 5, text: ' Incredible place for such a demanding job, handling every pet that I saw with so much love and care.' },
-    { id: 3, image: '/img/dip3.png', rating: 3, text: ' The doctor and techs informed me of the medical issue and gave treatment on site including a demonstration of how to administer. ' },
-    { id: 4, image: '/img/dip1.png', rating: 4, text: ' Incredible place for such a demanding job, handling every pet that I saw with so much love and care.' },
-    { id: 5, image: '/img/dip2.png', rating: 5, text: 'I have been dealing with chronic back and neck pain due to my line of work. Dr. Nathan has been so helpful in treating and helping to maintain my discomfort. He is knowledgeable, polite, courteous and polite' },
-    { id: 6, image: '/img/dip3.png', rating: 5, text: 'I have been dealing with chronic back and neck pain due to my line of work. Dr. Nathan has been so helpful in treating and helping to maintain my discomfort. He is knowledgeable, polite, courteous and polite' },
-    { id: 7, image: '/img/dip1.png', rating: 4, text: 'I have been dealing with chronic back and neck pain due to my line of work. Dr. Nathan has been so helpful in treating and helping to maintain my discomfort. He is knowledgeable, polite, courteous and polite' },
-    { id: 8, image: '/img/dip2.png', rating: 3, text: 'I have been dealing with chronic back and neck pain due to my line of work. Dr. Nathan has been so helpful in treating and helping to maintain my discomfort. He is knowledgeable, polite, courteous and polite' },
-    { id: 9, image: '/img/dip3.png', rating: 4, text: 'I have been dealing with chronic back and neck pain due to my line of work. Dr. Nathan has been so helpful in treating and helping to maintain my discomfort. He is knowledgeable, polite, courteous and polite' },
+
+
+
+  const airports = [
+    { name: "Phoenix Sky Harbor International Airport", code: "PHX", link: "/phoenix" },
+    { name: "Los Angeles International Airport", code: "LAX", link: "/losangelespage" },
+    { name: "Oakland International Airport", code: "OAK", link: "/oaklandpage" },
+    { name: "San Diego International Airport", code: "SAN", link: "/sandiegopage" },
+    { name: "Long Beach  Airport", code: "SJC", link: "/sanjosepage" },
+    { name: "Ontario International Airport", code: "LAX", link: "/ontopage" },
+    { name: "Palm Spring International Airport", code: "OAK", link: "/palm1page" },
+    { name: "Santa Barbara International Airport", code: "SAN", link: "/barbarapage" },
+    { name: "San Jose International Airport", code: "SJC", link: "/sanjosepage" },
+    { name: "Sacramanto International Airport", code: "LAX", link: "/sacramantopage" },
+    { name: "John Wayne International Airport", code: "OAK", link: "/johnpage" },
+    { name: "Denver International Airport", code: "SAN", link: "/denverpage" },
+    { name: "North West Florida Beaches International Airport", code: "SJC", link: "/northpage" },
+    { name: "Key West International Airport", code: "LAX", link: "/keypage" },
+    { name: "Lauderdale Hollywood International Airport", code: "OAK", link: "/lauderpage" },
+    { name: "Jacksoville International Airport", code: "SAN", link: "/jackpage" },
+    { name: "Orlando International Airport", code: "SJC", link: "/orlandopage" },
+    { name: "Miamai International Airport", code: "OAK", link: "/miamipage" },
+    { name: "Melbourne Orlando International Airport", code: "SAN", link: "/melbourpage" },
+    { name: "Palm Beach International Airport", code: "SJC", link: "/palms2page" },
+    // Add more airports as needed
   ];
 
 
-const [activeCard, setActiveCard] = useState(null);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-    // Sample card data
-    const cardData = [
-        { id: 1, title: "view Details", image: "/img/chic.png", info: "Bookinglane is premium chauffeier servive in Chicago." },
-        // other card data... { id: 1, title: "view Details", image: "/img/chic.png", info: "Bookinglane is premium chauffeier servive in chicago,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
-      { id: 2, title: "view Details", image: "/img/san.png", info: "Bookinglane is premium chauffeier servive in Scan Francisco,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
-      { id: 3, title: "view Details", image: "/img/mami.png", info: "Bookinglane is premium chauffeier servive in Miami,FL,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
-      { id: 4, title: "view Details", image: "/img/new.png", info: "Bookinglane is premium chauffeier servive in New York,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
-      { id: 5, title: "view Details", image: "/img/hou.png", info: "Bookinglane is premium chauffeier servive in Houston,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
-      { id: 6, title: "view Details", image: "/img/los.png", info: "Bookinglane is premium chauffeier servive in Los Angeles,Ofering luxury sedan and limo services for travellor in city, whenever you need a ride" },
+  const reviews = [
+   ];
 
-    ];
 
-    const toggleCardInfo = (id) => {
-        setActiveCard(activeCard === id ? null : id);
-    };
 
-    const onClose = () => {
-        setIsPopupOpen(false);
-    };
-
-    const openPopup = () => {
-        setIsPopupOpen(true);
-    };
 
 
 
 
     return (
- <>
-  <Layout>
+        <>
+             
 
-  <div className="app">
+
+<Layout>
+
+
+
+
+<div className="app" >
   {/* Navbar */}
 
   {/* Hero Section */}
@@ -185,7 +215,11 @@ const [activeCard, setActiveCard] = useState(null);
         </button>
         </div>
 
-        {activeForm && (
+
+
+
+
+{activeForm && (
   <div className="form-container">
     <div className="form-content">
       {/* Picture Section */}
@@ -230,25 +264,26 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
 
 
 
-    <h1>Corporate Transportation Made Easy with Bookinglane</h1>
+    <h1>
+    Corporate Transportation Made Easy with Travelingoo</h1>
 
 
     <div className="container"style={{marginBottom:'80px'}}>
   {/* Tabs */}
-  <div className="tabs" style={{ background: 'rgba(61, 59, 59, 0.8)', }}>
-    <button style={{color:'white'}}
+  <div className="tabs"  style={{ background: 'rgba(255, 255, 255, 0.8)' ,}}>
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "one-way" ? "tab active" : "tab"}
       onClick={() => setActiveTab("one-way")}
     >
       One way
     </button>
-    <button style={{color:'white'}}
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "round-trip" ? "tab active" : "tab"}
       onClick={() => setActiveTab("round-trip")}
     >
       Round trip
     </button>
-    <button style={{color:'white'}}
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "hourly" ? "tab active" : "tab"}
       onClick={() => setActiveTab("hourly")}
     >
@@ -311,7 +346,8 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
     <div className="time-picker">
       <input type="time" defaultValue="04:40" />
     </div>
-    <button className="search-btn">🔍</button>
+       
+             
   </div>
 </div>
 
@@ -353,6 +389,16 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+
+
+
+
+
+
+
+
+
+
 }
 
 .form-content {
@@ -435,7 +481,7 @@ p {
   margin-left:25px;
   border-radius: 100px;
   width: 30%;
-  background-color: rgba(58, 55, 55, 0.8);
+  background-color: rgba(39, 30, 30, 0.8);
   display: flex;
   justify-content: center; /* Center buttons */
   gap: 1rem;
@@ -443,7 +489,7 @@ p {
 
 .top-btn {
   padding: 10px 20px;
-  background-color: rgb(53, 45, 135);
+  background-color: rgb(57, 56, 51);
   color: white;
   border: none;
   border-radius: 24px;
@@ -454,7 +500,7 @@ p {
 }
 
 .top-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(70, 120, 191);
 }
 
 /* Autocomplete Text Fields */
@@ -491,7 +537,7 @@ p {
 }
 
 .suggestion:hover {
-  background-color:rgb(144, 145, 189);
+  background-color:rgb(28, 135, 193);
 }
 
 /* Date and Time Pickers */
@@ -538,14 +584,14 @@ p {
   border-radius: 20px;
   margin-left: 10px; /* Space between the search button and other inputs */
   padding: 10px;
-  background-color: rgb(14, 51, 124);
+  background-color: rgb(41, 145, 235);
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .search-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(43, 114, 164);
 }
 
 .container {
@@ -571,15 +617,50 @@ p {
 }
 
 .tab.active {
-  background-color: rgb(24, 9, 139);
+  background-color: rgb(41, 141, 229);
   color: white;
 }
 
-/* Hero Section */
+
 .hero {
+  position: relative; /* Ensure positioning for the pseudo-element */
   padding: 2rem;
-  background-color: rgb(6, 5, 5); /* Black background */
+  height: 100vh; /* Full viewport height */
+  
+  align-items: center;
+  justify-content: center;
+  color: #black; /* Ensure content stands out */
+  overflow: hidden; /* Prevent pseudo-element overflow */
+  z-index: 1; /* Keep content above the pseudo-element */
 }
+
+.hero::before {
+  content: ""; /* Add a pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/header2.png'); /* Background image */
+  background-size: cover; /* Adjust to fit */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -2; /* Send behind everything */
+}
+
+.hero::after {
+  content: ""; /* Add the black transparent overlay */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(9, 0, 0, 0.5); /* Black with transparency */
+  z-index: -1; /* Place above the image but below content */
+}
+
+
+
 
 .hero h1 {
   margin-left: 250px;
@@ -598,6 +679,8 @@ p {
 
 /* Info Section */
 .info-section {
+margin-left:50px;
+margin-right:50px;
   background-color: rgba(56, 54, 54, 0.8);
   display: flex;
   flex-wrap: wrap;
@@ -709,129 +792,92 @@ p {
 
 
 
-         
 
-<section className="unique-card-section"style={{marginTop:'50px',marginLeft:'120px',marginRight:'150px'}}>
-      <div className="unique-card">
-        <img src="/img/icon1.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Instant Quote</h2>
-        <p className="unique-card-description">With just a few clicks, get your quote and book instantly.</p>
-        
-      </div>
-
-      <div className="unique-card">
-        <img src="/img/icon2.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Chauffeur by hour</h2>
-        <p className="unique-card-description">Professional chauffeurs available for hourly hire or full-day service.</p>
-       
-      </div>
-
-      <div className="unique-card">
-        <img src="/img/icon3.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Solo or group travel
-        </h2>
-        <p className="unique-card-description">Custom trip planning options available, ideal for both groups and individuals.</p>
-    
-      </div>
-    </section>
-
-<style jsx>{
-  `.unique-card-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.unique-card {
-  width: 30%;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 20px;
-}
-
-.unique-card-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 15px;
-}
-
-.unique-card-title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.unique-card-description {
-  font-size: 14px;
-  margin: 10px 0;
-}
-
-.unique-card-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.unique-card-button:hover {
-  background-color: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .unique-card {
-    width: 100%; /* Two cards per row on medium screens */
+    <style jsx>
+  {`
+  .unique-card-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: space-between; /* Distribute cards evenly */
+    gap: 20px; /* Space between cards */
+    margin: 50px auto; /* Top/bottom centering */
+    max-width: 1200px; /* Limits the width for laptop screens */
+    padding: 20px; /* Adds padding around the section */
   }
-}
 
-@media (max-width: 768px) {
   .unique-card {
-    width: 100%; /* One card per row on small screens */
+    background: white; /* White background for cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle card shadow */
+    padding: 20px; /* Inner spacing for content */
+    width: calc(33.333% - 20px); /* 3 cards side-by-side on larger screens */
+    text-align: center; /* Center-align content */
+    transition: transform 0.3s, box-shadow 0.3s; /* Hover animation */
   }
-}
 
-  
+  .unique-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+
+  .unique-card img {
+    width: 60px; /* Icon size */
+    margin-bottom: 10px; /* Space below icon */
+  }
+
+  .unique-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .unique-card-description {
+    font-size: 16px;
+    color: #555;
+  }
+
+  @media (max-width: 1024px) {
+    .unique-card {
+      width: calc(50% - 20px); /* Two cards per row on tablets */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .unique-card {
+      width: 100%; /* Single card per row on small screens */
+    }
+  }
   `}
-
 </style>
 
+<section className="unique-card-section">
+  <div className="unique-card">
+    <img src="/img/icon1.png" alt="Icon" />
+    <h2 className="unique-card-title">Instant Quote</h2>
+    <p className="unique-card-description">With just a few clicks, get your quote and book instantly.</p>
+  </div>
 
+  <div className="unique-card">
+    <img src="/img/icon2.png" alt="Icon" />
+    <h2 className="unique-card-title">Chauffeur by hour</h2>
+    <p className="unique-card-description">Professional chauffeurs available for hourly hire or full-day service.</p>
+  </div>
 
+  <div className="unique-card">
+    <img src="/img/icon3.png" alt="Icon" />
+    <h2 className="unique-card-title">Solo or group travel</h2>
+    <p className="unique-card-description">Custom trip planning options available, ideal for both groups and individuals.</p>
+  </div>
+</section>
 
-<h2 style={{marginLeft:'150px',marginTop:'100px'}}>
-Exclusive partnership opportunities
+<h2 style={{marginLeft:'150px',marginTop:'0px'}}>
+
 </h2>
-<div className="card-container"style={{marginLeft:'150px',marginRight:'180px',marginTop:'100px'}}>
+<div className="card-container"style={{marginLeft:'150px',marginRight:'180px',marginTop:'10px'}}>
 
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/coprate.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Coporation and Businesses</h2>
-            <p className="card-description">One-stop travel management</p>
-            <button  onClick={toggleNewPopup}  className="card-button">Get in touch</button>
-          </div>
-        </div>
-      </div>
-
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/travel.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Travel agents and event planners</h2>
-            <p className="card-description">Streamline bookings with our API</p>
-            <button   className="card-button"
-        onClick={toggleNewPopup} >Request Info</button>
-          </div>
-        </div>
-      </div>
+      
+      
 
 
       {/* Pop-up Modal */}
@@ -981,300 +1027,794 @@ Exclusive partnership opportunities
         </div>
       )}
  
+ </div>
+ <style jsx>
+  {`
+    .card-section {
+      padding: 20px;
+      text-align: center;
+    }
 
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/influ.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Influencers and public figures</h2>
-            <p className="card-description">Join our Influencer Program today</p>
-            <button   onClick={toggleNewPopup} className="card-button">Apply</button>
-          </div>
-        </div>
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 0px;
+      margin-left: auto; /* Automatically adjust margin from the left */
+      margin-right: auto; /* Automatically adjust margin from the right */
+      max-width: 1200px; /* Maximum container width */
+    }
+
+    .card {
+      flex: 1 1 calc(33.333% - 20px); /* 3 cards per row on larger screens */
+      background-color: black;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* Allow button to overlay on image */
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .card-image {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7; /* Adjust opacity of the image */
+    }
+
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Black overlay with opacity */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      opacity: 1; /* Ensure the overlay itself is fully opaque */
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1; /* Keep the title on top */
+      opacity: 1;
+    }
+
+    .card-description {
+      font-size: 16px;
+      color: white;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .card-button {
+      padding: 10px 20px;
+      background-color:rgb(232, 157, 52); /* Orange button */
+      color: black;
+      border: none;
+      font-size: 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .card-button:hover {
+      background-color: #e76a3d;
+    }
+
+    /* Responsive Breakpoints */
+
+    @media (max-width: 1024px) {
+      .card {
+        flex: 1 1 calc(45% - 20px); /* 2 cards per row on medium screens */
+        max-width: 45%;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      .card-container {
+        margin-left: 20px; /* Adjustable left margin for laptop screens */
+        margin-right: 20px; /* Adjustable right margin for laptop screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex: 1 1 100%; /* 1 card per row on small screens */
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .card-title {
+        font-size: 22px;
+      }
+
+      .card-description {
+        font-size: 14px;
+      }
+
+      .card-button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-container {
+        gap: 15px; /* Reduce gaps for smaller screens */
+      }
+
+      .card {
+        flex: 1 1 calc(90% - 20px); /* 1 card per row on very small screens */
+        max-width: 100%;
+      }
+
+      .card-title {
+        font-size: 20px;
+      }
+
+      .card-description {
+        font-size: 12px;
+      }
+
+      .card-button {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .card {
+        flex: 1 1 calc(95% - 20px); /* Slight padding for narrow screens */
+        max-width: 100%; /* Full width for smaller devices */
+      }
+
+      .card-title {
+        font-size: 18px;
+      }
+
+      .card-description {
+        font-size: 11px;
+      }
+
+      .card-button {
+        padding: 5px 10px;
+        font-size: 11px;
+      }
+    }
+  `}
+</style>
+
+<section className="card-section" style={{ marginTop: '50px', marginBottom: '50px' }}>
+  <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Exclusive partnership opportunities</h2>
+  <div className="card-container">
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/coprate.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Corporation and Businesses</h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Get in touch</button>
       </div>
     </div>
 
-<section style={{ padding: "50px 20px", marginTop: '100px' }}>
-                <h3 style={{ textAlign: "center", marginBottom: "30px" }}>Where to Next?</h3>
-                {/* Card Grid */}
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                        gap: "20px",
-                        maxWidth: "1200px",
-                        margin: "0 auto",
-                    }}
-                >
-                    {cardData.map((card) => (
-                        <div
-                            key={card.id}
-                            style={{
-                                border: "1px solid #ddd",
-                                borderRadius: "10px",
-                                overflow: "hidden",
-                                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-                                cursor: "pointer",
-                                transition: "transform 0.3s ease",
-                            }}
-                            onClick={() => toggleCardInfo(card.id)}
-                        >
-                            {/* Card Image */}
-                            <img
-                                src={card.image}
-                                alt={card.title}
-                                style={{
-                                    width: "100%",
-                                    height: "200px",
-                                    objectFit: "cover",
-                                }}
-                            />
-                            {/* Card Title */}
-                            <div style={{ padding: "15px" }}>
-                                <h3 style={{ fontSize: "18px", marginBottom: "10px" }}>{card.title}</h3>
-                                {activeCard === card.id && (
-                                    <p style={{ fontSize: "14px", color: "#555" }}>{card.info}</p>
-                                )}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/influ.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Influencers and Public </h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Apply Now</button>
+      </div>
+    </div>
 
-          
-
-            {/* Popup Section */}
-            {isPopupOpen && (
-                <div className="overlay">
-                    <div className="popup">
-                        <button className="close-btn" onClick={onClose}>
-                            &times;
-                        </button>
-                        <div className="popup-content">
-                            <div className="image-section">
-                                <img src="/path-to-your-image.jpg" alt="Popup Visual" />
-                            </div>
-                            <div className="form-section">
-                                <h2>Tell us more about yourself.</h2>
-                                <form>
-                                    <div className="form-group">
-                                        <input type="text" placeholder="First name" required />
-                                        <input type="text" placeholder="Last name" required />
-                                    </div>
-                                    <div className="form-group">
-                                        <input type="tel" placeholder="Phone number" required />
-                                        <input type="email" placeholder="Email" required />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>How often do you organize events?</label>
-                                        <div className="options">
-                                            <button type="button">1-3</button>
-                                            <button type="button">4-6</button>
-                                            <button type="button">7-10</button>
-                                            <button type="button">10+</button>
-                                        </div>
-                                    </div>
-                                    <textarea placeholder="Share more about your needs" rows="3"></textarea>
-                                    <button type="submit" className="submit-btn">
-                                        Submit
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            <style jsx>{`
-                .overlay {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background-color: rgba(0, 0, 0, 0.5);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    z-index: 1000;
-                }
-
-                .popup {
-                    background-color: #fff;
-                    width: 60%;
-                    max-width: 800px;
-                    padding: 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    position: relative;
-                }
-
-                .close-btn {
-                    position: absolute;
-                    top: 10px;
-                    right: 10px;
-                    font-size: 24px;
-                    color: #333;
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                }
-
-                .popup-content {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 20px;
-                }
-
-                .image-section img {
-                    width: 100%;
-                    max-width: 200px;
-                    border-radius: 8px;
-                    object-fit: cover;
-                }
-
-                .form-section {
-                    flex-grow: 1;
-                }
-
-                input, textarea {
-                    width: 100%;
-                    padding: 10px;
-                    margin-bottom: 10px;
-                    border: 1px solid #ccc;
-                    border-radius: 5px;
-                    font-size: 16px;
-                }
-
-                .submit-btn {
-                    background-color: #007bff;
-                    color: white;
-                    border: none;
-                    padding: 12px 20px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    font-size: 16px;
-                }
-
-                .submit-btn:hover {
-                    background-color: #0056b3;
-                }
-            `}</style>
-
-        
-    <section className="image-section">
-    <h3 style={{marginLeft:'200px',marginBottom:'50px',marginTop:'80px'}}>Trusted by professionals at</h3>
-  <div className="image-row top-row"style={{marginLeft:'200px',marginRight:'350px'}}>
-    
-    <img src="/img/netflix.png" alt="Image 2" className="image"style={{width:'205px'}} />
-    <img src="/img/google.png" alt="Image 3" className="image"style={{width:'205px'}} />
-    <img src="/img/apple.png" alt="Image 4" className="image"style={{width:'100px'}} />
-    
-  </div>
-  <div className="image-row bottom-row"style={{marginLeft:'200px',marginRight:'350px'}}>
-    <img src="/img/microsoft.png" alt="Image 6" className="image" style={{width:'250px'}}/>
-    <img src="/img/adidas.png" alt="Image 7" className="image" style={{width:'170px',marginLeft:'180px'}}/>
-    <img src="/img/more.png" alt="Image 8" className="image"style={{marginLeft:'190px',width:'250px'}} />
-    
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/travel.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Solo or Group Travel</h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Learn More</button>
+      </div>
+    </div>
   </div>
 </section>
 
 
-<style jsx>{
-`
-.image-section {
-padding: 20px;
-}
-
-.image-row {
-display: flex;
-justify-content: space-between;
-margin-bottom: 20px; /* Space between top and bottom rows */
-}
-
-.image {
-width: 6%; /* Adjust the image width */
-height: auto;
-object-fit: cover; /* Ensures the images maintain their aspect ratio */
-border-radius: 8px; /* Optional for rounded corners */
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-.image {
-width: 20%; /* 4 images per row on medium screens */
-}
-}
-
-@media (max-width: 768px) {
-.image {
-width: 48%; /* 2 images per row on small screens */
-}
-}
-
-@media (max-width: 480px) {
-.image {
-width: 100%; /* 1 image per row on extra small screens */
-}
-}
 
 
 
-`}
 
+
+<div className="layout-container"style={{marginLeft:'130px',marginRight:'130px',marginTop:'100px'
+}}/>
+     
+
+
+
+         <section style={{ padding: "50px 20px", marginTop: '10px' }}>
+                         <h3 style={{ textAlign: "center", marginBottom: "30px" }}>Where to Next?</h3>
+                         {/* Card Grid */}
+                         <div
+                             style={{
+                                 display: "grid",
+                                 gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                                 gap: "20px",
+                                 maxWidth: "1200px",
+                                 margin: "0 auto",
+                             }}
+                         >
+                             {cardData.map((card) => (
+                                 <div
+                                     key={card.id}
+                                     style={{
+                                         border: "1px solid #ddd",
+                                         borderRadius: "10px",
+                                         overflow: "hidden",
+                                         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                                         cursor: "pointer",
+                                         transition: "transform 0.3s ease",
+                                     }}
+                                     onClick={() => toggleCardInfo(card.id)}
+                                 >
+                                     {/* Card Image */}
+                                     <img
+                                         src={card.image}
+                                         alt={card.title}
+                                         style={{
+                                             width: "100%",
+                                             height: "200px",
+                                             objectFit: "cover",
+                                             
+                                         }}
+                                     />
+                                     {/* Card Title */}
+                                     <div style={{ padding: "15px", backgroundColor:" rgb(235, 170, 41)"}}>
+                                         <h3 style={{ fontSize: "18px", marginBottom: "10px" ,}}>{card.title}</h3>
+                                         {activeCard === card.id && (
+                                             <p style={{ fontSize: "14px", color: "#555" }}>{card.info}</p>
+                                         )}
+                                     </div>
+                                 </div>
+                             ))}
+                         </div>
+                     </section>
+         
+         
+                     {/* Popup Section */}
+                     {isPopupOpen && (
+                         <div className="overlay">
+                             <div className="popup">
+                                 <button className="close-btn" onClick={onClose}>
+                                     &times;
+                                 </button>
+                                 <div className="popup-content">
+                                     <div className="image-section">
+                                         <img src="/path-to-your-image.jpg" alt="Popup Visual" />
+                                     </div>
+                                     <div className="form-section">
+                                         <h2>Tell us more about yourself.</h2>
+                                         <form>
+                                             <div className="form-group">
+                                                 <input type="text" placeholder="First name" required />
+                                                 <input type="text" placeholder="Last name" required />
+                                             </div>
+                                             <div className="form-group">
+                                                 <input type="tel" placeholder="Phone number" required />
+                                                 <input type="email" placeholder="Email" required />
+                                             </div>
+                                             <div className="form-group">
+                                                 <label>How often do you organize events?</label>
+                                                 <div className="options">
+                                                     <button type="button">1-3</button>
+                                                     <button type="button">4-6</button>
+                                                     <button type="button">7-10</button>
+                                                     <button type="button">10+</button>
+                                                 </div>
+                                             </div>
+                                             <textarea placeholder="Share more about your needs" rows="3"></textarea>
+                                             <button type="submit" className="submit-btn">
+                                                 Submit
+                                             </button>
+                                         </form>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     )}
+         
+                     <style jsx>{`
+                         .overlay {
+                             position: fixed;
+                             top: 0;
+                             left: 0;
+                             right: 0;
+                             bottom: 0;
+                             background-color: rgba(0, 0, 0, 0.5);
+                             display: flex;
+                             justify-content: center;
+                             align-items: center;
+                             z-index: 1000;
+                         }
+         
+                         .popup {
+                             background-color: #fff;
+                             width: 60%;
+                             max-width: 800px;
+                             padding: 20px;
+                             border-radius: 8px;
+                             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                             position: relative;
+                         }
+         
+                         .close-btn {
+                             position: absolute;
+                             top: 10px;
+                             right: 10px;
+                             font-size: 24px;
+                             color: #333;
+                             background: none;
+                             border: none;
+                             cursor: pointer;
+                         }
+         
+                         .popup-content {
+                             display: flex;
+                             flex-direction: row;
+                             gap: 20px;
+                         }
+         
+                         .image-section img {
+                             width: 100%;
+                             max-width: 200px;
+                             border-radius: 8px;
+                             object-fit: cover;
+                         }
+         
+                         .form-section {
+                             flex-grow: 1;
+                         }
+         
+                         input, textarea {
+                             width: 100%;
+                             padding: 10px;
+                             margin-bottom: 10px;
+                             border: 1px solid #ccc;
+                             border-radius: 5px;
+                             font-size: 16px;
+                         }
+         
+                         .submit-btn {
+                             background-color: #007bff;
+                             color: white;
+                             border: none;
+                             padding: 12px 20px;
+                             border-radius: 5px;
+                             cursor: pointer;
+                             font-size: 16px;
+                         }
+         
+                         .submit-btn:hover {
+                             background-color: #0056b3;
+                         }
+                     `}</style>
+
+
+
+<style jsx>
+  {`
+    .image-section {
+      margin-top: 80px;
+      margin-bottom: 50px;
+  
+    }
+
+    .image-section h3 {
+      margin-bottom: 50px;
+      font-size: 24px;
+      text-align: center; /* Center align title */
+    }
+
+    .image-row {
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap; /* Allow images to wrap on smaller screens */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .image {
+      margin-right: 30px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .image:nth-child(1) {
+      width: 205px;
+     margin-right:130px;
+    }
+
+    .image:nth-child(2) {
+      width: 205px;
+        margin-left:100px;
+    }
+
+    .image:nth-child(3) {
+      width: 100px;
+margin-left:180px;
+    }
+
+    .image:nth-child(4) {
+      width: 250px;
+
+     
+    }
+
+    .image:nth-child(5) {
+      width: 170px;
+
+    }
+
+    .image:nth-child(6) {
+      width: 250px;
+     
+    }
+
+    /* Desktop & Laptop Screens (min-width: 1024px) */
+    @media (min-width: 1024px) {
+      .image-row {
+        width: 80%;
+        margin-left: 130px;
+        margin-right: 130px;
+      }
+
+      .image {
+        width: 205px;
+      }
+    }
+
+    /* Tablets and Smaller Laptops (max-width: 1024px) */
+    @media (max-width: 1024px) {
+      .image-section h3 {
+        font-size: 20px;
+      }
+
+      .image-row {
+        width: 85%;
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+
+      .image {
+        width: 150px;
+        margin-right: 15px;
+      }
+    }
+
+    /* Small Mobile Screens (max-width: 768px) */
+    @media (max-width: 768px) {
+      .image-section h3 {
+        font-size: 18px;
+      }
+
+      .image-row {
+        width: 90%;
+        margin-left: 20px; /* Reduced margin-left for small screens */
+        margin-right: 20px; /* Reduced margin-right for small screens */
+      }
+
+      .image {
+        width: 120px;
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+    }
+
+    /* Very Small Mobile Screens (max-width: 480px) */
+    @media (max-width: 480px) {
+      .image-section h3 {
+        font-size: 16px;
+      }
+
+      .image-row {
+        width: 100%;
+        margin-left: 0; /* No margin-left */
+        margin-right: 0; /* No margin-right */
+      }
+
+      .image {
+        width: 100px;
+        margin-bottom: 15px;
+      }
+    }
+
+    /* Special Case for Very Small Screen Widths (max-width: 200px) */
+    @media (max-width: 200px) {
+      .image-section h3 {
+        font-size: 12px;
+      }
+
+      .image-row {
+        width: 100%;
+        margin-left: 0; /* No margin-left for extremely small screens */
+        margin-right: 0; /* No margin-right for extremely small screens */
+      }
+
+      .image {
+        width: 80px; /* Adjust image size for 200px screen */
+        margin-right: 5px;
+      }
+    }
+  `}
 </style>
 
+<section className="image-section">
+  <h3>Trusted by professionals at</h3>
+
+  <div className="image-row top-row">
+    <img src="/img/netflix.png" alt="Image 2" className="image" />
+    <img src="/img/google.png" alt="Image 3" className="image" />
+    <img src="/img/apple.png" alt="Image 4" className="image" />
+  </div>
+
+  <div className="image-row bottom-row">
+    <img src="/img/microsoft.png" alt="Image 6" className="image" />
+    <img src="/img/adidas.png" alt="Image 7" className="image" />
+    <img src="/img/more.png" alt="Image 8" className="image" />
+  </div>
+</section>
 
 
+<style jsx>
+  {`
+    .section-wrapper {
+      display: flex;
+   
+      margin-left: 130px;
+      margin-right: 130px;
+      margin-top: 80px;
+      flex-wrap: wrap;
+    }
 
+    /* Left Card */
+    .card {
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
+    .dark-card {
+      background-color: #333;
+      color: white;
+      width: 45%; /* Dark card width */
+    }
 
-  <div className="section-wrapper"style={{marginLeft:'130px',marginRight:'130px',marginTop:'80px'}}>
-      {/* Left Card */}
-      <div className="card dark-card">
-        <h2 style={{color:'white',fontSize:'25px',marginBottom:'200px'}}>Looking to hire a full-time driver?</h2>
-        <div className="card-content">
-        <h2 style={{color:'white',fontSize:'25px',marginBottom:'40px'}}>What you receive?</h2>
-          <ul>
-            <li style={{marginBottom:'20px'}}>✅ Full-time professional chauffeur</li>
-            <li style={{marginBottom:'20px'}}>✅ Customized schedule that fits your busy lifestyle</li>
-            <li style={{marginBottom:'20px'}}>✅ Flexible and transparent pricing</li>
-          </ul>
-          <a href="Bookingcars" style={{ textDecoration: 'none' }}>
-  <button className="cta-button"  style={{ marginTop: '20px', borderRadius: '20px' }}>
-    Get started →
-  </button>
-</a>
+    .light-card {
+      background-color: #f5f5f5;
+      color: black;
+      width: 55%; /* Light card width (greater than dark card) */
+    }
 
+    .dark-card h2,
+    .light-card h2 {
+      font-size: 25px;
+      margin-bottom: 40px;
+    }
+
+    .dark-card ul,
+    .light-card ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .dark-card li,
+    .light-card li {
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      width: 200px;
+      height: 40px;
+      background-color: rgb(241, 162, 33);
+      color: black;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .cta-button:hover {
+      background-color: rgb(24, 12, 100);
+    }
+
+    /* Responsive Breakpoints */
+
+    @media (max-width: 1024px) {
+      .section-wrapper {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      .light-card {
+        background-color: #f5f5f5;
+        color: black;
+        width: 55%; /* Light card width (greater than dark card) */
+      }
+  
+      .card {
        
+        margin-bottom: 20px;
+      }
 
+      .cta-button {
+        width: 180px;
+        font-size: 14px;
+      }
 
+      .dark-card h2,
+      .light-card h2 {
+        font-size: 22px;
+      }
+
+      .dark-card li,
+      .light-card li {
+        font-size: 14px;
+      }
+
+      .text-content p {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-wrapper {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .cta-button {
+        width: 160px;
+        font-size: 14px;
+      }
+
+      .dark-card h2,
+      .light-card h2 {
+        font-size: 20px;
+      }
+
+      .dark-card li,
+      .light-card li {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-wrapper {
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .cta-button {
+        width: 150px;
+        font-size: 12px;
+      }
+
+      .dark-card h2,
+      .light-card h2 {
+        font-size: 18px;
+      }
+
+      .dark-card li,
+      .light-card li {
+        font-size: 12px;
+      }
+    }
+
+    /* Remove gap between cards on larger screens (laptop and desktop) */
+    @media (min-width: 1025px) {
+      .card {
+        margin-bottom: 0; /* No gap between the cards */
+      }
+    }
+  `}
+</style>
+
+<div className="section-wrapper">
+  {/* Left Card */}
+  <div className="card dark-card">
+    <h2 style={{color:'white'}}>Looking to hire a full-time driver?</h2>
+    <div className="card-content">
+      <h2 style={{color:'white'}}>What you receive?</h2>
+      <ul>
+        <li>✅ Full-time professional chauffeur</li>
+        <li>✅ Customized schedule that fits your busy lifestyle</li>
+        <li>✅ Flexible and transparent pricing</li>
+      </ul>
+      <a href="Bookingcars" style={{ textDecoration: 'none' }}>
+        <button className="cta-button">Get started →</button>
+      </a>
+    </div>
+  </div>
+
+  {/* Right Card */}
+  <div className="card light-card" >
+    <div className="text-and-images">
+      {/* Left Side: Text */}
+      <div className="text-content">
+        <h2>The easy way to plan any event.</h2>
+        <p>
+          Partnering with industry-leading event planners, we ensure that
+          every aspect of your event logistics, including transportation
+          needs, is expertly managed from start to finish.
+        </p>
+        <ul>
+          <li>✅ Stress-free planning</li>
+          <li>✅ All logistics and execution are handled by professionals</li>
+          <li>✅ We cover your transportation needs at 100%</li>
+        </ul>
+        <button className="cta-button" onClick={togglePopup}>
+          Get started →
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-    </div>
-      {/* Right Card */}
-      <div className="card light-card">
-        <div className="text-and-images">
-          {/* Left Side: Text */}
-          <div className="text-content">
-            <h2 style={{color:'black',fontSize:'25px',marginBottom:'20px'}} >The easy way to plan any event.</h2>
-            <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn" >
-              Partnering with industry-leading event planners, we ensure that
-              every aspect of your event logistics, including transportation
-              needs, is expertly managed from start to finish.
-            </p>
-            <ul>
-              <li className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn"   >✅ Stress-free planning</li>
-              <li className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn"  >✅ All logistics and execution are handled by professionals</li>
-              <li className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn"  >✅ We cover your transportation needs at 100%</li>
-            </ul>
-            <button className="cta-button"     onClick={togglePopup}  style={{borderRadius:'20px',width:'200px'}}>Get started →</button>
-          </div>
 
-
-
-          {isOpen && (
+{isOpen && (
         <div
           style={{
             position: 'fixed',
@@ -1286,12 +1826,13 @@ width: 100%; /* 1 image per row on extra small screens */
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            zIndex:'9999px',
           }}
         >
           <div
             style={{
               height:'700px',
-              marginTop:'100px',
+              marginTop:'10px',
               width: '700px',
               backgroundColor: 'white',
               borderRadius: '10px',
@@ -1310,7 +1851,7 @@ width: 100%; /* 1 image per row on extra small screens */
             ></div>
 
             {/* Right Form Section */}
-            <div style={{ flex: 1, padding: '20px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ flex: 1, padding: '50px', display: 'flex', flexDirection: 'column' ,marginTop:'50px'}}>
               <h3 style={{ marginBottom: '1rem' }}>Get in Touch</h3>
               <form>
                 <div style={{ marginBottom: '1rem' }}>
@@ -1337,17 +1878,7 @@ width: 100%; /* 1 image per row on extra small screens */
                   />
                 </div>
                 
-                <div style={{ marginBottom: '1rem' }}>
-                  <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                   Last  Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                    style={{ width: '100%', padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc' }}
-                  />
-                </div>
+                
                 <div style={{ marginBottom: '1rem' }}>
                   <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>
                     Email *
@@ -1425,253 +1956,104 @@ width: 100%; /* 1 image per row on extra small screens */
 
 
 
-          {/* Right Side: Images */}
-          <div className="images-grid">
-            <div className="image-row">
-              <img src="/img/easy.png" alt="Event planning"style={{width:'150px',height:'120'}} />
-              <img src="/img/easily.png" alt="Team planning" style={{width:'100px',height:'100px'}} />
-            </div>
-            <div className="image-row">
-              <img src="/img/easily.png" alt="Workshop session"  style={{width:'100px',height:'100px'}}/>
-              <img src="/img/esu.png" alt="Team meeting" style={{width:'200px',height:'200'}} />
-             
-            </div>
-            <div className="image-row">
-              <img src="/img/easily.png" alt="Workshop session"  style={{width:'100px',height:'100px',marginLeft:'80px'}}/>
-             
-             
-            </div>
-          </div>
+
+
+
+
+
+
+
+
+
+
+                        
+  <div className="row justify-content-center">
+    <div className="col-lg-8 col-md-10 col-12">
+      <h2 className="color-black text-center mb-4 wow animate__animated animate__fadeIn">Contact Us</h2>
+      <form className="contact-form wow animate__animated animate__fadeIn">
+  
+        <div className="form-group">
+          <label for="name" className="font-md color-grey-900">Your Name</label>
+          <input type="text" className="form-control" id="name" placeholder="Enter your name" required />
         </div>
-      </div>
+        
+     
+        <div className="form-group">
+          <label for="email" className="font-md color-grey-900">Your Email</label>
+          <input type="email" className="form-control" id="email" placeholder="Enter your email" required />
+        </div>
+        
+      
+        <div className="form-group">
+          <label for="message" className="font-md color-grey-900">Your Message</label>
+          <textarea className="form-control" id="message" rows="5" placeholder="Enter your message" required></textarea>
+        </div>
+        
+        
+        <div className="text-center">
+          <button  type="submit" className="btn btn-brand-2 wow animate__animated animate__fadeIn" style={{backgroundColor: 'orange', color: 'black',borderRadius:'25px'}}>Send Message</button>
+        </div>
+      </form>
     </div>
+  </div>
 
 
 
-
-
-
-
-
-
-
-    <style jsx>{`
-/* Wrapper for the entire section */
-.section-wrapper {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  align-items: flex-start;
-  flex-wrap: wrap; /* Allows wrapping for smaller screens */
-}
-
-/* Card styles */
-.card {
-  border-radius: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.dark-card {
-  height: auto;
-  background: #1d1d1d;
-  color: #fff;
-  flex: 1 1 45%; /* Takes 45% of width on large screens */
-  max-width: 500px;
-}
-
-/* The light card takes more space on large screens */
-.light-card {
-border:none;
-  background: #f8f8f8;
-  color: #333;
-  flex: 1 1 55%; /* Takes 55% of width on large screens */
-  display: flex;
-  flex-direction: column;
-}
-
-/* Text and Images layout */
-.text-and-images {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-/* Left Side: Text Content */
-.text-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.text-content ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.text-content ul li {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-/* Right Side: Images Grid */
-.images-grid {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Each Row of Images */
-.image-row {
-  display: flex;
-  gap: 10px;
-}
-
-.image-row img {
-  width: 50%; /* Two images side-by-side */
-  height: auto;
-  border-radius: 10px;
-}
-
-/* CTA button styles */
-.cta-button {
-  background-color: #6c60f7;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.cta-button:hover {
-  background-color: #574ecf;
-}
-
-/* Responsive Styles */
-
-/* Tablets (Max Width: 1024px) */
-@media screen and (max-width: 1024px) {
-  .section-wrapper {
-    gap: 15px;
-  }
-
-  .dark-card,
-  .light-card {
-    flex: 1 1 100%; /* Full width on smaller screens */
-  }
-
-  .text-and-images {
-    flex-direction: column; /* Stacks text and images vertically */
-  }
-
-  .image-row img {
-    width: 100%; /* Each image spans full width in its row */
-  }
-}
-
-/* Mobile (Max Width: 768px) */
-@media screen and (max-width: 768px) {
-  .section-wrapper {
- paddin-right:200px;
-  width:70%;
-    flex-direction: column; /* Stack cards vertically */
-    gap: 10px;
-  }
-
-  .dark-card,
-  .light-card {
-    flex: none;
-    /* Increase width for better visibility */
- /* Center the cards */
-  }
-
-  .text-and-images {
-    flex-direction: column; /* Stacks text and images */
-  }
-
-  .image-row {
-    flex-direction: column; /* Each image is displayed as a full row */
-  }
-
-  .image-row img {
-    width: 100%; /* Full width for small screens */
-  }
-}
-
-/* Extra Small Devices (Max Width: 480px) */
-@media screen and (max-width: 480px) {
-  .dark-card,
-  .light-card {
-margin-left:0px;
-    width: 100%; /* Maximize width for small screens */
-    /* Center align */
-  }
-
-  .text-content ul li {
-    font-size: 14px; /* Smaller font size */
-  }
-
-  .cta-button {
-    width: 100%;
-    font-size: 14px; /* Adjust font size */
-    padding: 10px;
-  }
-
-  .image-row img {
-    border-radius: 8px; /* Slightly smaller rounded corners */
-  }
-}
-}</style>
 <style jsx>{
-    /* General Styles */
-section {
-  font-family: Arial, sans-serif;
+  `
+  
+  /* Form container */
+.contact-form {
+ background: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Card Grid */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-/* Card */
-.card {
+/* Input and Textarea fields */
+.form-control {
+  border-radius: 4px;
+  padding: 15px;
   border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card img {
+  margin-bottom: 20px;
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  box-sizing: border-box;
 }
 
-.card h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+/* Label styles */
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
 }
 
-.card p {
-  font-size: 14px;
-  color: #555;
+/* Button styles */
+button[type="submit"] {
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-    
-    
-    `}
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .contact-form {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-control {
+    font-size: 14px;
+    padding: 12px;
+  }
+  .contact-form {
+    padding: 15px;
+  }
+}
+
+  
+  `}
 
 </style>
 
@@ -1680,7 +2062,389 @@ section {
 
 
 
-{/* Styles */}
+
+   
+
+
+    <style jsx>{`
+  .layout-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  .content-section {
+    margin-bottom: 20px; /* Adds spacing between sections */
+  }
+
+  .line {
+    height: 1px;
+    background-color: lightgray; /* Line color */
+    margin: 10px 0;
+  }
+
+  .content-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .heading {
+    flex: 1; /* Allocates space for the heading */
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+  }
+
+  .paragraph {
+    flex: 2; /* Allocates more space for the paragraph */
+    font-size: 16px;
+    color: #333;
+    margin-left: 20px; /* Space between heading and paragraph */
+    text-align: left;
+  }
+
+  @media (max-width: 768px) {
+    .content-row {
+      flex-direction: column; /* Stacks heading and paragraph vertically on small screens */
+      text-align: center;
+    }
+
+    .paragraph {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+`}</style>
+
+
+
+
+
+    <style  jsx>{
+      `
+    .cards-section {
+  padding: 2rem;
+  background-color: #f8f8f8; /* Optional background for better contrast */
+}
+
+.section-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  justify-content: flex-start; /* Align to the left */
+  margin-left: auto; /* Default for centered alignment */
+  margin-right: auto; /* Default for centered alignment */
+}
+
+.cardy {
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.cardy:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cardy .content {
+  padding: 1rem;
+  text-align: center;
+}
+
+.cardy p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 600px) {
+  .cards-container {
+    margin-left: 1rem; /* Add small margin for mobile screens */
+    margin-right: 1rem; /* Maintain even spacing on both sides */
+  }
+}
+
+/* Media Query for Tablets */
+@media (max-width: 900px) and (min-width: 601px) {
+  .cards-container {
+    margin-left: 2rem; /* Increase margin for tablet screens */
+    margin-right: 2rem;
+  }
+}
+
+/* Media Query for Large Screens */
+@media (min-width: 901px) {
+  .cards-container {
+    margin-left: 3rem; /* Adjust margin for larger screens */
+    margin-right: 3rem;
+  }
+}
+
+      
+      `}
+
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+  <style jsx>{
+    `
+    /* CSS file: styles.css */
+
+/* Section with light grey background and flex layout */
+.section-container {
+  display: flex;
+  background-color: #d3d3d3;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Left side with text */
+.section-left {
+  flex: 1;
+  padding: 20px;
+}
+
+.section-left h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.section-left p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Right side with image */
+.section-right {
+  flex: 1;
+  padding: 20px;
+}
+
+.section-right img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+    @media screen and (max-width: 1024px) {
+  .section-container {
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .section-left h2 {
+    font-size: 24px;
+  }
+
+  .section-left p {
+    font-size: 14px;
+  }
+
+  .section-left .search-btn {
+    width: 180px;
+    height: 40px;
+  }
+}
+
+/* Small Screens (Mobile) */
+@media screen and (max-width: 768px) {
+  .section-container {
+    flex-direction: column; /* Stacks the text and image vertically */
+    text-align: center; /* Centers content for better visibility */
+  }
+
+  .section-left,
+  .section-right {
+    flex: none;
+    width: 100%; /* Makes each section occupy the full width */
+  }
+
+  .section-left h2 {
+    font-size: 20px;
+  }
+
+  .section-left p {
+    font-size: 14px;
+  }
+
+  .section-left .search-btn {
+    width: 100%; /* Full-width button */
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .section-right .responsive-img {
+    margin-top: 20px;
+  }
+}
+
+/* Extra Small Screens (Phones) */
+@media screen and (max-width: 480px) {
+  .section-left h2 {
+    font-size: 18px;
+  }
+
+  .section-left p {
+    font-size: 12px;
+  }
+
+  .section-left .search-btn {
+    width: 100%;
+    height: 50px; /* Larger button for easier taps */
+    font-size: 14px;
+  }
+
+  .section-right .responsive-img {
+    max-width: 90%; /* Limits image size */
+    margin: 0 auto; /* Centers the image */
+  }
+}
+    
+    `}
+
+  </style>
+
+
+
+  <style jsx>{
+  `
+  
+  /* General Row Styles */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* Column Styles */
+.col-lg-6 {
+  width: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .col-lg-6 {
+    width: 100%; /* Full width for smaller screens */
+    padding: 0.5rem;
+  }
+}
+
+/* Image Styles */
+img {
+  max-width: 100%; /* Ensure images fit within their container */
+  height: auto;
+  border-radius: 10px; /* Optional for rounded corners */
+}
+
+/* Text and Heading Styles */
+h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* Margin Adjustments for Different Screen Sizes */
+@media (max-width: 576px) {
+  h4 {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .row {
+    margin: 0 0.5rem;
+  }
+
+  .col-lg-6 {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .row {
+    margin: 0 2rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Larger Screens */
+@media (min-width: 1201px) {
+  .row {
+    margin: 0 4rem;
+  }
+
+  h4 {
+    font-size: 1.7rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Left Margin Adjustments for Images */
+@media (max-width: 768px) {
+  img {
+    margin-left: 0; /* Center images on smaller screens */
+  }
+}
+
+@media (min-width: 769px) {
+  img {
+    margin-left: opx; /* Maintain some margin for larger screens */
+  }
+}
+
+  
+  `}
+
+</style>
+
+
+
+{/* card popup */}
 <style jsx>{`
         .new-popup-overlay {
           position: fixed;
@@ -1717,98 +2481,8 @@ section {
 
 
 
-
-<style jsx>{
-  `
-  .card-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap; /* Makes the cards wrap if needed on smaller screens */
-}
-
-.card {
-  width: 30%; /* Adjust card width to fit three cards in a row */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card-image {
-  position: relative;
-  height: 200px;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-.card-title {
-
-  font-size: 24px;
-  font-weight: bold;
-  color:white;
-}
-
-.card-description {
-  font-size: 16px;
-  margin: 10px 0;
-}
-
-.card-button {
-  padding: 10px 20px;
-  background-color:rgb(255, 255, 255);
-  border: none;
-  color: black;
-  font-size: 16px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.card-button:hover {
-  background-color:rgb(10, 7, 6);
-}
-
-/* Responsive styles */
-  @media (max-width: 1200px) {
-    .card {
-      width: 500px; /* Two cards per row */
-    }
-  }
-
-  @media (max-width: 768px) {
-    .card {
-      width: 500px; /* One card per row */
-    }
-  }
-
-
-
-  `}
-
-</style>
-
-        
-<div className="review-slider"style={{marginBottom:'30px'}}>
+          
+  <div className="review-slider"style={{marginBottom:'30px'}}>
       <div className="slider-track">
         {reviews.map((review) => (
           <div key={review.id} className="review-card">
@@ -1829,7 +2503,6 @@ section {
     `
     /* Slider Container */
 .review-slider {
-margin-top:140PX;
   width: 100%;
   overflow: hidden; /* Hide overflow to create a slider effect */
   position: relative;
@@ -1900,11 +2573,16 @@ margin-top:140PX;
 </style>  
 
 
-</Layout>
 
 
 
-</>
-    )
-  }
 
+
+
+            </Layout>
+        </>
+       
+    );
+};
+
+export default HistoryPage; // Make sure to export it as default

@@ -1,85 +1,28 @@
+
 import Link from "next/link";
 import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import Services1 from "../sections/homepage1/Services1";
 import Info1 from "../sections/homepage1/Info1";
 import Info2 from "../sections/homepage1/Info2";
-
-
+import { FaSearch } from "react-icons/fa";
 export default function Hero1Slider() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
-
- // Unique state for this popup
- const [isNewPopupOpen, setNewPopupOpen] = useState(false);
-
- const toggleNewPopup = () => {
-   setNewPopupOpen(!isNewPopupOpen);
- };
-
-
-
+  const [isNewPopupOpen, setNewPopupOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("one-way");
-  const [suggestions, setSuggestions] = useState([]);
-  const [locationInput, setLocationInput] = useState("");
-
-  const handleLocationChange = (e) => {
-    const query = e.target.value;
-    setLocationInput(query);
-
-    // Simulating location suggestions (use an API like Google Places in real scenarios)
-    const mockLocations = ["New York", "Los Angeles", "San Francisco", "Chicago", "Miami"];
-    if (query) {
-      setSuggestions(mockLocations.filter((location) => location.toLowerCase().includes(query.toLowerCase())));
-    } else {
-      setSuggestions([]);
-    }
-  };
-
-  const handleSuggestionClick = (location) => {
-    setLocationInput(location);
-    setSuggestions([]);
-  };
-
-
-
   const [activeForm, setActiveForm] = useState(null);
-
-  const handleButtonClick = (formType) => {
-    setActiveForm(formType); // Set the active form type based on button clicked
-  };
-
-  const closeForm = () => {
-    setActiveForm(null); // Close the form
-  };
-
-
-
-
-
-
-
-  const [fromSuggestions, setFromSuggestions] = useState([]);
-  const [dropoffSuggestions, setDropoffSuggestions] = useState([]);
   const [fromValue, setFromValue] = useState("");
   const [dropoffValue, setDropoffValue] = useState("");
+  const [fromSuggestions, setFromSuggestions] = useState([]);
+  const [dropoffSuggestions, setDropoffSuggestions] = useState([]);
 
-  // Example list of locations for autocomplete
-  const locations = [
-    "New York",
-    "Los Angeles",
-    "Chicago",
-    "Houston",
-    "San Francisco",
-    "Boston",
-    "Las Vegas",
-    "Seattle",
-    "Miami",
-    "Atlanta",
-  ];
+
+
+
+
+
+
+
 
   // Handle input changes for "From"
   const handleFromChange = (e) => {
@@ -129,11 +72,55 @@ export default function Hero1Slider() {
 
 
 
-    return (
- <>
-  
 
-  <div className="app">
+
+
+
+
+
+
+
+  const locations = [
+    "New York",
+    "Los Angeles",
+    "Chicago",
+    "Houston",
+    "San Francisco",
+    "Boston",
+    "Las Vegas",
+    "Seattle",
+    "Miami",
+    "Atlanta",
+  ];
+
+  const togglePopup = () => setIsOpen(!isOpen);
+  const toggleNewPopup = () => setNewPopupOpen(!isNewPopupOpen);
+  const handleButtonClick = (formType) => setActiveForm(formType);
+  const closeForm = () => setActiveForm(null);
+
+  const handleInputChange = (value, setValue, setSuggestions) => {
+    setValue(value);
+    if (value) {
+      const filtered = locations.filter((loc) =>
+        loc.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(filtered);
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  const selectSuggestion = (suggestion, setValue, setSuggestions) => {
+    setValue(suggestion);
+    setSuggestions([]);
+  };
+
+  return (
+    <>
+      
+
+
+  <div className="app" >
   {/* Navbar */}
 
   {/* Hero Section */}
@@ -200,20 +187,20 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
 
     <div className="container"style={{marginBottom:'80px'}}>
   {/* Tabs */}
-  <div className="tabs" style={{ background: 'rgba(61, 59, 59, 0.8)', }}>
-    <button style={{color:'white'}}
+  <div className="tabs"  style={{ background: 'rgba(255, 255, 255, 0.8)' ,}}>
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "one-way" ? "tab active" : "tab"}
       onClick={() => setActiveTab("one-way")}
     >
       One way
     </button>
-    <button style={{color:'white'}}
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "round-trip" ? "tab active" : "tab"}
       onClick={() => setActiveTab("round-trip")}
     >
       Round trip
     </button>
-    <button style={{color:'white'}}
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "hourly" ? "tab active" : "tab"}
       onClick={() => setActiveTab("hourly")}
     >
@@ -276,7 +263,8 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
     <div className="time-picker">
       <input type="time" defaultValue="04:40" />
     </div>
-    <button className="search-btn">🔍</button>
+       
+             
   </div>
 </div>
 
@@ -318,6 +306,16 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+
+
+
+
+
+
+
+
+
+
 }
 
 .form-content {
@@ -400,7 +398,7 @@ p {
   margin-left:25px;
   border-radius: 100px;
   width: 30%;
-  background-color: rgba(58, 55, 55, 0.8);
+  background-color: rgba(39, 30, 30, 0.8);
   display: flex;
   justify-content: center; /* Center buttons */
   gap: 1rem;
@@ -408,7 +406,7 @@ p {
 
 .top-btn {
   padding: 10px 20px;
-  background-color: rgb(53, 45, 135);
+  background-color: rgb(57, 56, 51);
   color: white;
   border: none;
   border-radius: 24px;
@@ -419,7 +417,7 @@ p {
 }
 
 .top-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(70, 120, 191);
 }
 
 /* Autocomplete Text Fields */
@@ -456,7 +454,7 @@ p {
 }
 
 .suggestion:hover {
-  background-color:rgb(144, 145, 189);
+  background-color:rgb(28, 135, 193);
 }
 
 /* Date and Time Pickers */
@@ -503,14 +501,14 @@ p {
   border-radius: 20px;
   margin-left: 10px; /* Space between the search button and other inputs */
   padding: 10px;
-  background-color: rgb(14, 51, 124);
+  background-color: rgb(41, 145, 235);
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .search-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(43, 114, 164);
 }
 
 .container {
@@ -536,15 +534,50 @@ p {
 }
 
 .tab.active {
-  background-color: rgb(24, 9, 139);
+  background-color: rgb(41, 141, 229);
   color: white;
 }
 
-/* Hero Section */
+
 .hero {
+  position: relative; /* Ensure positioning for the pseudo-element */
   padding: 2rem;
-  background-color: rgb(6, 5, 5); /* Black background */
+  height: 100vh; /* Full viewport height */
+  
+  align-items: center;
+  justify-content: center;
+  color: #black; /* Ensure content stands out */
+  overflow: hidden; /* Prevent pseudo-element overflow */
+  z-index: 1; /* Keep content above the pseudo-element */
 }
+
+.hero::before {
+  content: ""; /* Add a pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/header.png'); /* Background image */
+  background-size: cover; /* Adjust to fit */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -2; /* Send behind everything */
+}
+
+.hero::after {
+  content: ""; /* Add the black transparent overlay */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(9, 0, 0, 0.5); /* Black with transparency */
+  z-index: -1; /* Place above the image but below content */
+}
+
+
+
 
 .hero h1 {
   margin-left: 250px;
@@ -678,197 +711,243 @@ margin-right:50px;
 
 
 
-
-
-
-<h2 style={{marginLeft:'150px',marginTop:'100px'}}>
-Exclusive partnership opportunities
-</h2>
-<div className="card-container"style={{marginLeft:'150px',marginRight:'180px',marginTop:'100px'}}>
-
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/coprate.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Coporation and Businesses</h2>
-            <p className="card-description">One-stop travel management</p>
-            <button  onClick={toggleNewPopup}  className="card-button">Get in touch</button>
-          </div>
-        </div>
-      </div>
-
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/travel.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Travel agents and event planners</h2>
-            <p className="card-description">Streamline bookings with our API</p>
-            <button   className="card-button"
-        onClick={toggleNewPopup} >Request Info</button>
-          </div>
-        </div>
-      </div>
-
-
-      {/* Pop-up Modal */}
-      {isNewPopupOpen && (
-        <div className="new-popup-overlay" style={{marginTop:'50px'}}>
-          <div className="new-popup-container">
-            {/* Image Section */}
-            <div className="popup-image-section">
-              <img
-                src="/img/picky.png"
-                alt="Form Illustration"
-                className="popup-image"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "10px 0 0 10px",
-                  objectFit: "cover",
-                }}
-              />
-            </div>
-
-            {/* Form Section */}
-            <div className="popup-form-section" style={{ padding: "1.5rem",}}>
-              <h2 style={{ marginBottom: "1rem", color: "#333" }}>Get in Touch</h2>
-
-              <form>
-                {/* Name Field */}
-                <div style={{ marginBottom: "1rem" }}>
-                  <label htmlFor="new-name" style={{ display: "block", marginBottom: "0.5rem" }}>
-                   First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="new-name"
-                    placeholder="Enter your name"
-                    style={{
-                      width: "100%",
-                      padding: "0.5rem",
-                      borderRadius: "5px",
-                      border: "1px solid #ccc",
-                    }}
-                  />
-                </div>
-                <div style={{ marginBottom: "1rem" }}>
-                  <label htmlFor="new-name" style={{ display: "block", marginBottom: "0.5rem" }}>
-                    Title/Position
-                  </label>
-                  <input
-                    type="text"
-                    id="new-name"
-                    placeholder="Title/Position"
-                    style={{
-                      width: "100%",
-                      padding: "0.5rem",
-                      borderRadius: "5px",
-                      border: "1px solid #ccc",
-                    }}
-                  />
-                </div>
-                <div style={{ marginBottom: "1rem" }}>
-                  <label htmlFor="new-name" style={{ display: "block", marginBottom: "0.5rem" }}>
-                    Company Website *
-                  </label>
-                  <input
-                    type="text"
-                    id="new-name"
-                    placeholder="Company Website Link"
-                    style={{
-                      width: "100%",
-                      padding: "0.5rem",
-                      borderRadius: "5px",
-                      border: "1px solid #ccc",
-                    }}
-                  />
-                </div>
-                <div style={{ marginBottom: "1rem" }}>
-                  <label htmlFor="new-name" style={{ display: "block", marginBottom: "0.5rem" }}>
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    id="email"
-                    placeholder="Business Email"
-                    style={{
-                      width: "100%",
-                      padding: "0.5rem",
-                      borderRadius: "5px",
-                      border: "1px solid #ccc",
-                    }}
-                  />
-                </div>
-
-                {/* Comment Field */}
-                <div style={{ marginBottom: "1rem" }}>
-                  <label htmlFor="new-comment" style={{ display: "block", marginBottom: "0.5rem" }}>
-                    Comment *
-                  </label>
-                  <textarea
-                    id="new-comment"
-                    placeholder="Please provide additional details"
-                    style={{
-                      width: "100%",
-                      padding: "0.5rem",
-                      borderRadius: "5px",
-                      border: "1px solid #ccc",
-                      resize: "none",
-                      height: "100px",
-                    }}
-                  ></textarea>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    backgroundColor: "blue",
-                    color: "white",
-                    borderRadius: "15px",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                >
-                  Submit
-                </button>
-              </form>
-
-              {/* Close Button */}
-              <button
-                onClick={toggleNewPopup}
-                style={{
-                  marginTop: "1rem",
-                  padding: "10px 20px",
-                  backgroundColor: "white",
-                  color: "red",
-                  border: "none",
-                  borderRadius: "15px",
-                  cursor: "pointer",
-                  width: "100%",
-                }}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
  
 
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/influ.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Influencers and public figures</h2>
-            <p className="card-description">Join our Influencer Program today</p>
-            <button   onClick={toggleNewPopup} className="card-button">Apply</button>
-          </div>
-        </div>
+
+
+
+
+
+
+
+
+
+<section className="card-section" style={{ marginTop: '50px', marginBottom: '50px' }}>
+  <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Exclusive partnership opportunities</h2>
+  <div className="card-container">
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/coprate.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Corporation and Businesses</h3>
+        <p className="card-description"></p>
+       
       </div>
     </div>
+
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/influ.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Influencers and Public </h3>
+        <p className="card-description"></p>
+        
+      </div>
+    </div>
+
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/travel.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Solo or Group Travel</h3>
+        <p className="card-description"></p>
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+<style jsx>
+  {`
+    .card-section {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 0px;
+      margin-left: auto; /* Automatically adjust margin from the left */
+      margin-right: auto; /* Automatically adjust margin from the right */
+      max-width: 1200px; /* Maximum container width */
+    }
+
+    .card {
+      flex: 1 1 calc(33.333% - 20px); /* 3 cards per row on larger screens */
+      background-color: black;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* Allow button to overlay on image */
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .card-image {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7; /* Adjust opacity of the image */
+    }
+
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Black overlay with opacity */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      opacity: 1; /* Ensure the overlay itself is fully opaque */
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1; /* Keep the title on top */
+      opacity: 1;
+    }
+
+    .card-description {
+      font-size: 16px;
+      color: white;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .card-button {
+      padding: 10px 20px;
+      background-color:rgb(232, 157, 52); /* Orange button */
+      color: black;
+      border: none;
+      font-size: 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .card-button:hover {
+      background-color: #e76a3d;
+    }
+
+    /* Responsive Breakpoints */
+
+    @media (max-width: 1024px) {
+      .card {
+        flex: 1 1 calc(45% - 20px); /* 2 cards per row on medium screens */
+        max-width: 45%;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      .card-container {
+        margin-left: 20px; /* Adjustable left margin for laptop screens */
+        margin-right: 20px; /* Adjustable right margin for laptop screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex: 1 1 100%; /* 1 card per row on small screens */
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .card-title {
+        font-size: 22px;
+      }
+
+      .card-description {
+        font-size: 14px;
+      }
+
+      .card-button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-container {
+        gap: 15px; /* Reduce gaps for smaller screens */
+      }
+
+      .card {
+        flex: 1 1 calc(90% - 20px); /* 1 card per row on very small screens */
+        max-width: 100%;
+      }
+
+      .card-title {
+        font-size: 20px;
+      }
+
+      .card-description {
+        font-size: 12px;
+      }
+
+      .card-button {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .card {
+        flex: 1 1 calc(95% - 20px); /* Slight padding for narrow screens */
+        max-width: 100%; /* Full width for smaller devices */
+      }
+
+      .card-title {
+        font-size: 18px;
+      }
+
+      .card-description {
+        font-size: 11px;
+      }
+
+      .card-button {
+        padding: 5px 10px;
+        font-size: 11px;
+      }
+    }
+  `}
+</style>
+
+
+
+    
 
 
 
@@ -881,592 +960,219 @@ Exclusive partnership opportunities
 
 
 
-  <div className="section-wrapper"style={{marginLeft:'130px',marginRight:'130px',marginTop:'80px'}}>
-      {/* Left Card */}
-      <div className="card dark-card">
-        <h2 style={{color:'white',fontSize:'25px',marginBottom:'200px'}}>Looking to hire a full-time driver?</h2>
-        <div className="card-content">
-        <h2 style={{color:'white',fontSize:'25px',marginBottom:'40px'}}>What you receive?</h2>
-          <ul>
-            <li style={{marginBottom:'20px'}}>✅ Full-time professional chauffeur</li>
-            <li style={{marginBottom:'20px'}}>✅ Customized schedule that fits your busy lifestyle</li>
-            <li style={{marginBottom:'20px'}}>✅ Flexible and transparent pricing</li>
-          </ul>
-          <a href="Bookingcars" style={{ textDecoration: 'none' }}>
-  <button className="cta-button"  style={{ marginTop: '20px', borderRadius: '20px' }}>
-    Get started →
-  </button>
-</a>
 
-       
+
+<div>
+  
+{isOpen && (
+  <div
+    style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.7)', // Black overlay
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 1000, // Ensures it's above other elements
+    }}
+  >
+    <div
+      style={{
+        height: '700px',
+        marginTop: '100px',
+        width: '700px',
+        backgroundColor: 'white',
+        borderRadius: '10px',
+        display: 'flex',
+        overflow: 'hidden',
+        zIndex: 1100, // Ensures the popup is above the overlay
+      }}
+    >
+      {/* Left Image Section */}
+      <div
+        style={{
+          flex: 1,
+          backgroundImage: 'url("/img/backu.png")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      ></div>
+
+      {/* Right Form Section */}
+      <div style={{ flex: 1, padding: '20px', display: 'flex', flexDirection: 'column' }}>
+        <h3 style={{ marginBottom: '1rem' }}>Get in Touch</h3>
+        <form>
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="phone" style={{ display: 'block', marginBottom: '0.5rem' }}>
+              Phone Number *
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Enter your phone number"
+              style={{ width: '100%', padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc' }}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>
+              First Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter your name"
+              style={{ width: '100%', padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc' }}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>
+              Last Name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter your name"
+              style={{ width: '100%', padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc' }}
+            />
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem' }}>
+              Email *
+            </label>
+            <input
+              type="text"
+              id="email"
+              placeholder="Enter your email"
+              style={{ width: '100%', padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc' }}
+              required
+            />
+          </div>
+          <div className="form-group" style={{ marginBottom: '1rem' }}>
+            <label>How often do you organize events?</label>
+            <div className="options" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <button
+                style={{
+                  backgroundColor: 'blue',
+                  padding: '7px 20px',
+                  color: 'whitesmoke',
+                  borderRadius: '15px',
+                  border: 'none',
+                }}
+                type="button"
+              >
+                1-3
+              </button>
+              <button
+                style={{
+                  backgroundColor: 'blue',
+                  padding: '7px 20px',
+                  color: 'whitesmoke',
+                  borderRadius: '15px',
+                  border: 'none',
+                }}
+                type="button"
+              >
+                4-6
+              </button>
+              <button
+                style={{
+                  backgroundColor: 'blue',
+                  padding: '7px 20px',
+                  color: 'whitesmoke',
+                  borderRadius: '15px',
+                  border: 'none',
+                }}
+                type="button"
+              >
+                7-10
+              </button>
+              <button
+                style={{
+                  backgroundColor: 'blue',
+                  padding: '7px 20px',
+                  color: 'whitesmoke',
+                  borderRadius: '15px',
+                  border: 'none',
+                }}
+                type="button"
+              >
+                10+
+              </button>
+            </div>
+          </div>
+          <div style={{ marginBottom: '1rem' }}>
+            <label htmlFor="comment" style={{ display: 'block', marginBottom: '0.5rem' }}>
+              Comment
+            </label>
+            <textarea
+              id="comment"
+              placeholder="Enter your comment"
+              style={{
+                width: '100%',
+                padding: '0.5rem',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+                resize: 'none',
+                height: '80px',
+              }}
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            style={{
+              width: '100%',
+              padding: '0.75rem',
+              backgroundColor: 'blue',
+              color: 'white',
+              borderRadius: '5px',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+          >
+            Submit
+          </button>
+        </form>
+        <button
+          onClick={togglePopup}
+          style={{
+            marginTop: '10px',
+            background: 'none',
+            border: 'none',
+            color: 'red',
+            cursor: 'pointer',
+            alignSelf: 'flex-end',
+          }}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
 
 </div>
 
 
-    </div>
-      {/* Right Card */}
-      <div className="card light-card">
-        <div className="text-and-images">
-          {/* Left Side: Text */}
-          <div className="text-content">
-            <h2 style={{color:'black',fontSize:'25px',marginBottom:'20px'}} >The easy way to plan any event.</h2>
-            <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn" >
-              Partnering with industry-leading event planners, we ensure that
-              every aspect of your event logistics, including transportation
-              needs, is expertly managed from start to finish.
-            </p>
-            <ul>
-              <li className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn"   >✅ Stress-free planning</li>
-              <li className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn"  >✅ All logistics and execution are handled by professionals</li>
-              <li className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn"  >✅ We cover your transportation needs at 100%</li>
-            </ul>
-            <button className="cta-button"     onClick={togglePopup}  style={{borderRadius:'20px',width:'200px'}}>Get started →</button>
-          </div>
 
 
-
-          {isOpen && (
-        <div
-          style={{
-            position: 'fixed',
-           top:"0",
-            left: '0',
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={{
-              height:'700px',
-              marginTop:'100px',
-              width: '700px',
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              display: 'flex',
-              overflow: 'hidden',
-            }}
-          >
-            {/* Left Image Section */}
-            <div
-              style={{
-                flex: 1,
-                backgroundImage: 'url("/img/backu.png")',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            ></div>
-
-            {/* Right Form Section */}
-            <div style={{ flex: 1, padding: '20px', display: 'flex', flexDirection: 'column' }}>
-              <h3 style={{ marginBottom: '1rem' }}>Get in Touch</h3>
-              <form>
-                <div style={{ marginBottom: '1rem' }}>
-                  <label htmlFor="phone" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    placeholder="Enter your phone number"
-                    style={{ width: '100%', padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc' }}
-                  />
-                </div>
-
-                <div style={{ marginBottom: '1rem' }}>
-                  <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                    style={{ width: '100%', padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc' }}
-                  />
-                </div>
-                
-                <div style={{ marginBottom: '1rem' }}>
-                  <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                   Last  Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                    style={{ width: '100%', padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc' }}
-                  />
-                </div>
-                <div style={{ marginBottom: '1rem' }}>
-                  <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                    Email *
-                  </label>
-                  <input
-                    type="text"
-                    id="email"
-                    placeholder="email"
-                    style={{ width: '100%', padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc' }}
-                    required />
-                </div>
-             
-                <div className="form-group">
-                                        <label>How often do you organize events?</label>
-                                        <div className="options">
-                                            <button style={{backgroundColor:'blue',   padding: "7px 20px",color:'whitesmoke',borderRadius:'15px',
-                    borderradius: "5px"}} type="button">1-3</button>
-                                            <button style={{backgroundColor:'blue', padding: "7px 20px",color:'whitesmoke',borderRadius:'15px',}}  type="button">4-6</button>
-                                            <button style={{backgroundColor:'blue', padding: "7px 20px",color:'whitesmoke',borderRadius:'15px',}}  type="button">7-10</button>
-                                            <button style={{backgroundColor:'blue', padding: "7px 20px",color:'whitesmoke',borderRadius:'15px',}}  type="button">10+</button>
-                                        </div>
-                                    </div>
-                <div style={{ marginBottom: '1rem' }}>
-                  <label htmlFor="comment" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                    Comment
-                  </label>
-                  <textarea
-                    id="comment"
-                    placeholder="Enter your comment"
-                    style={{
-                      width: '100%',
-                      padding: '0.5rem',
-                      borderRadius: '5px',
-                      border: '1px solid #ccc',
-                      resize: 'none',
-                      height: '80px',
-                    }}
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem',
-                    backgroundColor: 'blue',
-                    color: 'white',
-                    borderRadius: '5px',
-                    border: 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Submit
-                </button>
-              </form>
-              <button
-                onClick={togglePopup}
-                style={{
-                  marginTop: '10px',
-                  background: 'none',
-                  border: 'none',
-                  color: 'red',
-                  cursor: 'pointer',
-                  alignSelf: 'flex-end',
-                }}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-
-
-
-
-          {/* Right Side: Images */}
-          <div className="images-grid">
-            <div className="image-row">
-              <img src="/img/easy.png" alt="Event planning"style={{width:'150px',height:'120'}} />
-              <img src="/img/easily.png" alt="Team planning" style={{width:'100px',height:'100px'}} />
-            </div>
-            <div className="image-row">
-              <img src="/img/easily.png" alt="Workshop session"  style={{width:'100px',height:'100px'}}/>
-              <img src="/img/esu.png" alt="Team meeting" style={{width:'200px',height:'200'}} />
-             
-            </div>
-            <div className="image-row">
-              <img src="/img/easily.png" alt="Workshop session"  style={{width:'100px',height:'100px',marginLeft:'80px'}}/>
-             
-             
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-    <style jsx>{`
-/* Wrapper for the entire section */
-.section-wrapper {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  align-items: flex-start;
-  flex-wrap: wrap; /* Allows wrapping for smaller screens */
-}
-
-/* Card styles */
-.card {
-  border-radius: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.dark-card {
-  height: auto;
-  background: #1d1d1d;
-  color: #fff;
-  flex: 1 1 45%; /* Takes 45% of width on large screens */
-  max-width: 500px;
-}
-
-/* The light card takes more space on large screens */
-.light-card {
-border:none;
-  background: #f8f8f8;
-  color: #333;
-  flex: 1 1 55%; /* Takes 55% of width on large screens */
-  display: flex;
-  flex-direction: column;
-}
-
-/* Text and Images layout */
-.text-and-images {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-/* Left Side: Text Content */
-.text-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.text-content ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.text-content ul li {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-/* Right Side: Images Grid */
-.images-grid {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Each Row of Images */
-.image-row {
-  display: flex;
-  gap: 10px;
-}
-
-.image-row img {
-  width: 50%; /* Two images side-by-side */
-  height: auto;
-  border-radius: 10px;
-}
-
-/* CTA button styles */
-.cta-button {
-  background-color: #6c60f7;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.cta-button:hover {
-  background-color: #574ecf;
-}
-
-/* Responsive Styles */
-
-/* Tablets (Max Width: 1024px) */
-@media screen and (max-width: 1024px) {
-  .section-wrapper {
-    gap: 15px;
-  }
-
-  .dark-card,
-  .light-card {
-    flex: 1 1 100%; /* Full width on smaller screens */
-  }
-
-  .text-and-images {
-    flex-direction: column; /* Stacks text and images vertically */
-  }
-
-  .image-row img {
-    width: 100%; /* Each image spans full width in its row */
-  }
-}
-
-/* Mobile (Max Width: 768px) */
-@media screen and (max-width: 768px) {
-  .section-wrapper {
- paddin-right:200px;
-  width:70%;
-    flex-direction: column; /* Stack cards vertically */
-    gap: 10px;
-  }
-
-  .dark-card,
-  .light-card {
-    flex: none;
-    /* Increase width for better visibility */
- /* Center the cards */
-  }
-
-  .text-and-images {
-    flex-direction: column; /* Stacks text and images */
-  }
-
-  .image-row {
-    flex-direction: column; /* Each image is displayed as a full row */
-  }
-
-  .image-row img {
-    width: 100%; /* Full width for small screens */
-  }
-}
-
-/* Extra Small Devices (Max Width: 480px) */
-@media screen and (max-width: 480px) {
-  .dark-card,
-  .light-card {
-margin-left:0px;
-    width: 100%; /* Maximize width for small screens */
-    /* Center align */
-  }
-
-  .text-content ul li {
-    font-size: 14px; /* Smaller font size */
-  }
-
-  .cta-button {
-    width: 100%;
-    font-size: 14px; /* Adjust font size */
-    padding: 10px;
-  }
-
-  .image-row img {
-    border-radius: 8px; /* Slightly smaller rounded corners */
-  }
-}
-}</style>
-<style jsx>{
-    /* General Styles */
-section {
-  font-family: Arial, sans-serif;
-}
-
-/* Card Grid */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-/* Card */
-.card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.card h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 14px;
-  color: #555;
-}
-
-    
-    
-    `}
-
-</style>
-
-
-
-
-
-
-{/* Styles */}
-<style jsx>{`
-        .new-popup-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-        }
-
-        .new-popup-container {
-          display: flex;
-          width: 600px;
-          background: white;
-          border-radius: 10px;
-          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-          overflow: hidden;
-        }
-
-        .popup-image-section {
-          flex: 1;
-          background: #f5f5f5;
-        }
-
-        .popup-form-section {
-          flex: 1;
-        }
-      `}</style>
-
-
-
-
-
-<style jsx>{
-  `
-  .card-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap; /* Makes the cards wrap if needed on smaller screens */
-}
-
-.card {
-  width: 30%; /* Adjust card width to fit three cards in a row */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card-image {
-  position: relative;
-  height: 200px;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-.card-title {
-
-  font-size: 24px;
-  font-weight: bold;
-  color:white;
-}
-
-.card-description {
-  font-size: 16px;
-  margin: 10px 0;
-}
-
-.card-button {
-  padding: 10px 20px;
-  background-color:rgb(255, 255, 255);
-  border: none;
-  color: black;
-  font-size: 16px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.card-button:hover {
-  background-color:rgb(10, 7, 6);
-}
-
-/* Responsive styles */
-  @media (max-width: 1200px) {
-    .card {
-      width: 500px; /* Two cards per row */
-    }
-  }
-
-  @media (max-width: 768px) {
-    .card {
-      width: 500px; /* One card per row */
-    }
-  }
-
-
-
-  `}
-
-</style>
-
-
-
-
-
-
-
-
+      
 </>
-    )
-  }
+  )}
+
+
+
+
+
+
+
+
+
+
+
+
 

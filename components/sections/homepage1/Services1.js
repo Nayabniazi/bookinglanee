@@ -66,11 +66,12 @@ export default function Services1() {
                                     width: "100%",
                                     height: "200px",
                                     objectFit: "cover",
+                                    
                                 }}
                             />
                             {/* Card Title */}
-                            <div style={{ padding: "15px" }}>
-                                <h3 style={{ fontSize: "18px", marginBottom: "10px" }}>{card.title}</h3>
+                            <div style={{ padding: "15px", backgroundColor:" rgb(235, 170, 41)"}}>
+                                <h3 style={{ fontSize: "18px", marginBottom: "10px" ,}}>{card.title}</h3>
                                 {activeCard === card.id && (
                                     <p style={{ fontSize: "14px", color: "#555" }}>{card.info}</p>
                                 )}

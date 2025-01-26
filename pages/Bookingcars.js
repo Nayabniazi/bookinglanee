@@ -383,7 +383,7 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
     <div className="time-picker">
       <input type="time" defaultValue="04:40" />
     </div>
-    <button className="search-btn">🔍</button>
+   
   </div>
 </div>
 
@@ -411,6 +411,8 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
 
 
 
+
+
 <style jsx>{
   `
   /* Form Container */
@@ -425,7 +427,16 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  
+
+
+
+
+
+
+
+
+
+
 }
 
 .form-content {
@@ -484,13 +495,13 @@ p {
 }
 
 .signup-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(47, 48, 145);
 }
 
 .close-btn {
   margin-top: 10px;
   padding: 10px;
-  background-color: #ff3b3b;
+  background-color:rgb(255, 255, 255);
   color: white;
   border: none;
   border-radius: 4px;
@@ -499,7 +510,7 @@ p {
 }
 
 .close-btn:hover {
-  background-color: #e63946;
+  background-color:rgb(255, 255, 255);
 }
 
 /* Top buttons (Chauffeur, Flight, Hotel) */
@@ -508,7 +519,7 @@ p {
   margin-left:25px;
   border-radius: 100px;
   width: 30%;
-  background-color: rgba(58, 55, 55, 0.8);
+  background-color: rgba(39, 30, 30, 0.8);
   display: flex;
   justify-content: center; /* Center buttons */
   gap: 1rem;
@@ -516,7 +527,7 @@ p {
 
 .top-btn {
   padding: 10px 20px;
-  background-color: rgb(53, 45, 135);
+  background-color: rgb(57, 56, 51);
   color: white;
   border: none;
   border-radius: 24px;
@@ -527,7 +538,7 @@ p {
 }
 
 .top-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(70, 120, 191);
 }
 
 /* Autocomplete Text Fields */
@@ -564,7 +575,7 @@ p {
 }
 
 .suggestion:hover {
-  background-color:rgb(6, 6, 6);
+  background-color:rgb(28, 135, 193);
 }
 
 /* Date and Time Pickers */
@@ -611,14 +622,14 @@ p {
   border-radius: 20px;
   margin-left: 10px; /* Space between the search button and other inputs */
   padding: 10px;
-  background-color: rgb(14, 51, 124);
+  background-color: rgb(41, 145, 235);
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .search-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(43, 114, 164);
 }
 
 .container {
@@ -644,27 +655,50 @@ p {
 }
 
 .tab.active {
-  background-color: rgb(24, 9, 139);
+  background-color: rgb(41, 141, 229);
   color: white;
 }
 
-/* Hero Section */
+
 .hero {
-
-  
- 
-  background-size: cover; /* Ensures the image covers the entire background */
-  background-position: center;
-
-
-background-color: rgb(0, 0, 0);
-
-
-
-
+  position: relative; /* Ensure positioning for the pseudo-element */
   padding: 2rem;
+  height: 100vh; /* Full viewport height */
   
+  align-items: center;
+  justify-content: center;
+  color: #black; /* Ensure content stands out */
+  overflow: hidden; /* Prevent pseudo-element overflow */
+  z-index: 1; /* Keep content above the pseudo-element */
 }
+
+.hero::before {
+  content: ""; /* Add a pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/header.png'); /* Background image */
+  background-size: cover; /* Adjust to fit */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -2; /* Send behind everything */
+}
+
+.hero::after {
+  content: ""; /* Add the black transparent overlay */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(9, 0, 0, 0.5); /* Black with transparency */
+  z-index: -1; /* Place above the image but below content */
+}
+
+
+
 
 .hero h1 {
   margin-left: 250px;
@@ -683,9 +717,8 @@ background-color: rgb(0, 0, 0);
 
 /* Info Section */
 .info-section {
- margin-left:50px;
+margin-left:50px;
 margin-right:50px;
-
   background-color: rgba(56, 54, 54, 0.8);
   display: flex;
   flex-wrap: wrap;
@@ -799,7 +832,7 @@ margin-right:50px;
 
 
 
-<section className="unique-card-section"style={{marginTop:'50px',marginLeft:'120px',marginRight:'150px', 
+<section className="unique-card-section"style={{
 }}>
       <div className="unique-card">
         <img src="/img/icon1.png" alt="Icon" className="unique-card-icon" />
@@ -845,74 +878,65 @@ margin-right:50px;
       </div>
     </section>
 
-<style jsx>{
-  `.unique-card-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 20px;
-}
 
-.unique-card {
-  width: 30%;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 20px;
-}
 
-.unique-card-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 15px;
-}
-
-.unique-card-title {
-  font-size: 20px;
-
-}
-
-.unique-card-description {
-  font-size: 14px;
-  margin: 10px 0;
-}
-
-.unique-card-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.unique-card-button:hover {
-  background-color: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .unique-card {
-    width: 100%; /* Two cards per row on medium screens */
+    <style jsx>
+  {`
+  .unique-card-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: space-between; /* Distribute cards evenly */
+    gap: 20px; /* Space between cards */
+    margin: 50px auto; /* Top/bottom centering */
+    max-width: 1200px; /* Limits the width for laptop screens */
+    padding: 20px; /* Adds padding around the section */
   }
-}
 
-@media (max-width: 768px) {
   .unique-card {
-    width: 100%; /* One card per row on small screens */
+    background: white; /* White background for cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle card shadow */
+    padding: 20px; /* Inner spacing for content */
+    width: calc(33.333% - 20px); /* 3 cards side-by-side on larger screens */
+    text-align: center; /* Center-align content */
+    transition: transform 0.3s, box-shadow 0.3s; /* Hover animation */
   }
-}
 
-  
+  .unique-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+
+  .unique-card img {
+    width: 60px; /* Icon size */
+    margin-bottom: 10px; /* Space below icon */
+  }
+
+  .unique-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .unique-card-description {
+    font-size: 16px;
+    color: #555;
+  }
+
+  @media (max-width: 1024px) {
+    .unique-card {
+      width: calc(50% - 20px); /* Two cards per row on tablets */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .unique-card {
+      width: 100%; /* Single card per row on small screens */
+    }
+  }
   `}
-
 </style>
-
-
 
 <div
       style={{

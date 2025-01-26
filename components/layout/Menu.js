@@ -102,10 +102,10 @@ export default function Menu() {
         <li className="has-children">
           <Link
             className={isActive("/workprocess")}
-            href="/Residential"
+            href=""
             style={{ color: "lightgray" }}
           >
-            Oue services
+            Our services
           </Link>
           <ul className="sub-menu">
             <li>
@@ -160,7 +160,7 @@ export default function Menu() {
         <li className="has-children">
           <Link
             className={isActive("/Estimate")}
-            href="/Estimate"
+            href=""
             style={{ color: "lightgray" }}
           >
             Solutions
@@ -170,7 +170,7 @@ export default function Menu() {
               <Link href="/transport">Corporate transportation platform</Link>
             </li>
             <li>
-              <Link href="https://b2b.bookinglane.com/">Drive with us</Link>
+              <Link href="/loginpage">Drive with us</Link>
             </li>
           </ul>
         </li>
@@ -192,7 +192,7 @@ export default function Menu() {
           <li className="">
         
         <Link
-          className={isActive("/Estimate")}
+          className={isActive("/")}
           href="/FAQ"
           style={{ color: "lightgray" }}
         >

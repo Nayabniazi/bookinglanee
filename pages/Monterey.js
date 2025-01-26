@@ -1,4 +1,3 @@
-// /pages/history.js or /pages/history/index.js
 import Layout from "@/components/layout/Layout";
 
 import { useState } from "react";
@@ -11,18 +10,20 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 
+import { FaSearch } from "react-icons/fa";
+
+
 
 
 
 const HistoryPage = () => {
-// Unique state for this popup
+
+   // Unique state for this popup
    const [isNewPopupOpen, setNewPopupOpen] = useState(false);
   
    const toggleNewPopup = () => {
      setNewPopupOpen(!isNewPopupOpen);
    };
-
-
 
     const [isOpen, setOpen] = useState(false)
 
@@ -161,8 +162,6 @@ const HistoryPage = () => {
 
 
 
-
-
   <div className="app" >
   {/* Navbar */}
 
@@ -225,25 +224,26 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
 
 
 
-    <h1>Chauffeur service in Monterey, CA</h1>
+    <h1>Chauffeur service in Monterey, CA
+    </h1>
 
 
     <div className="container"style={{marginBottom:'80px'}}>
   {/* Tabs */}
-  <div className="tabs" style={{ background: 'rgba(61, 59, 59, 0.8)', }}>
-    <button style={{color:'white'}}
+  <div className="tabs"  style={{ background: 'rgba(255, 255, 255, 0.8)' ,}}>
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "one-way" ? "tab active" : "tab"}
       onClick={() => setActiveTab("one-way")}
     >
       One way
     </button>
-    <button style={{color:'white'}}
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "round-trip" ? "tab active" : "tab"}
       onClick={() => setActiveTab("round-trip")}
     >
       Round trip
     </button>
-    <button style={{color:'white'}}
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "hourly" ? "tab active" : "tab"}
       onClick={() => setActiveTab("hourly")}
     >
@@ -306,7 +306,8 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
     <div className="time-picker">
       <input type="time" defaultValue="04:40" />
     </div>
-    <button className="search-btn">🔍</button>
+       
+             
   </div>
 </div>
 
@@ -348,7 +349,16 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  
+
+
+
+
+
+
+
+
+
+
 }
 
 .form-content {
@@ -407,13 +417,13 @@ p {
 }
 
 .signup-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(47, 48, 145);
 }
 
 .close-btn {
   margin-top: 10px;
   padding: 10px;
-  background-color: #ff3b3b;
+  background-color:rgb(255, 255, 255);
   color: white;
   border: none;
   border-radius: 4px;
@@ -422,7 +432,7 @@ p {
 }
 
 .close-btn:hover {
-  background-color: #e63946;
+  background-color:rgb(255, 255, 255);
 }
 
 /* Top buttons (Chauffeur, Flight, Hotel) */
@@ -431,7 +441,7 @@ p {
   margin-left:25px;
   border-radius: 100px;
   width: 30%;
-  background-color: rgba(58, 55, 55, 0.8);
+  background-color: rgba(39, 30, 30, 0.8);
   display: flex;
   justify-content: center; /* Center buttons */
   gap: 1rem;
@@ -439,7 +449,7 @@ p {
 
 .top-btn {
   padding: 10px 20px;
-  background-color: rgb(53, 45, 135);
+  background-color: rgb(57, 56, 51);
   color: white;
   border: none;
   border-radius: 24px;
@@ -450,7 +460,7 @@ p {
 }
 
 .top-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(70, 120, 191);
 }
 
 /* Autocomplete Text Fields */
@@ -487,7 +497,7 @@ p {
 }
 
 .suggestion:hover {
-  background-color:rgb(140, 139, 166);
+  background-color:rgb(28, 135, 193);
 }
 
 /* Date and Time Pickers */
@@ -534,14 +544,14 @@ p {
   border-radius: 20px;
   margin-left: 10px; /* Space between the search button and other inputs */
   padding: 10px;
-  background-color: rgb(14, 51, 124);
+  background-color: rgb(41, 145, 235);
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .search-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(43, 114, 164);
 }
 
 .container {
@@ -567,32 +577,50 @@ p {
 }
 
 .tab.active {
-  background-color: rgb(24, 9, 139);
+  background-color: rgb(41, 141, 229);
   color: white;
 }
 
-/* Hero Section */
+
 .hero {
-
-
-
-  background-image: url('/img/background.webp'); /* Add your image path here */
-  
- 
-  background-size: cover; /* Ensures the image covers the entire background */
-  background-position: center;
-
-
-
-
-
-
-
-
-
+  position: relative; /* Ensure positioning for the pseudo-element */
   padding: 2rem;
+  height: 100vh; /* Full viewport height */
   
+  align-items: center;
+  justify-content: center;
+  color: #black; /* Ensure content stands out */
+  overflow: hidden; /* Prevent pseudo-element overflow */
+  z-index: 1; /* Keep content above the pseudo-element */
 }
+
+.hero::before {
+  content: ""; /* Add a pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/header2.png'); /* Background image */
+  background-size: cover; /* Adjust to fit */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -2; /* Send behind everything */
+}
+
+.hero::after {
+  content: ""; /* Add the black transparent overlay */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(9, 0, 0, 0.5); /* Black with transparency */
+  z-index: -1; /* Place above the image but below content */
+}
+
+
+
 
 .hero h1 {
   margin-left: 250px;
@@ -613,7 +641,6 @@ p {
 .info-section {
 margin-left:50px;
 margin-right:50px;
-
   background-color: rgba(56, 54, 54, 0.8);
   display: flex;
   flex-wrap: wrap;
@@ -726,136 +753,92 @@ margin-right:50px;
 
 
 
-
-<section className="unique-card-section"style={{marginTop:'50px',marginLeft:'120px',marginRight:'150px'}}>
-      <div className="unique-card">
-        <img src="/img/icon1.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Instant Quote</h2>
-        <p className="unique-card-description">With just a few clicks, get your quote and book instantly.</p>
-        
-      </div>
-
-      <div className="unique-card">
-        <img src="/img/icon2.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Chauffeur by hour</h2>
-        <p className="unique-card-description">Professional chauffeurs available for hourly hire or full-day service.</p>
-       
-      </div>
-
-      <div className="unique-card">
-        <img src="/img/icon3.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Solo or group travel
-        </h2>
-        <p className="unique-card-description">Custom trip planning options available, ideal for both groups and individuals.</p>
-    
-      </div>
-    </section>
-
-<style jsx>{
-  `.unique-card-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.unique-card {
-  width: 30%;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 20px;
-}
-
-.unique-card-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 15px;
-}
-
-.unique-card-title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.unique-card-description {
-  font-size: 14px;
-  margin: 10px 0;
-}
-
-.unique-card-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.unique-card-button:hover {
-  background-color: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .unique-card {
-    width: 100%; /* Two cards per row on medium screens */
+    <style jsx>
+  {`
+  .unique-card-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: space-between; /* Distribute cards evenly */
+    gap: 20px; /* Space between cards */
+    margin: 50px auto; /* Top/bottom centering */
+    max-width: 1200px; /* Limits the width for laptop screens */
+    padding: 20px; /* Adds padding around the section */
   }
-}
 
-@media (max-width: 768px) {
   .unique-card {
-    width: 100%; /* One card per row on small screens */
+    background: white; /* White background for cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle card shadow */
+    padding: 20px; /* Inner spacing for content */
+    width: calc(33.333% - 20px); /* 3 cards side-by-side on larger screens */
+    text-align: center; /* Center-align content */
+    transition: transform 0.3s, box-shadow 0.3s; /* Hover animation */
   }
-}
 
-  
+  .unique-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+
+  .unique-card img {
+    width: 60px; /* Icon size */
+    margin-bottom: 10px; /* Space below icon */
+  }
+
+  .unique-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .unique-card-description {
+    font-size: 16px;
+    color: #555;
+  }
+
+  @media (max-width: 1024px) {
+    .unique-card {
+      width: calc(50% - 20px); /* Two cards per row on tablets */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .unique-card {
+      width: 100%; /* Single card per row on small screens */
+    }
+  }
   `}
-
 </style>
 
+<section className="unique-card-section">
+  <div className="unique-card">
+    <img src="/img/icon1.png" alt="Icon" />
+    <h2 className="unique-card-title">Instant Quote</h2>
+    <p className="unique-card-description">With just a few clicks, get your quote and book instantly.</p>
+  </div>
 
+  <div className="unique-card">
+    <img src="/img/icon2.png" alt="Icon" />
+    <h2 className="unique-card-title">Chauffeur by hour</h2>
+    <p className="unique-card-description">Professional chauffeurs available for hourly hire or full-day service.</p>
+  </div>
 
+  <div className="unique-card">
+    <img src="/img/icon3.png" alt="Icon" />
+    <h2 className="unique-card-title">Solo or group travel</h2>
+    <p className="unique-card-description">Custom trip planning options available, ideal for both groups and individuals.</p>
+  </div>
+</section>
 
+<h2 style={{marginLeft:'150px',marginTop:'0px'}}>
 
-
-
-
-
-
-
-
-
-<h2 style={{marginLeft:'150px',marginTop:'100px'}}>
-Exclusive partnership opportunities
 </h2>
-<div className="card-container"style={{marginLeft:'150px',marginRight:'180px',marginTop:'100px'}}>
+<div className="card-container"style={{marginLeft:'150px',marginRight:'180px',marginTop:'10px'}}>
 
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/coprate.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Coporation and Businesses</h2>
-            <p className="card-description">One-stop travel management</p>
-            <button onClick={toggleNewPopup}    className="card-button">Get in touch</button>
-          </div>
-        </div>
-      </div>
+      
+      
 
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/travel.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Travel agents and event planners</h2>
-            <p className="card-description">Streamline bookings with our API</p>
-            <button onClick={toggleNewPopup}    className="card-button">Request Info</button>
-          </div>
-        </div>
-      </div>
 
       {/* Pop-up Modal */}
       {isNewPopupOpen && (
@@ -1003,171 +986,242 @@ Exclusive partnership opportunities
           </div>
         </div>
       )}
+ 
+ </div>
+ <style jsx>
+  {`
+    .card-section {
+      padding: 20px;
+      text-align: center;
+    }
 
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 0px;
+      margin-left: auto; /* Automatically adjust margin from the left */
+      margin-right: auto; /* Automatically adjust margin from the right */
+      max-width: 1200px; /* Maximum container width */
+    }
 
+    .card {
+      flex: 1 1 calc(33.333% - 20px); /* 3 cards per row on larger screens */
+      background-color: black;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* Allow button to overlay on image */
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
 
+    .card-image {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
 
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7; /* Adjust opacity of the image */
+    }
 
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Black overlay with opacity */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      opacity: 1; /* Ensure the overlay itself is fully opaque */
+    }
 
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1; /* Keep the title on top */
+      opacity: 1;
+    }
 
+    .card-description {
+      font-size: 16px;
+      color: white;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 1;
+    }
 
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/influ.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Influencers and public figures</h2>
-            <p className="card-description">Join our Influencer Program today</p>
-            <button  onClick={toggleNewPopup}   className="card-button">Apply</button>
-          </div>
-        </div>
+    .card-button {
+      padding: 10px 20px;
+      background-color:rgb(232, 157, 52); /* Orange button */
+      color: black;
+      border: none;
+      font-size: 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .card-button:hover {
+      background-color: #e76a3d;
+    }
+
+    /* Responsive Breakpoints */
+
+    @media (max-width: 1024px) {
+      .card {
+        flex: 1 1 calc(45% - 20px); /* 2 cards per row on medium screens */
+        max-width: 45%;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      .card-container {
+        margin-left: 20px; /* Adjustable left margin for laptop screens */
+        margin-right: 20px; /* Adjustable right margin for laptop screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex: 1 1 100%; /* 1 card per row on small screens */
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .card-title {
+        font-size: 22px;
+      }
+
+      .card-description {
+        font-size: 14px;
+      }
+
+      .card-button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-container {
+        gap: 15px; /* Reduce gaps for smaller screens */
+      }
+
+      .card {
+        flex: 1 1 calc(90% - 20px); /* 1 card per row on very small screens */
+        max-width: 100%;
+      }
+
+      .card-title {
+        font-size: 20px;
+      }
+
+      .card-description {
+        font-size: 12px;
+      }
+
+      .card-button {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .card {
+        flex: 1 1 calc(95% - 20px); /* Slight padding for narrow screens */
+        max-width: 100%; /* Full width for smaller devices */
+      }
+
+      .card-title {
+        font-size: 18px;
+      }
+
+      .card-description {
+        font-size: 11px;
+      }
+
+      .card-button {
+        padding: 5px 10px;
+        font-size: 11px;
+      }
+    }
+  `}
+</style>
+
+<section className="card-section" style={{ marginTop: '50px', marginBottom: '50px' }}>
+  <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Exclusive partnership opportunities</h2>
+  <div className="card-container">
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/coprate.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Corporation and Businesses</h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Get in touch</button>
       </div>
     </div>
 
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/influ.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Influencers and Public </h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Apply Now</button>
+      </div>
+    </div>
 
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/travel.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Solo or Group Travel</h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Learn More</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-{/* card popup */}
-<style jsx>{`
-        .new-popup-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-        }
-
-        .new-popup-container {
-          display: flex;
-          width: 600px;
-          background: white;
-          border-radius: 10px;
-          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-          overflow: hidden;
-        }
-
-        .popup-image-section {
-          flex: 1;
-          background: #f5f5f5;
-        }
-
-        .popup-form-section {
-          flex: 1;
-        }
-      `}</style>
-
-
-
-
-
-
-
-
-<style jsx>{
-  `
-  .card-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap; /* Makes the cards wrap if needed on smaller screens */
-}
-
-.card {
-  width: 30%; /* Adjust card width to fit three cards in a row */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card-image {
-  position: relative;
-  height: 200px;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-.card-title {
-
-  font-size: 24px;
-  font-weight: bold;
-  color:white;
-}
-
-.card-description {
-  font-size: 16px;
-  margin: 10px 0;
-}
-
-.card-button {
-  padding: 10px 20px;
-  background-color:rgb(255, 255, 255);
-  border: none;
-  color: black;
-  font-size: 16px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.card-button:hover {
-  background-color: #e76a3d;
-}
-
-/* Responsive styles */
-  @media (max-width: 1200px) {
-    .card {
-      width: 500px; /* Two cards per row */
-    }
-  }
-
-  @media (max-width: 768px) {
-    .card {
-      width: 500px; /* One card per row */
-    }
-  }
-
-
-
-  `}
-
-</style>
-
-
-
+   
 <div className="layout-container"style={{marginLeft:'150px',marginRight:'150px',marginTop:'100px'
 }}>
       {/* Section 1 */}
       <div className="content-section">
         <div className="line"></div>
         <div className="content-row">
-          <h1 className="heading">1.Get Your World-class chauffeurs service in Monterey, CA with Bookinglane</h1>
+          <h1 className="heading">1.Get Your World-class chauffeurs service  with Bookinglane</h1>
           <p className=" paragraph font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn">
-         
-          There is never more easy planning your transportation. Showing a refined reserve system, we provide Monterey, CA first-rate chauffeur services. Our simple-to-use system ensures a perfect and safe experience with fast booking and a selection of car alternatives. Whether for hourly rates or one-way journeys, we guaranteed by arriving on-time and dependable chauffeur service throughout all states in the USA. With Bookinglane you can get stress-free Monterey, CA Chauffeur service with seasoned chauffeurs providing safety and timeliness top priority.
+          There is never more easy planning your transportation. Showing a refined reserve system, we provide Chauffeur service in Monterey, CA
+          first-rate chauffeur services. Our simple-to-use system ensures a perfect and safe experience with fast booking and a selection of car alternatives. Whether for hourly rates or one-way journeys, we guaranteed by arriving on-time and dependable chauffeur service throughout all states in the USA. With Bookinglane you can get stress-free Dallas, TX Chauffeur service with seasoned chauffeurs providing safety and timeliness top priority.
           </p>
         </div>
         <div className="line"></div>
@@ -1180,9 +1234,7 @@ Exclusive partnership opportunities
           <h2 className="heading">2.Reliability and Safety Bookinglane is secure and reliability chauffeur services.</h2>
           <p className="paragraph font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn ">
           Our customers can rely consistent and comfortable trips from well-trained chauffeurs who know the best routes. We guarantees safe and reliable rides with meet-and- greet service, with coverage in all states and a friendly customer service staff. Travel with assurance and receive great private chauffeur service.
-         
-         
-         </p>
+          </p>
         </div>
         <div className="line"></div>
       </div>
@@ -1191,12 +1243,12 @@ Exclusive partnership opportunities
       <div className="content-section">
         <div className="line"></div>
         <div className="content-row">
-          <h2 className="heading">  Customizable Fleet Solutions:
+          <h2 className="heading">3.Customizable Fleet Solutions:
           Handling Various Client Demand Bookinglane is a reliable chauffeur service in the city or airport
-          </h2>
+       
+    </h2>
           <p className="paragraph  font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn ">
-          Our consumers choose Vans, SUVs, and business sedans among other choices, that provide flexible and satisfy a variety of needs from corporate meetings to special events. Get your instant quote with easy and transparent booking system with no hidden costs. Bookinglane emphasizes personal requirements and guaranteed contentment for a luxurious and safe journey, while also providing 24-hour support and free cancellation options.
-          </p>
+          Our consumers choose Vans, SUVs, and business sedans among other choices, that provide flexible and satisfy a variety of needs from corporate meetings to special events. Get your instant quote with easy and transparent booking system with no hidden costs. Bookinglane emphasizes personal requirements and guaranteed contentment for a luxurious and safe journey, while also providing 24-hour support and free cancellation options.</p>
         </div>
         <div className="line"></div>
       </div>
@@ -1256,148 +1308,23 @@ Exclusive partnership opportunities
 `}</style>
 
 
+<section className="section-container">
+  <div className="section-left">
+    <h2>Are you an executive car service provider?</h2>
+    <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn">
+      Optimize your business operations with our mobile CRM. Stay ahead with real-time access to your calendar, client invoices, fleet tracking, and driver payouts—all from the palm of your hand. Seamlessly transition between mobile and desktop platforms to access your profile. Plus, enjoy the benefits of global affiliate network at no extra cost.
+    </p>
+    <a href="https://b2b.bookinglane.com/">
+      <button className="search-btn">Become our Partner</button>
+    </a>
+  </div>
+
+  <div className="section-right">
+    <img src="/img/picty.png" alt="Description of image" />
+  </div>
+</section>
 
 
-
-
-
-
-
-<section className="section-container"style={{marginLeft:'100px',marginRight:'100px',marginBottom:'100px',height:'350px',marginTop:'150px'}}>
-
-      <div className="section-left">
-      
-        <h2 style={{marginTop:'20px',}}>Are you an executive car service provider?</h2>
-        <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn" >Optimize your business operations with our mobile CRM. Stay ahead with real-time access to your calendar, client invoices, fleet tracking, and driver payouts—all from the palm of your hand. Seamlessly transition between mobile and desktop platforms to access your profile. Plus, enjoy the benefits of global affiliate network at no extra cost.</p>
-      
-      
-        <a href="https://b2b.bookinglane.com/">
-                            <button className="search-btn" style={{width:'200px',height:'40px',borderRadius:'20px',background: 'rgb(29, 19, 134)',color:'white',}}>Become our Partner </button>
-                              </a>
-      
-      </div>
-      <div className="section-right">
-        <img src="/img/picty.png
-        " alt="Description of image" style={{height:'360px',width:'400px',marginLeft:'200px'}}/>
-      </div>
-    </section>
-  <style jsx>{
-    `
-    /* CSS file: styles.css */
-
-/* Section with light grey background and flex layout */
-.section-container {
-  display: flex;
-  background-color: #d3d3d3;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-/* Left side with text */
-.section-left {
-  flex: 1;
-  padding: 20px;
-}
-
-.section-left h2 {
-  font-size: 24px;
-  color: #333;
-}
-
-.section-left p {
-  font-size: 16px;
-  color: #555;
-}
-
-/* Right side with image */
-.section-right {
-  flex: 1;
-  padding: 20px;
-}
-
-.section-right img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-    @media screen and (max-width: 1024px) {
-  .section-container {
-    padding: 20px;
-    gap: 30px;
-  }
-
-  .section-left h2 {
-    font-size: 24px;
-  }
-
-  .section-left p {
-    font-size: 14px;
-  }
-
-  .section-left .search-btn {
-    width: 180px;
-    height: 40px;
-  }
-}
-
-/* Small Screens (Mobile) */
-@media screen and (max-width: 768px) {
-  .section-container {
-    flex-direction: column; /* Stacks the text and image vertically */
-    text-align: center; /* Centers content for better visibility */
-  }
-
-  .section-left,
-  .section-right {
-    flex: none;
-    width: 100%; /* Makes each section occupy the full width */
-  }
-
-  .section-left h2 {
-    font-size: 20px;
-  }
-
-  .section-left p {
-    font-size: 14px;
-  }
-
-  .section-left .search-btn {
-    width: 100%; /* Full-width button */
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .section-right .responsive-img {
-    margin-top: 20px;
-  }
-}
-
-/* Extra Small Screens (Phones) */
-@media screen and (max-width: 480px) {
-  .section-left h2 {
-    font-size: 18px;
-  }
-
-  .section-left p {
-    font-size: 12px;
-  }
-
-  .section-left .search-btn {
-    width: 100%;
-    height: 50px; /* Larger button for easier taps */
-    font-size: 14px;
-  }
-
-  .section-right .responsive-img {
-    max-width: 90%; /* Limits image size */
-    margin: 0 auto; /* Centers the image */
-  }
-}
-    
-    `}
-
-  </style>
 
 
 
@@ -1418,6 +1345,173 @@ Exclusive partnership opportunities
         ))}
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<style jsx>
+  {`
+    .section-container {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 100px;
+      margin-right: 100px;
+      margin-bottom: 200px;
+      height: 350px;
+      margin-top: 150px;
+      flex-wrap: wrap;
+    }
+
+    .section-left {
+      flex: 1;
+      padding: 20px;
+      max-width: 50%; /* Left section will take up 50% of the container */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-left h2 {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+
+    .section-left p {
+      font-size: 16px;
+      color: #4a4a4a; /* Adjusted text color */
+      margin-bottom: 20px;
+    }
+
+    .search-btn {
+      width: 200px;
+      height: 40px;
+      border-radius: 20px;
+      background: rgb(29, 19, 134);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .search-btn:hover {
+      background: rgb(24, 12, 100); /* Darker shade on hover */
+    }
+
+    .section-right {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .section-right img {
+      height: 360px;
+      width: 400px;
+      object-fit: cover;
+    }
+
+    /* Responsive Breakpoints */
+
+    @media (max-width: 1024px) {
+      .section-container {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      .section-left {
+        max-width: 100%;
+        padding: 0;
+        text-align: center;
+      }
+
+      .section-right {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .section-right img {
+        width: 100%; /* Image will be responsive */
+        height: auto;
+      }
+
+      .section-left h2 {
+        font-size: 22px;
+      }
+
+      .section-left p {
+        font-size: 14px;
+      }
+
+      .search-btn {
+        width: 180px;
+        height: 35px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-container {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .section-left h2 {
+        font-size: 20px;
+      }
+
+      .section-left p {
+        font-size: 13px;
+      }
+
+      .search-btn {
+        width: 160px;
+        height: 30px;
+        font-size: 13px;
+      }
+
+      .section-right img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section-left h2 {
+        font-size: 18px;
+      }
+
+      .section-left p {
+        font-size: 12px;
+      }
+
+      .search-btn {
+        width: 150px;
+        height: 28px;
+        font-size: 12px;
+      }
+
+      .section-right img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  `}
+</style>
+
+
+
+
 
 <style jsx>{
     
@@ -1497,6 +1591,41 @@ Exclusive partnership opportunities
 
 
 
+
+
+{/* card popup */}
+<style jsx>{`
+        .new-popup-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+        }
+
+        .new-popup-container {
+          display: flex;
+          width: 600px;
+          background: white;
+          border-radius: 10px;
+          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+          overflow: hidden;
+        }
+
+        .popup-image-section {
+          flex: 1;
+          background: #f5f5f5;
+        }
+
+        .popup-form-section {
+          flex: 1;
+        }
+      `}</style>
 
 
 

@@ -15,89 +15,14 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 const HistoryPage = () => {
-
-
-
-
-
-
-
-
-    const airports = [
-        { name: "Albuquerque, (NM)",  link: "/Albu" },
-        { name: "Charlotte, NC", code: "LAX", link: "/char" },
-        { name: "Greensboro, NC", code: "OAK", link: "/green" },
-        { name: "Englewood, CO", code: "SAN", link: "/eng" },
-        { name: "Denver, CO", code: "SJC", link: "/denv" },
-        { name: "Boulder,CO", code: "LAX", link: "/boul" },
-        { name: "Colorado Springs, CO", code: "OAK", link: "/color" },
-        { name: "Frisco, CO", code: "SAN", link: "/fris" },
-        { name: "Rochester, MA", code: "SJC", link: "/roch" },
-        { name: "Memphis, TN", code: "LAX", link: "/memp" },
-        { name: "Dulles, VA", code: "OAK", link: "/dull" },
-        { name: "Cambridge, MD", code: "SAN", link: "/camb" },
-        { name: "Arlington, VA", code: "SJC", link: "/arl" },
-        { name: "Vienna,VA", code: "LAX", link: "/vien" },
-        { name: "Alexander, VA", code: "OAK", link: "/alex" },
-        { name: "Fairfex, VA", code: "SAN", link: "/fair" },
   
-        // Add more airports as needed
-      ];
-    
-    
-
-
-
-
-
-
-
-
-// Unique state for this popup
-     const [isNewPopupOpen, setNewPopupOpen] = useState(false);
-    
-     const toggleNewPopup = () => {
-       setNewPopupOpen(!isNewPopupOpen);
-     };
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        phoneNumber: "",
-        email: "",
-        country: "",
-        details: "",
-      });
-    
-      const countries = [
-        { name: "United States", code: "+1" },
-        { name: "Canada", code: "+1" },
-        { name: "United Kingdom", code: "+44" },
-        { name: "India", code: "+91" },
-        { name: "Australia", code: "+61" },
-        { name: "Germany", code: "+49" },
-        { name: "France", code: "+33" },
-        { name: "Italy", code: "+39" },
-        { name: "Japan", code: "+81" },
-        { name: "Brazil", code: "+55" },
-        // Add more countries as needed
-      ];
-    
-      // Handle input changes
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevState) => ({
-          ...prevState,
-          [name]: value,
-        }));
-      };
-    
-      // Handle form submission
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form Data:", formData);
-        alert("Thank you for contacting us!");
-      };
-
+   // Unique state for this popup
+   const [isNewPopupOpen, setNewPopupOpen] = useState(false);
+  
+   const toggleNewPopup = () => {
+     setNewPopupOpen(!isNewPopupOpen);
+   };
+  
     const [isOpen, setOpen] = useState(false)
 
  const [activeTab, setActiveTab] = useState("one-way");
@@ -202,7 +127,26 @@ const HistoryPage = () => {
 
 
 
+  const airports = [
+    { name: "Albuquerque, (NM)",  link: "/Albu" },
+    { name: "Charlotte, NC", code: "LAX", link: "/char" },
+    { name: "Greensboro, NC", code: "OAK", link: "/green" },
+    { name: "Englewood, CO", code: "SAN", link: "/eng" },
+    { name: "Denver, CO", code: "SJC", link: "/denv" },
+    { name: "Boulder,CO", code: "LAX", link: "/boul" },
+    { name: "Colorado Springs, CO", code: "OAK", link: "/color" },
+    { name: "Frisco, CO", code: "SAN", link: "/fris" },
+    { name: "Rochester, MA", code: "SJC", link: "/roch" },
+    { name: "Memphis, TN", code: "LAX", link: "/memp" },
+    { name: "Dulles, VA", code: "OAK", link: "/dull" },
+    { name: "Cambridge, MD", code: "SAN", link: "/camb" },
+    { name: "Arlington, VA", code: "SJC", link: "/arl" },
+    { name: "Vienna,VA", code: "LAX", link: "/vien" },
+    { name: "Alexander, VA", code: "OAK", link: "/alex" },
+    { name: "Fairfex, VA", code: "SAN", link: "/fair" },
 
+    // Add more airports as needed
+  ];
 
 
 
@@ -235,13 +179,11 @@ const HistoryPage = () => {
 
 
 
-
-
-  <div className="app" >
+<div className="app" >
   {/* Navbar */}
 
   {/* Hero Section */}
-  <main className="heroo">
+  <main className="hero">
   <div className="top-buttons">
         <button className="top-btn" onClick={() => handleButtonClick("chauffeur")}>
           Chauffeur
@@ -254,7 +196,11 @@ const HistoryPage = () => {
         </button>
         </div>
 
-        {activeForm && (
+
+
+
+
+{activeForm && (
   <div className="form-container">
     <div className="form-content">
       {/* Picture Section */}
@@ -299,28 +245,25 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
 
 
 
-    <h1 style={{marginRight:'200px'}}>
-    Professional limo services
-    
-        </h1>
+    <h1>Professional limo services</h1>
 
 
     <div className="container"style={{marginBottom:'80px'}}>
   {/* Tabs */}
-  <div className="tabs" style={{ background: 'rgba(61, 59, 59, 0.8)', }}>
-    <button style={{color:'white'}}
+  <div className="tabs"  style={{ background: 'rgba(255, 255, 255, 0.8)' ,}}>
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "one-way" ? "tab active" : "tab"}
       onClick={() => setActiveTab("one-way")}
     >
       One way
     </button>
-    <button style={{color:'white'}}
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "round-trip" ? "tab active" : "tab"}
       onClick={() => setActiveTab("round-trip")}
     >
       Round trip
     </button>
-    <button style={{color:'white'}}
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "hourly" ? "tab active" : "tab"}
       onClick={() => setActiveTab("hourly")}
     >
@@ -383,7 +326,8 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
     <div className="time-picker">
       <input type="time" defaultValue="04:40" />
     </div>
-    <button className="search-btn">🔍</button>
+       
+             
   </div>
 </div>
 
@@ -425,7 +369,16 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  
+
+
+
+
+
+
+
+
+
+
 }
 
 .form-content {
@@ -484,13 +437,13 @@ p {
 }
 
 .signup-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(47, 48, 145);
 }
 
 .close-btn {
   margin-top: 10px;
   padding: 10px;
-  background-color: #ff3b3b;
+  background-color:rgb(255, 255, 255);
   color: white;
   border: none;
   border-radius: 4px;
@@ -499,7 +452,7 @@ p {
 }
 
 .close-btn:hover {
-  background-color: #e63946;
+  background-color:rgb(255, 255, 255);
 }
 
 /* Top buttons (Chauffeur, Flight, Hotel) */
@@ -508,7 +461,7 @@ p {
   margin-left:25px;
   border-radius: 100px;
   width: 30%;
-  background-color: rgba(58, 55, 55, 0.8);
+  background-color: rgba(39, 30, 30, 0.8);
   display: flex;
   justify-content: center; /* Center buttons */
   gap: 1rem;
@@ -516,7 +469,7 @@ p {
 
 .top-btn {
   padding: 10px 20px;
-  background-color: rgb(53, 45, 135);
+  background-color: rgb(57, 56, 51);
   color: white;
   border: none;
   border-radius: 24px;
@@ -527,7 +480,7 @@ p {
 }
 
 .top-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(70, 120, 191);
 }
 
 /* Autocomplete Text Fields */
@@ -564,7 +517,7 @@ p {
 }
 
 .suggestion:hover {
-  background-color:rgb(150, 146, 178);
+  background-color:rgb(28, 135, 193);
 }
 
 /* Date and Time Pickers */
@@ -611,14 +564,14 @@ p {
   border-radius: 20px;
   margin-left: 10px; /* Space between the search button and other inputs */
   padding: 10px;
-  background-color: rgb(14, 51, 124);
+  background-color: rgb(41, 145, 235);
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .search-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(43, 114, 164);
 }
 
 .container {
@@ -644,31 +597,52 @@ p {
 }
 
 .tab.active {
-  background-color: rgb(24, 9, 139);
+  background-color: rgb(41, 141, 229);
   color: white;
 }
 
-/* Hero Section */
-.heroo {
 
-
-  background-image: url('/img/limopic.png'); /* Add your image path here */
-  
- 
-  background-size: cover; /* Ensures the image covers the entire background */
-  background-position: center;
-
-
-
-
-
-
+.hero {
+  position: relative; /* Ensure positioning for the pseudo-element */
   padding: 2rem;
+  height: 100vh; /* Full viewport height */
   
+  align-items: center;
+  justify-content: center;
+  color: #black; /* Ensure content stands out */
+  overflow: hidden; /* Prevent pseudo-element overflow */
+  z-index: 1; /* Keep content above the pseudo-element */
+}
+
+.hero::before {
+  content: ""; /* Add a pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/background2.webp'); /* Background image */
+  background-size: cover; /* Adjust to fit */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -2; /* Send behind everything */
+}
+
+.hero::after {
+  content: ""; /* Add the black transparent overlay */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(9, 0, 0, 0.5); /* Black with transparency */
+  z-index: -1; /* Place above the image but below content */
 }
 
 
-.heroo h1 {
+
+
+.hero h1 {
   margin-left: 250px;
   color: white;
   font-size: 2.5rem;
@@ -687,7 +661,6 @@ p {
 .info-section {
 margin-left:50px;
 margin-right:50px;
-
   background-color: rgba(56, 54, 54, 0.8);
   display: flex;
   flex-wrap: wrap;
@@ -800,138 +773,95 @@ margin-right:50px;
 
 
 
-
-<section className="unique-card-section"style={{marginTop:'50px',marginLeft:'120px',marginRight:'150px'}}>
-      <div className="unique-card">
-        <img src="/img/icon1.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Instant Quote</h2>
-        <p className="unique-card-description">With just a few clicks, get your quote and book instantly.</p>
-        
-      </div>
-
-      <div className="unique-card">
-        <img src="/img/icon2.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Chauffeur by hour</h2>
-        <p className="unique-card-description">Professional chauffeurs available for hourly hire or full-day service.</p>
-       
-      </div>
-
-      <div className="unique-card">
-        <img src="/img/icon3.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Solo or group travel
-        </h2>
-        <p className="unique-card-description">Custom trip planning options available, ideal for both groups and individuals.</p>
-    
-      </div>
-    </section>
-
-<style jsx>{
-  `.unique-card-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.unique-card {
-  width: 30%;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 20px;
-}
-
-.unique-card-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 15px;
-}
-
-.unique-card-title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.unique-card-description {
-  font-size: 14px;
-  margin: 10px 0;
-}
-
-.unique-card-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.unique-card-button:hover {
-  background-color: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .unique-card {
-    width: 100%; /* Two cards per row on medium screens */
+    <style jsx>
+  {`
+  .unique-card-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: space-between; /* Distribute cards evenly */
+    gap: 20px; /* Space between cards */
+    margin: 50px auto; /* Top/bottom centering */
+    max-width: 1200px; /* Limits the width for laptop screens */
+    padding: 20px; /* Adds padding around the section */
   }
-}
 
-@media (max-width: 768px) {
   .unique-card {
-    width: 100%; /* One card per row on small screens */
+    background: white; /* White background for cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle card shadow */
+    padding: 20px; /* Inner spacing for content */
+    width: calc(33.333% - 20px); /* 3 cards side-by-side on larger screens */
+    text-align: center; /* Center-align content */
+    transition: transform 0.3s, box-shadow 0.3s; /* Hover animation */
   }
-}
 
-  
+  .unique-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+
+  .unique-card img {
+    width: 60px; /* Icon size */
+    margin-bottom: 10px; /* Space below icon */
+  }
+
+  .unique-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .unique-card-description {
+    font-size: 16px;
+    color: #555;
+  }
+
+  @media (max-width: 1024px) {
+    .unique-card {
+      width: calc(50% - 20px); /* Two cards per row on tablets */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .unique-card {
+      width: 100%; /* Single card per row on small screens */
+    }
+  }
   `}
-
 </style>
 
+<section className="unique-card-section">
+  <div className="unique-card">
+    <img src="/img/icon1.png" alt="Icon" />
+    <h2 className="unique-card-title">Instant Quote</h2>
+    <p className="unique-card-description">With just a few clicks, get your quote and book instantly.</p>
+  </div>
 
+  <div className="unique-card">
+    <img src="/img/icon2.png" alt="Icon" />
+    <h2 className="unique-card-title">Chauffeur by hour</h2>
+    <p className="unique-card-description">Professional chauffeurs available for hourly hire or full-day service.</p>
+  </div>
 
+  <div className="unique-card">
+    <img src="/img/icon3.png" alt="Icon" />
+    <h2 className="unique-card-title">Solo or group travel</h2>
+    <p className="unique-card-description">Custom trip planning options available, ideal for both groups and individuals.</p>
+  </div>
+</section>
 
+<h2 style={{marginLeft:'150px',marginTop:'0px'}}>
 
-
-
-
-
-
-
-
-
-<h2 style={{marginLeft:'150px',marginTop:'100px'}}>
-Exclusive partnership opportunities
 </h2>
-<div className="card-container"style={{marginLeft:'150px',marginRight:'180px',marginTop:'100px'}}>
+<div className="card-container"style={{marginLeft:'150px',marginRight:'180px',marginTop:'10px'}}>
 
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/coprate.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Coporation and Businesses</h2>
-            <p className="card-description">One-stop travel management</p>
-            <button onClick={toggleNewPopup}   className="card-button">Get in touch</button>
-          </div>
-        </div>
-      </div>
+      
+      
 
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/travel.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Travel agents and event planners</h2>
-            <p className="card-description">Streamline bookings with our API</p>
-            <button onClick={toggleNewPopup}   className="card-button">Request Info</button>
-          </div>
-        </div>
-      </div>
-{/* Pop-up Modal */}
-{isNewPopupOpen && (
+
+      {/* Pop-up Modal */}
+      {isNewPopupOpen && (
         <div className="new-popup-overlay" style={{marginTop:'50px'}}>
           <div className="new-popup-container">
             {/* Image Section */}
@@ -1076,230 +1006,327 @@ Exclusive partnership opportunities
           </div>
         </div>
       )}
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/influ.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Influencers and public figures</h2>
-            <p className="card-description">Join our Influencer Program today</p>
-            <button onClick={toggleNewPopup}   className="card-button">Apply</button>
-          </div>
-        </div>
+ 
+ </div>
+ <style jsx>
+  {`
+    .card-section {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 0px;
+      margin-left: auto; /* Automatically adjust margin from the left */
+      margin-right: auto; /* Automatically adjust margin from the right */
+      max-width: 1200px; /* Maximum container width */
+    }
+
+    .card {
+      flex: 1 1 calc(33.333% - 20px); /* 3 cards per row on larger screens */
+      background-color: black;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* Allow button to overlay on image */
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .card-image {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7; /* Adjust opacity of the image */
+    }
+
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Black overlay with opacity */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      opacity: 1; /* Ensure the overlay itself is fully opaque */
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1; /* Keep the title on top */
+      opacity: 1;
+    }
+
+    .card-description {
+      font-size: 16px;
+      color: white;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .card-button {
+      padding: 10px 20px;
+      background-color:rgb(232, 157, 52); /* Orange button */
+      color: black;
+      border: none;
+      font-size: 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .card-button:hover {
+      background-color: #e76a3d;
+    }
+
+    /* Responsive Breakpoints */
+
+    @media (max-width: 1024px) {
+      .card {
+        flex: 1 1 calc(45% - 20px); /* 2 cards per row on medium screens */
+        max-width: 45%;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      .card-container {
+        margin-left: 20px; /* Adjustable left margin for laptop screens */
+        margin-right: 20px; /* Adjustable right margin for laptop screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex: 1 1 100%; /* 1 card per row on small screens */
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .card-title {
+        font-size: 22px;
+      }
+
+      .card-description {
+        font-size: 14px;
+      }
+
+      .card-button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-container {
+        gap: 15px; /* Reduce gaps for smaller screens */
+      }
+
+      .card {
+        flex: 1 1 calc(90% - 20px); /* 1 card per row on very small screens */
+        max-width: 100%;
+      }
+
+      .card-title {
+        font-size: 20px;
+      }
+
+      .card-description {
+        font-size: 12px;
+      }
+
+      .card-button {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .card {
+        flex: 1 1 calc(95% - 20px); /* Slight padding for narrow screens */
+        max-width: 100%; /* Full width for smaller devices */
+      }
+
+      .card-title {
+        font-size: 18px;
+      }
+
+      .card-description {
+        font-size: 11px;
+      }
+
+      .card-button {
+        padding: 5px 10px;
+        font-size: 11px;
+      }
+    }
+  `}
+</style>
+
+<section className="card-section" style={{ marginTop: '50px', marginBottom: '50px' }}>
+  <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Exclusive partnership opportunities</h2>
+  <div className="card-container">
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/coprate.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Corporation and Businesses</h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Get in touch</button>
       </div>
     </div>
 
-{/* card popup */}
-<style jsx>{`
-        .new-popup-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-        }
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/influ.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Influencers and Public </h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Apply Now</button>
+      </div>
+    </div>
 
-        .new-popup-container {
-          display: flex;
-          width: 600px;
-          background: white;
-          border-radius: 10px;
-          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-          overflow: hidden;
-        }
-
-        .popup-image-section {
-          flex: 1;
-          background: #f5f5f5;
-        }
-
-        .popup-form-section {
-          flex: 1;
-        }
-      `}</style>
-
-
-<style jsx>{
-  `
-  .card-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap; /* Makes the cards wrap if needed on smaller screens */
-}
-
-.card {
-  width: 30%; /* Adjust card width to fit three cards in a row */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card-image {
-  position: relative;
-  height: 200px;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-.card-title {
-
-  font-size: 24px;
-  font-weight: bold;
-  color:white;
-}
-
-.card-description {
-  font-size: 16px;
-  margin: 10px 0;
-}
-
-.card-button {
-  padding: 10px 20px;
-  background-color:rgb(255, 255, 255);
-  border: none;
-  color: black;
-  font-size: 16px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.card-button:hover {
-  background-color: #e76a3d;
-}
-
-/* Responsive styles */
-  @media (max-width: 1200px) {
-    .card {
-      width: 500px; /* Two cards per row */
-    }
-  }
-
-  @media (max-width: 768px) {
-    .card {
-      width: 500px; /* One card per row */
-    }
-  }
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/travel.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Solo or Group Travel</h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Learn More</button>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
-  `}
-
-</style>
 
 
 
-<div className="layout-container"style={{marginLeft:'150px',marginRight:'150px',marginTop:'100px'
+
+<div className="layout-container"style={{marginLeft:'130px',marginRight:'130px',marginTop:'100px'
 }}>
+     
 
 
 
 
 
-</div>
+
+      {/* Section 3 */}
+      <div className="content-section">
+        <div className="line"></div>
+        <div className="content-row">
+          <h2 className="heading">Not Only Airport
+          Transfers
+          </h2>
+          <p className="paragraph  font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn ">
+          We provide more than just airport transfers; we cater to a variety of travel needs. Our expert team can provide specific advice, professional insights, and important information to improve your travel experience for executive automobiles, chauffeur services, corporate transportation, and special event transportation. </p>
+        </div>
+        <div className="line"></div>
+      </div>
+    </div>
 
 
 
+         
 
 
-    <div className="row align-items-center"style={{marginLeft:'160px'}}>
-                            <div className="col-lg-6 mb-60">
-                                <h4 className="color-black mb-15 wow animate__animated animate__fadeIn"style={{marginBottom:'10px'}}>Discover flawless adventures using Bookinglane's first-rate chauffeur service.</h4>
-                                <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginRight:'100px'}}>From one-way, round journey, or hourly choices for both business and pleasure passengers. Free cancelable, flexible planning and clear price without hidden fees. Greet and greet with seamless airport to destination transfers. Availability across all of the USA's states. Bookinglane's skilled chauffeur services will help you to improve every trip.</p>
-                              
-                              
-                               
-                              <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginTop:'20px'}}></p> 
-                              <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginTop:'20px'}}></p> 
-                               
-                               
+                      
+                        <div className="row align-items-center item-about-2 item-about-2-revert" style={{marginLeft:'50px'}}>
+                            <div className="col-lg-6">
+                                <div className="box-info-aabout-2">
+                                    <h2 className="color-black mt-15 mb-25 wow animate__animated animate__fadeIn">As you enter the opulent realm of our First Class limousines, elevate your events to extraordinary levels.</h2>
+                                    <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn">
+                                           
+                                           
+                                    Arrive at nuptials, proms, and anniversaries with a sophisticated demeanor that establishes the atmosphere for the day. Our Business Van provides the uttermost convenience for group travel, while our Business Class limousine services provide a seamless journey from point A to B.
+                                           
+                                           
+                                           
+                                           
+                                           
+                                           </p>
+                                               </div>
                             </div>
-                            <div className="col-lg-6 mb-60"><div className="wow animate__animated animate__fadeIn" href="#"><img className="mb-15 wow animate__animated animate__fadeIn" src="/img/drive1.png" alt="transp" style={{width:'500px'}}/></div></div>
+                            <div className="col-lg-6"><img className="wow animate__animated animate__fadeIn" src="/img/carpic.png" alt="transp" /></div>
                         </div>
-                       
-
-                        <div className="row align-items-center">
-                            <div className="col-lg-6 mb-60"><div className="wow animate__animated animate__fadeIn" href="#"><img src="/img/drive2.png" alt="transp" style={{width:'500px',marginLeft:'160px'}}/></div></div>
-                            <div className="col-lg-6 mb-60">
-                                <h4 className="color-black mb-15 wow animate__animated animate__fadeIn" style={{marginRight:'140px',marginLeft:'80px'}}>Improving Bookinglane Chauffeur Service by means of 24/7 availability and support
-                                </h4>
-                               
-                                <p style={{marginRight:'140px',marginLeft:'80px'}} className="font-md color-grey-700 wow animate__animated animate__fadeIn">Bookinglane offers premium chauffeur service with round-the-clock availability, ensuring dependability and convenience. You can book a variety of transportation options for family gatherings, corporate conferences, and group transfers with fleet ranges in comfort and design from business sedan to roomy SUVs and VANs..</p>
-                                        
-
-
-                                <div className="row">
-                                        <div className="col-lg-6 mb-30">
-                                           <h6 className=" font-md-bold color-grey-700 wow animate__animated animate__fadeIn"></h6>
-                                            <p className="font-xs color-grey-900 wow animate__animated animate__fadeIn"></p>
-                                        </div>
-                                        
+                        <div className="row align-items-center item-about-2">
+                            <div className="col-lg-6"style={{marginTop:'100px'}}><img className="wow animate__animated animate__fadeIn" src="img/drive2.png" alt="transp" /></div>
+                            <div className="col-lg-6">
+                                <div className="box-info-about-2">
+                                    <h2 className="color-black mt-15 mb-25 wow animate__animated animate__fadeIn">Travelingoo's high-end limousine services have changed the way people move.</h2>
+                                    <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn">
+           Thanks for coming along on this new journey. Our chauffeur-driven limos offer an unmatched level of comfort. For added convenience and support, we offer free cancellation and support 24 hours a day, seven days a week.
+                             
+                             </p>  </div>
+                            </div>
+                        </div>
 
 
 
-                                    </div>
 
+                        <div className="row align-items-center item-about-2 item-about-2-revert">
+                            <div className="col-lg-6">
+                            <div className="box-info-aabout-2">
+                              
+                                     <h2 className="color-black mt-15 mb-25 wow animate__animated animate__fadeIn">Elevate your travel experience to unparalleled levels of luxury and style by selecting Travelingoo for your next adventure.</h2>
+                                    <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn">
+                                    Travelingoo transforms each journey into an experience. Explore the cityscape and landmarks with a personal chauffeur who is aware of your preferences. Our limo car service is accessible in all 50 states of the United States, ensuring that it is accessible from any location.
+</p>
                                    
-
-
-
-
-
-
-
-
-                                
-                               
-                         <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginTop:'20px'}}></p>      
-                               
+                                </div>
                             </div>
+                            <div className="col-lg-6"style={{marginTop:'100px'}}><img className="wow animate__animated animate__fadeIn" src="img/drive3.png" alt="transp" /></div>
                         </div>
-                    
-              
-
-    <div className="row align-items-center"style={{marginLeft:'160px'}}>
-                            <div className="col-lg-6 mb-60">
-                                <h4 className="color-black mb-15 wow animate__animated animate__fadeIn"style={{marginBottom:'10px'}}>Guaranteeing a Chauffeur Service</h4>
-                                <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginRight:'100px'}}>.Bookinglane provides private chauffeur services in the United States, including airport pick-ups, special events, one-way, and round-trip options. We ensure a stress-free travel experience by prioritizing dependability, plain pricing, and 24-hour assistance..</p>
-                              
-                              
-                               
-                              <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginTop:'20px'}}></p> 
-                              <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginTop:'20px'}}></p> 
-                               
-                               
-                            </div>
-                            <div className="col-lg-6 mb-60"><div className="wow animate__animated animate__fadeIn" href="#"><img className="mb-15 wow animate__animated animate__fadeIn" src="/img/drive3.png" alt="transp" style={{width:'500px'}}/></div></div>
-                        </div>
-                    
+                        
 
 
 
+
+
+
+
+
+
+
+
+
+
+   
 
 
     <style jsx>{`
@@ -1358,17 +1385,6 @@ Exclusive partnership opportunities
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <section className="cards-section">
       <h2 className="section-heading">Explore our premier car service in the following cities:</h2>
       <div className="cards-container">
@@ -1405,7 +1421,7 @@ margin-right:100px;
 margin-left:130px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 50px;
 }
 
 .cardy {
@@ -1441,91 +1457,31 @@ width:300px;
   font-size: 1.1rem;
 }
 
+/* Media Query for Mobile */
+@media (max-width: 600px) {
+  .cards-container {
+    margin-left: 1rem; /* Add small margin for mobile screens */
+    margin-right: 1rem; /* Maintain even spacing on both sides */
+  }
+}
+
+/* Media Query for Tablets */
+@media (max-width: 900px) and (min-width: 601px) {
+  .cards-container {
+    margin-left: 2rem; /* Increase margin for tablet screens */
+    margin-right: 2rem;
+  }
+}
+
+/* Media Query for Large Screens */
+@media (min-width: 901px) {
+  .cards-container {
+    margin-left: 3rem; /* Adjust margin for larger screens */
+    margin-right: 3rem;
+  }
+}
+
     
-    
-    `}
-
-</style>
-
-
-
-
-
-
-
-
-
-<style jsx>{
-    `
-    .contact-us {
-  padding: 2rem;
-  background-color: #f9f9f9;
-  max-width: 800px;
-  margin: 0 auto;
-  border-radius: 28px;
-}
-
-.contact-us h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 24px;
-  color: #333;
-}
-
-.contact-form {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-size: 16px;
-  margin-bottom: 5px;
-  color:none;
-  
-}
-  .form-group input, .form-group select, .form-group textarea {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  width: 100%;
-}
-
-  
-.phone-input-container {
-  display: flex;
-  gap: 10px;
-}
-
-.phone-input-container select {
-  width: 30%;
-}
-
-.phone-input-container input {
-  width: 70%;
-  color:none;
-}
-
-.contact-btn {
-  background-color:rgb(30, 71, 115);
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.contact-btn:hover {
-  background-color: #0056b3;
-}
-
     
     `}
 
@@ -1534,24 +1490,13 @@ width:300px;
 
 
 
-<section className="section-container"style={{marginLeft:'100px',marginRight:'100px',marginBottom:'100px',height:'350px',marginTop:'150px'}}>
 
-      <div className="section-left">
-      
-        <h2 style={{marginTop:'20px',}}>Are you an executive car service provider?</h2>
-        <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn" >Optimize your business operations with our mobile CRM. Stay ahead with real-time access to your calendar, client invoices, fleet tracking, and driver payouts—all from the palm of your hand. Seamlessly transition between mobile and desktop platforms to access your profile. Plus, enjoy the benefits of global affiliate network at no extra cost.</p>
-      
-      
-        <a href="https://b2b.bookinglane.com/">
-                            <button className="search-btn" style={{width:'200px',height:'40px',borderRadius:'20px',background: 'rgb(29, 19, 134)',color:'white',}}>Become our Partner </button>
-                              </a>
-      
-      </div>
-      <div className="section-right">
-        <img src="/img/picty.png
-        " alt="Description of image" style={{height:'360px',width:'400px',marginLeft:'200px'}}/>
-      </div>
-    </section>
+
+
+
+
+
+
   <style jsx>{
     `
     /* CSS file: styles.css */
@@ -1672,6 +1617,156 @@ width:300px;
 
 
 
+  <style jsx>{
+  `
+  
+  /* General Row Styles */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* Column Styles */
+.col-lg-6 {
+  width: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .col-lg-6 {
+    width: 100%; /* Full width for smaller screens */
+    padding: 0.5rem;
+  }
+}
+
+/* Image Styles */
+img {
+  max-width: 100%; /* Ensure images fit within their container */
+  height: auto;
+  border-radius: 10px; /* Optional for rounded corners */
+}
+
+/* Text and Heading Styles */
+h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* Margin Adjustments for Different Screen Sizes */
+@media (max-width: 576px) {
+  h4 {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .row {
+    margin: 0 0.5rem;
+  }
+
+  .col-lg-6 {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .row {
+    margin: 0 2rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Larger Screens */
+@media (min-width: 1201px) {
+  .row {
+    margin: 0 4rem;
+  }
+
+  h4 {
+    font-size: 1.7rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Left Margin Adjustments for Images */
+@media (max-width: 768px) {
+  img {
+    margin-left: 0; /* Center images on smaller screens */
+  }
+}
+
+@media (min-width: 769px) {
+  img {
+    margin-left: opx; /* Maintain some margin for larger screens */
+  }
+}
+
+  
+  `}
+
+</style>
+
+
+
+{/* card popup */}
+<style jsx>{`
+        .new-popup-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+        }
+
+        .new-popup-container {
+          display: flex;
+          width: 600px;
+          background: white;
+          border-radius: 10px;
+          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+          overflow: hidden;
+        }
+
+        .popup-image-section {
+          flex: 1;
+          background: #f5f5f5;
+        }
+
+        .popup-form-section {
+          flex: 1;
+        }
+      `}</style>
+
+
 
 
           
@@ -1764,8 +1859,6 @@ width:300px;
     `}
 
 </style>  
-
-
 
 
 

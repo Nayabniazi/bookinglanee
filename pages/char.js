@@ -1,4 +1,4 @@
-
+// /pages/history.js or /pages/history/index.js
 import Layout from "@/components/layout/Layout";
 
 import { useState } from "react";
@@ -15,89 +15,14 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 const HistoryPage = () => {
-
-
-
-
-
-
-
-
-    const airports = [
-        { name: "Albuquerque, (NM)",  link: "/Albu" },
-        { name: "Charlotte, NC", code: "LAX", link: "/losangelespage" },
-        { name: "Greensboro, NC", code: "OAK", link: "/oaklandpage" },
-        { name: "Englewood, CO", code: "SAN", link: "/sandiegopage" },
-        { name: "Denver, CO", code: "SJC", link: "/sanjosepage" },
-        { name: "Boulder,CO", code: "LAX", link: "/ontopage" },
-        { name: "Colorado Springs, CO", code: "OAK", link: "/palm1page" },
-        { name: "Frisco, CO", code: "SAN", link: "/barbarapage" },
-        { name: "Rochester, MA", code: "SJC", link: "/sanjosepage" },
-        { name: "Memphis, TN", code: "LAX", link: "/sacramantopage" },
-        { name: "Dulles, VA", code: "OAK", link: "/johnpage" },
-        { name: "Cambridge, MD", code: "SAN", link: "/denverpage" },
-        { name: "Arlington, VA", code: "SJC", link: "/northpage" },
-        { name: "Vienna,VA", code: "LAX", link: "/keypage" },
-        { name: "Alexander, VA", code: "OAK", link: "/lauderpage" },
-        { name: "Fairfex, VA", code: "SAN", link: "/jackpage" },
   
-        // Add more airports as needed
-      ];
-    
-    
-
-
-
-
-
-
-
-
-// Unique state for this popup
-     const [isNewPopupOpen, setNewPopupOpen] = useState(false);
-    
-     const toggleNewPopup = () => {
-       setNewPopupOpen(!isNewPopupOpen);
-     };
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        phoneNumber: "",
-        email: "",
-        country: "",
-        details: "",
-      });
-    
-      const countries = [
-        { name: "United States", code: "+1" },
-        { name: "Canada", code: "+1" },
-        { name: "United Kingdom", code: "+44" },
-        { name: "India", code: "+91" },
-        { name: "Australia", code: "+61" },
-        { name: "Germany", code: "+49" },
-        { name: "France", code: "+33" },
-        { name: "Italy", code: "+39" },
-        { name: "Japan", code: "+81" },
-        { name: "Brazil", code: "+55" },
-        // Add more countries as needed
-      ];
-    
-      // Handle input changes
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevState) => ({
-          ...prevState,
-          [name]: value,
-        }));
-      };
-    
-      // Handle form submission
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form Data:", formData);
-        alert("Thank you for contacting us!");
-      };
-
+   // Unique state for this popup
+   const [isNewPopupOpen, setNewPopupOpen] = useState(false);
+  
+   const toggleNewPopup = () => {
+     setNewPopupOpen(!isNewPopupOpen);
+   };
+  
     const [isOpen, setOpen] = useState(false)
 
  const [activeTab, setActiveTab] = useState("one-way");
@@ -204,20 +129,34 @@ const HistoryPage = () => {
 
 
 
+  const airports = [
+    { name: "Phoenix Sky Harbor International Airport", code: "PHX", link: "/phoenix" },
+    { name: "Los Angeles International Airport", code: "LAX", link: "/losangelespage" },
+    { name: "Oakland International Airport", code: "OAK", link: "/oaklandpage" },
+    { name: "San Diego International Airport", code: "SAN", link: "/sandiegopage" },
+    { name: "Long Beach  Airport", code: "SJC", link: "/sanjosepage" },
+    { name: "Ontario International Airport", code: "LAX", link: "/ontopage" },
+    { name: "Palm Spring International Airport", code: "OAK", link: "/palm1page" },
+    { name: "Santa Barbara International Airport", code: "SAN", link: "/barbarapage" },
+    { name: "San Jose International Airport", code: "SJC", link: "/sanjosepage" },
+    { name: "Sacramanto International Airport", code: "LAX", link: "/sacramantopage" },
+    { name: "John Wayne International Airport", code: "OAK", link: "/johnpage" },
+    { name: "Denver International Airport", code: "SAN", link: "/denverpage" },
+    { name: "North West Florida Beaches International Airport", code: "SJC", link: "/northpage" },
+    { name: "Key West International Airport", code: "LAX", link: "/keypage" },
+    { name: "Lauderdale Hollywood International Airport", code: "OAK", link: "/lauderpage" },
+    { name: "Jacksoville International Airport", code: "SAN", link: "/jackpage" },
+    { name: "Orlando International Airport", code: "SJC", link: "/orlandopage" },
+    { name: "Miamai International Airport", code: "OAK", link: "/miamipage" },
+    { name: "Melbourne Orlando International Airport", code: "SAN", link: "/melbourpage" },
+    { name: "Palm Beach International Airport", code: "SJC", link: "/palms2page" },
+    // Add more airports as needed
+  ];
 
 
 
   const reviews = [
-    { id: 1, image: '/img/dip1.png', rating: 4, text: ' The doctor and techs informed me of the medical issue and gave treatment on site including a demonstration of how to administer.' },
-    { id: 2, image: '/img/dip2.png', rating: 5, text: ' Incredible place for such a demanding job, handling every pet that I saw with so much love and care.' },
-    { id: 3, image: '/img/dip3.png', rating: 3, text: ' The doctor and techs informed me of the medical issue and gave treatment on site including a demonstration of how to administer. ' },
-    { id: 4, image: '/img/dip1.png', rating: 4, text: ' Incredible place for such a demanding job, handling every pet that I saw with so much love and care.' },
-    { id: 5, image: '/img/dip2.png', rating: 5, text: 'I have been dealing with chronic back and neck pain due to my line of work. Dr. Nathan has been so helpful in treating and helping to maintain my discomfort. He is knowledgeable, polite, courteous and polite' },
-    { id: 6, image: '/img/dip3.png', rating: 5, text: 'I have been dealing with chronic back and neck pain due to my line of work. Dr. Nathan has been so helpful in treating and helping to maintain my discomfort. He is knowledgeable, polite, courteous and polite' },
-    { id: 7, image: '/img/dip1.png', rating: 4, text: 'I have been dealing with chronic back and neck pain due to my line of work. Dr. Nathan has been so helpful in treating and helping to maintain my discomfort. He is knowledgeable, polite, courteous and polite' },
-    { id: 8, image: '/img/dip2.png', rating: 3, text: 'I have been dealing with chronic back and neck pain due to my line of work. Dr. Nathan has been so helpful in treating and helping to maintain my discomfort. He is knowledgeable, polite, courteous and polite' },
-    { id: 9, image: '/img/dip3.png', rating: 4, text: 'I have been dealing with chronic back and neck pain due to my line of work. Dr. Nathan has been so helpful in treating and helping to maintain my discomfort. He is knowledgeable, polite, courteous and polite' },
-  ];
+   ];
 
 
 
@@ -235,13 +174,11 @@ const HistoryPage = () => {
 
 
 
-
-
-  <div className="app" >
+<div className="app" >
   {/* Navbar */}
 
   {/* Hero Section */}
-  <main className="heroo">
+  <main className="hero">
   <div className="top-buttons">
         <button className="top-btn" onClick={() => handleButtonClick("chauffeur")}>
           Chauffeur
@@ -254,7 +191,11 @@ const HistoryPage = () => {
         </button>
         </div>
 
-        {activeForm && (
+
+
+
+
+{activeForm && (
   <div className="form-container">
     <div className="form-content">
       {/* Picture Section */}
@@ -299,28 +240,25 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
 
 
 
-    <h1 style={{marginRight:'200px'}}>
-    Car service in Charlotte, NC
-   
-        </h1>
+    <h1>Chauffeur service in Charlotte, TX</h1>
 
 
     <div className="container"style={{marginBottom:'80px'}}>
   {/* Tabs */}
-  <div className="tabs" style={{ background: 'rgba(61, 59, 59, 0.8)', }}>
-    <button style={{color:'white'}}
+  <div className="tabs"  style={{ background: 'rgba(255, 255, 255, 0.8)' ,}}>
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "one-way" ? "tab active" : "tab"}
       onClick={() => setActiveTab("one-way")}
     >
       One way
     </button>
-    <button style={{color:'white'}}
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "round-trip" ? "tab active" : "tab"}
       onClick={() => setActiveTab("round-trip")}
     >
       Round trip
     </button>
-    <button style={{color:'white'}}
+    <button style={{borderRadius:'25px'}}
       className={activeTab === "hourly" ? "tab active" : "tab"}
       onClick={() => setActiveTab("hourly")}
     >
@@ -383,7 +321,8 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
     <div className="time-picker">
       <input type="time" defaultValue="04:40" />
     </div>
-    <button className="search-btn">🔍</button>
+       
+             
   </div>
 </div>
 
@@ -425,7 +364,16 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  
+
+
+
+
+
+
+
+
+
+
 }
 
 .form-content {
@@ -484,13 +432,13 @@ p {
 }
 
 .signup-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(47, 48, 145);
 }
 
 .close-btn {
   margin-top: 10px;
   padding: 10px;
-  background-color: #ff3b3b;
+  background-color:rgb(255, 255, 255);
   color: white;
   border: none;
   border-radius: 4px;
@@ -499,7 +447,7 @@ p {
 }
 
 .close-btn:hover {
-  background-color: #e63946;
+  background-color:rgb(255, 255, 255);
 }
 
 /* Top buttons (Chauffeur, Flight, Hotel) */
@@ -508,7 +456,7 @@ p {
   margin-left:25px;
   border-radius: 100px;
   width: 30%;
-  background-color: rgba(58, 55, 55, 0.8);
+  background-color: rgba(39, 30, 30, 0.8);
   display: flex;
   justify-content: center; /* Center buttons */
   gap: 1rem;
@@ -516,7 +464,7 @@ p {
 
 .top-btn {
   padding: 10px 20px;
-  background-color: rgb(53, 45, 135);
+  background-color: rgb(57, 56, 51);
   color: white;
   border: none;
   border-radius: 24px;
@@ -527,7 +475,7 @@ p {
 }
 
 .top-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(70, 120, 191);
 }
 
 /* Autocomplete Text Fields */
@@ -564,7 +512,7 @@ p {
 }
 
 .suggestion:hover {
-  background-color:rgb(150, 146, 178);
+  background-color:rgb(28, 135, 193);
 }
 
 /* Date and Time Pickers */
@@ -611,14 +559,14 @@ p {
   border-radius: 20px;
   margin-left: 10px; /* Space between the search button and other inputs */
   padding: 10px;
-  background-color: rgb(14, 51, 124);
+  background-color: rgb(41, 145, 235);
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .search-btn:hover {
-  background-color: #45a049;
+  background-color:rgb(43, 114, 164);
 }
 
 .container {
@@ -644,31 +592,52 @@ p {
 }
 
 .tab.active {
-  background-color: rgb(24, 9, 139);
+  background-color: rgb(41, 141, 229);
   color: white;
 }
 
-/* Hero Section */
-.heroo {
 
-
-  background-image: url('/img/subcar.png'); /* Add your image path here */
-  
- 
-  background-size: cover; /* Ensures the image covers the entire background */
-  background-position: center;
-
-
-
-
-
-
+.hero {
+  position: relative; /* Ensure positioning for the pseudo-element */
   padding: 2rem;
+  height: 100vh; /* Full viewport height */
   
+  align-items: center;
+  justify-content: center;
+  color: #black; /* Ensure content stands out */
+  overflow: hidden; /* Prevent pseudo-element overflow */
+  z-index: 1; /* Keep content above the pseudo-element */
+}
+
+.hero::before {
+  content: ""; /* Add a pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/header2.png'); /* Background image */
+  background-size: cover; /* Adjust to fit */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  z-index: -2; /* Send behind everything */
+}
+
+.hero::after {
+  content: ""; /* Add the black transparent overlay */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(9, 0, 0, 0.5); /* Black with transparency */
+  z-index: -1; /* Place above the image but below content */
 }
 
 
-.heroo h1 {
+
+
+.hero h1 {
   margin-left: 250px;
   color: white;
   font-size: 2.5rem;
@@ -685,8 +654,7 @@ p {
 
 /* Info Section */
 .info-section {
-
- margin-left:50px;
+margin-left:50px;
 margin-right:50px;
   background-color: rgba(56, 54, 54, 0.8);
   display: flex;
@@ -800,138 +768,95 @@ margin-right:50px;
 
 
 
-
-<section className="unique-card-section"style={{marginTop:'50px',marginLeft:'120px',marginRight:'150px'}}>
-      <div className="unique-card">
-        <img src="/img/icon1.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Instant Quote</h2>
-        <p className="unique-card-description">With just a few clicks, get your quote and book instantly.</p>
-        
-      </div>
-
-      <div className="unique-card">
-        <img src="/img/icon2.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Chauffeur by hour</h2>
-        <p className="unique-card-description">Professional chauffeurs available for hourly hire or full-day service.</p>
-       
-      </div>
-
-      <div className="unique-card">
-        <img src="/img/icon3.png" alt="Icon" className="unique-card-icon" />
-        <h2 className="unique-card-title">Solo or group travel
-        </h2>
-        <p className="unique-card-description">Custom trip planning options available, ideal for both groups and individuals.</p>
-    
-      </div>
-    </section>
-
-<style jsx>{
-  `.unique-card-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-.unique-card {
-  width: 30%;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 20px;
-}
-
-.unique-card-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 15px;
-}
-
-.unique-card-title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.unique-card-description {
-  font-size: 14px;
-  margin: 10px 0;
-}
-
-.unique-card-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.unique-card-button:hover {
-  background-color: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .unique-card {
-    width: 100%; /* Two cards per row on medium screens */
+    <style jsx>
+  {`
+  .unique-card-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: space-between; /* Distribute cards evenly */
+    gap: 20px; /* Space between cards */
+    margin: 50px auto; /* Top/bottom centering */
+    max-width: 1200px; /* Limits the width for laptop screens */
+    padding: 20px; /* Adds padding around the section */
   }
-}
 
-@media (max-width: 768px) {
   .unique-card {
-    width: 100%; /* One card per row on small screens */
+    background: white; /* White background for cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle card shadow */
+    padding: 20px; /* Inner spacing for content */
+    width: calc(33.333% - 20px); /* 3 cards side-by-side on larger screens */
+    text-align: center; /* Center-align content */
+    transition: transform 0.3s, box-shadow 0.3s; /* Hover animation */
   }
-}
 
-  
+  .unique-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+
+  .unique-card img {
+    width: 60px; /* Icon size */
+    margin-bottom: 10px; /* Space below icon */
+  }
+
+  .unique-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .unique-card-description {
+    font-size: 16px;
+    color: #555;
+  }
+
+  @media (max-width: 1024px) {
+    .unique-card {
+      width: calc(50% - 20px); /* Two cards per row on tablets */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .unique-card {
+      width: 100%; /* Single card per row on small screens */
+    }
+  }
   `}
-
 </style>
 
+<section className="unique-card-section">
+  <div className="unique-card">
+    <img src="/img/icon1.png" alt="Icon" />
+    <h2 className="unique-card-title">Instant Quote</h2>
+    <p className="unique-card-description">With just a few clicks, get your quote and book instantly.</p>
+  </div>
 
+  <div className="unique-card">
+    <img src="/img/icon2.png" alt="Icon" />
+    <h2 className="unique-card-title">Chauffeur by hour</h2>
+    <p className="unique-card-description">Professional chauffeurs available for hourly hire or full-day service.</p>
+  </div>
 
+  <div className="unique-card">
+    <img src="/img/icon3.png" alt="Icon" />
+    <h2 className="unique-card-title">Solo or group travel</h2>
+    <p className="unique-card-description">Custom trip planning options available, ideal for both groups and individuals.</p>
+  </div>
+</section>
 
+<h2 style={{marginLeft:'150px',marginTop:'0px'}}>
 
-
-
-
-
-
-
-
-
-<h2 style={{marginLeft:'150px',marginTop:'100px'}}>
-Exclusive partnership opportunities
 </h2>
-<div className="card-container"style={{marginLeft:'150px',marginRight:'180px',marginTop:'100px'}}>
+<div className="card-container"style={{marginLeft:'150px',marginRight:'180px',marginTop:'10px'}}>
 
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/coprate.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Coporation and Businesses</h2>
-            <p className="card-description">One-stop travel management</p>
-            <button onClick={toggleNewPopup}   className="card-button">Get in touch</button>
-          </div>
-        </div>
-      </div>
+      
+      
 
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/travel.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Travel agents and event planners</h2>
-            <p className="card-description">Streamline bookings with our API</p>
-            <button onClick={toggleNewPopup}   className="card-button">Request Info</button>
-          </div>
-        </div>
-      </div>
-{/* Pop-up Modal */}
-{isNewPopupOpen && (
+
+      {/* Pop-up Modal */}
+      {isNewPopupOpen && (
         <div className="new-popup-overlay" style={{marginTop:'50px'}}>
           <div className="new-popup-container">
             {/* Image Section */}
@@ -1076,230 +1001,385 @@ Exclusive partnership opportunities
           </div>
         </div>
       )}
-      <div className="card">
-        <div className="card-image">
-          <img src="/img/influ.png" alt="Card Image" />
-          <div className="card-overlay">
-            <h2 className="card-title">Influencers and public figures</h2>
-            <p className="card-description">Join our Influencer Program today</p>
-            <button onClick={toggleNewPopup}   className="card-button">Apply</button>
-          </div>
-        </div>
+ 
+ </div>
+ <style jsx>
+  {`
+    .card-section {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 0px;
+      margin-left: auto; /* Automatically adjust margin from the left */
+      margin-right: auto; /* Automatically adjust margin from the right */
+      max-width: 1200px; /* Maximum container width */
+    }
+
+    .card {
+      flex: 1 1 calc(33.333% - 20px); /* 3 cards per row on larger screens */
+      background-color: black;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative; /* Allow button to overlay on image */
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .card-image {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7; /* Adjust opacity of the image */
+    }
+
+    .card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Black overlay with opacity */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      opacity: 1; /* Ensure the overlay itself is fully opaque */
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1; /* Keep the title on top */
+      opacity: 1;
+    }
+
+    .card-description {
+      font-size: 16px;
+      color: white;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .card-button {
+      padding: 10px 20px;
+      background-color:rgb(232, 157, 52); /* Orange button */
+      color: black;
+      border: none;
+      font-size: 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .card-button:hover {
+      background-color: #e76a3d;
+    }
+
+    /* Responsive Breakpoints */
+
+    @media (max-width: 1024px) {
+      .card {
+        flex: 1 1 calc(45% - 20px); /* 2 cards per row on medium screens */
+        max-width: 45%;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      .card-container {
+        margin-left: 20px; /* Adjustable left margin for laptop screens */
+        margin-right: 20px; /* Adjustable right margin for laptop screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex: 1 1 100%; /* 1 card per row on small screens */
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .card-title {
+        font-size: 22px;
+      }
+
+      .card-description {
+        font-size: 14px;
+      }
+
+      .card-button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-container {
+        gap: 15px; /* Reduce gaps for smaller screens */
+      }
+
+      .card {
+        flex: 1 1 calc(90% - 20px); /* 1 card per row on very small screens */
+        max-width: 100%;
+      }
+
+      .card-title {
+        font-size: 20px;
+      }
+
+      .card-description {
+        font-size: 12px;
+      }
+
+      .card-button {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .card {
+        flex: 1 1 calc(95% - 20px); /* Slight padding for narrow screens */
+        max-width: 100%; /* Full width for smaller devices */
+      }
+
+      .card-title {
+        font-size: 18px;
+      }
+
+      .card-description {
+        font-size: 11px;
+      }
+
+      .card-button {
+        padding: 5px 10px;
+        font-size: 11px;
+      }
+    }
+  `}
+</style>
+
+<section className="card-section" style={{ marginTop: '50px', marginBottom: '50px' }}>
+  <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Exclusive partnership opportunities</h2>
+  <div className="card-container">
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/coprate.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Corporation and Businesses</h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Get in touch</button>
       </div>
     </div>
 
-{/* card popup */}
-<style jsx>{`
-        .new-popup-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-        }
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/influ.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Influencers and Public </h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Apply Now</button>
+      </div>
+    </div>
 
-        .new-popup-container {
-          display: flex;
-          width: 600px;
-          background: white;
-          border-radius: 10px;
-          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-          overflow: hidden;
-        }
-
-        .popup-image-section {
-          flex: 1;
-          background: #f5f5f5;
-        }
-
-        .popup-form-section {
-          flex: 1;
-        }
-      `}</style>
-
-
-<style jsx>{
-  `
-  .card-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap; /* Makes the cards wrap if needed on smaller screens */
-}
-
-.card {
-  width: 30%; /* Adjust card width to fit three cards in a row */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card-image {
-  position: relative;
-  height: 200px;
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-.card-title {
-
-  font-size: 24px;
-  font-weight: bold;
-  color:white;
-}
-
-.card-description {
-  font-size: 16px;
-  margin: 10px 0;
-}
-
-.card-button {
-  padding: 10px 20px;
-  background-color:rgb(255, 255, 255);
-  border: none;
-  color: black;
-  font-size: 16px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.card-button:hover {
-  background-color: #e76a3d;
-}
-
-/* Responsive styles */
-  @media (max-width: 1200px) {
-    .card {
-      width: 500px; /* Two cards per row */
-    }
-  }
-
-  @media (max-width: 768px) {
-    .card {
-      width: 500px; /* One card per row */
-    }
-  }
+    <div className="card">
+      <div className="card-image">
+        <img src="/img/travel.png" alt="Card Image" />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title">Solo or Group Travel</h3>
+        <p className="card-description"></p>
+        <button onClick={toggleNewPopup} className="card-button">Learn More</button>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
-  `}
-
-</style>
 
 
 
-<div className="layout-container"style={{marginLeft:'150px',marginRight:'150px',marginTop:'100px'
+
+<div className="layout-container"style={{marginLeft:'130px',marginRight:'130px',marginTop:'100px'
 }}>
+     
 
 
 
+     <div className="content-section">
+        <div className="line"></div>
+        <div className="content-row">
+          <h2 className="heading">Experienced chauffeur service in Alabama State
+          </h2>
+          <p className="paragraph  font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn ">
+          Upgrade your travel experience with our professional car service in Alabama State. Whether you’re heading to a meeting, exploring the city, or catching a flight, our service ensures a seamless journey in style and comfort. Relax and let us handle the logistics while you focus on what matters most.
+          
+          </p>
+          </div>
+        <div className="line"></div>
+      </div>
+    
 
+      <div className="content-section">
+        <div className="line"></div>
+        <div className="content-row">
+          <h2 className="heading">Corporate car service in Alabama State
+          </h2>
+          <p className="paragraph  font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn ">
+          A dependable private car service service is not a luxury in the hectic Alabama State business scene; rather, it is a need. Bookinglane provides customized corporate travel solutions fit for your company's particular requirements. With our advanced fleet and outstanding service that embodies the professionalism of your company in Alabama State, wow your customers and empower your staff.
+         </p>
+          </div>
+        <div className="line"></div>
+      </div>
 
+     
+     <div className="content-section">
+        <div className="line"></div>
+        <div className="content-row">
+          <h2 className="heading">Not Only Airport Transfers
+          </h2>
+          <p className="paragraph  font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn ">
+          We provide more than just airport transfers; we cater to a variety of travel needs. Our expert team can provide specific advice, professional insights, and important information to improve your travel experience for executive automobiles, chauffeur services, corporate transportation, and special event transportation. </p>
+        </div>
+        <div className="line"></div>
+      </div>
 </div>
 
 
 
 
 
-    <div className="row align-items-center"style={{marginLeft:'160px'}}>
-                            <div className="col-lg-6 mb-60">
-                                <h4 className="color-black mb-15 wow animate__animated animate__fadeIn"style={{marginBottom:'10px'}}>Experienced Chauffeur Service in Charlotte, NC</h4>
-                                <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginRight:'100px'}}> Upgrade your travel experience with our professional car service in Charlotte, NC. Whether you’re heading to a meeting, exploring the city, or catching a flight, our service ensures a seamless journey in style and comfort. Relax and let us handle the logistics while you focus on what matters most..</p>
-                              
-                              
-                               
-                              <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginTop:'20px'}}></p> 
-                              <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginTop:'20px'}}></p> 
-                               
-                               
-                            </div>
-                            <div className="col-lg-6 mb-60"><div className="wow animate__animated animate__fadeIn" href="#"><img className="mb-15 wow animate__animated animate__fadeIn" src="/img/lady.png" alt="transp" style={{width:'500px'}}/></div></div>
-                        </div>
-                       
 
-                        <div className="row align-items-center">
-                            <div className="col-lg-6 mb-60"><div className="wow animate__animated animate__fadeIn" href="#"><img src="/img/lady2.png" alt="transp" style={{width:'500px',marginLeft:'160px'}}/></div></div>
-                            <div className="col-lg-6 mb-60">
-                                <h4 className="color-black mb-15 wow animate__animated animate__fadeIn" style={{marginRight:'140px',marginLeft:'80px'}}>The Premium Car Service Right Here in Charlotte, NC
-                                </h4>
-                               
-                                <p style={{marginRight:'140px',marginLeft:'80px'}} className="font-md color-grey-700 wow animate__animated animate__fadeIn"> Bookinglane, your first-rate black car service friend, will help you to really explore Charlotte, NC. Our dedication is to make your trip around the city unforgettable as much as the sites themselves are. Our service is customized to your schedule and travel tastes whether your desired visit is for the architectural marvels, calm parks, or busy marketplaces. Discover Charlotte, NC with comfort, elegance, and local flare Bookinglane can provide</p>
-                                        
-
-
-                                <div className="row">
-                                        <div className="col-lg-6 mb-30">
-                                           <h6 className=" font-md-bold color-grey-700 wow animate__animated animate__fadeIn"></h6>
-                                            <p className="font-xs color-grey-900 wow animate__animated animate__fadeIn"></p>
-                                        </div>
-                                        
-
-
-
-                                    </div>
-
-                                   
+                        
+  <div className="row justify-content-center">
+    <div className="col-lg-8 col-md-10 col-12">
+      <h2 className="color-black text-center mb-4 wow animate__animated animate__fadeIn">Contact Us</h2>
+      <form className="contact-form wow animate__animated animate__fadeIn">
+  
+        <div className="form-group">
+          <label for="name" className="font-md color-grey-900">Your Name</label>
+          <input type="text" className="form-control" id="name" placeholder="Enter your name" required />
+        </div>
+        
+     
+        <div className="form-group">
+          <label for="email" className="font-md color-grey-900">Your Email</label>
+          <input type="email" className="form-control" id="email" placeholder="Enter your email" required />
+        </div>
+        
+      
+        <div className="form-group">
+          <label for="message" className="font-md color-grey-900">Your Message</label>
+          <textarea className="form-control" id="message" rows="5" placeholder="Enter your message" required></textarea>
+        </div>
+        
+        
+        <div className="text-center">
+          <button  type="submit" className="btn btn-brand-2 wow animate__animated animate__fadeIn" style={{backgroundColor: 'orange', color: 'black',borderRadius:'25px'}}>Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
 
 
+<style jsx>{
+  `
+  
+  /* Form container */
+.contact-form {
+ background: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Input and Textarea fields */
+.form-control {
+  border-radius: 4px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Label styles */
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Button styles */
+button[type="submit"] {
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .contact-form {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-control {
+    font-size: 14px;
+    padding: 12px;
+  }
+  .contact-form {
+    padding: 15px;
+  }
+}
+
+  
+  `}
+
+</style>
 
 
 
 
 
-                                
-                               
-                         <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginTop:'20px'}}></p>      
-                               
-                            </div>
-                        </div>
-                    
-              
-
-    <div className="row align-items-center"style={{marginLeft:'160px'}}>
-                            <div className="col-lg-6 mb-60">
-                                <h4 className="color-black mb-15 wow animate__animated animate__fadeIn"style={{marginBottom:'10px'}}>The Essence of Charlotte, NC a Chauffeured Experience</h4>
-                                <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginRight:'100px'}}>Charlotte, NC is an experience ready to be savored, not just a place. Every trip becomes imbued with the spirit of the city with Bookinglane. While our chauffeurs provide insights into the life and culture of Charlotte, NC, our luxury automobiles offer a haven of serenity while you drive. From night-time cityscapes to gastronomic excursions, we customize your journey to meet your desired Charlotte, NC experiences..</p>
-                              
-                              
-                               
-                              <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginTop:'20px'}}></p> 
-                              <p className="font-md color-grey-700 wow animate__animated animate__fadeIn"style={{marginTop:'20px'}}></p> 
-                               
-                               
-                            </div>
-                            <div className="col-lg-6 mb-60"><div className="wow animate__animated animate__fadeIn" href="#"><img className="mb-15 wow animate__animated animate__fadeIn" src="/img/cop1.png" alt="transp" style={{width:'500px'}}/></div></div>
-                        </div>
-                    
 
 
-
+   
 
 
     <style jsx>{`
@@ -1357,198 +1437,94 @@ Exclusive partnership opportunities
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style jsx>{
-    `
+    <style  jsx>{
+      `
     .cards-section {
-   
-  padding: 40px 20px;
-  background-color: #f9f9f9;
-  text-align: center;
+  padding: 2rem;
+  background-color: #f8f8f8; /* Optional background for better contrast */
 }
 
 .section-heading {
+  text-align: center;
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
   color: #333;
 }
 
 .cards-container {
-margin-right:100px;
-margin-left:130px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  justify-content: flex-start; /* Align to the left */
+  margin-left: auto; /* Default for centered alignment */
+  margin-right: auto; /* Default for centered alignment */
 }
 
 .cardy {
-width:300px;
-  display: flex;
-  align-items: center;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-decoration: none;
-  color: #333;
-  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .cardy:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.cardy .icon {
-  font-size: 1.5rem;
-  margin-right: 15px;
-}
-
-.cardy .content p {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.cardy .content p:first-child {
-  font-weight: ;
-  font-size: 1.1rem;
-}
-
-    
-    
-    `}
-
-</style>
-
-
-
-
-
-
-
-
-
-<style jsx>{
-    `
-    .contact-us {
-  padding: 2rem;
-  background-color: #f9f9f9;
-  max-width: 800px;
-  margin: 0 auto;
-  border-radius: 28px;
-}
-
-.contact-us h2 {
+.cardy .content {
+  padding: 1rem;
   text-align: center;
-  margin-bottom: 2rem;
-  font-size: 24px;
+}
+
+.cardy p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
   color: #333;
 }
 
-.contact-form {
-  display: grid;
-  gap: 1.5rem;
+/* Media Query for Mobile */
+@media (max-width: 600px) {
+  .cards-container {
+    margin-left: 1rem; /* Add small margin for mobile screens */
+    margin-right: 1rem; /* Maintain even spacing on both sides */
+  }
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
+/* Media Query for Tablets */
+@media (max-width: 900px) and (min-width: 601px) {
+  .cards-container {
+    margin-left: 2rem; /* Increase margin for tablet screens */
+    margin-right: 2rem;
+  }
 }
 
-.form-group label {
-  font-size: 16px;
-  margin-bottom: 5px;
-  color:none;
-  
-}
-  .form-group input, .form-group select, .form-group textarea {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  width: 100%;
+/* Media Query for Large Screens */
+@media (min-width: 901px) {
+  .cards-container {
+    margin-left: 3rem; /* Adjust margin for larger screens */
+    margin-right: 3rem;
+  }
 }
 
-  
-.phone-input-container {
-  display: flex;
-  gap: 10px;
-}
-
-.phone-input-container select {
-  width: 30%;
-}
-
-.phone-input-container input {
-  width: 70%;
-  color:none;
-}
-
-.contact-btn {
-  background-color:rgb(30, 71, 115);
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.contact-btn:hover {
-  background-color: #0056b3;
-}
-
-    
-    `}
-
-</style>
-
-
-
-
-<section className="section-container"style={{marginLeft:'100px',marginRight:'100px',marginBottom:'100px',height:'350px',marginTop:'150px'}}>
-
-      <div className="section-left">
       
-        <h2 style={{marginTop:'20px',}}>Are you an executive car service provider?</h2>
-        <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn" >Optimize your business operations with our mobile CRM. Stay ahead with real-time access to your calendar, client invoices, fleet tracking, and driver payouts—all from the palm of your hand. Seamlessly transition between mobile and desktop platforms to access your profile. Plus, enjoy the benefits of global affiliate network at no extra cost.</p>
-      
-      
-        <a href="https://b2b.bookinglane.com/">
-                            <button className="search-btn" style={{width:'200px',height:'40px',borderRadius:'20px',background: 'rgb(29, 19, 134)',color:'white',}}>Become our Partner </button>
-                              </a>
-      
-      </div>
-      <div className="section-right">
-        <img src="/img/picty.png
-        " alt="Description of image" style={{height:'360px',width:'400px',marginLeft:'200px'}}/>
-      </div>
-    </section>
+      `}
+
+    </style>
+
+
+
+
+
+
+
+
+
+
+
   <style jsx>{
     `
     /* CSS file: styles.css */
@@ -1669,6 +1645,156 @@ width:300px;
 
 
 
+  <style jsx>{
+  `
+  
+  /* General Row Styles */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* Column Styles */
+.col-lg-6 {
+  width: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .col-lg-6 {
+    width: 100%; /* Full width for smaller screens */
+    padding: 0.5rem;
+  }
+}
+
+/* Image Styles */
+img {
+  max-width: 100%; /* Ensure images fit within their container */
+  height: auto;
+  border-radius: 10px; /* Optional for rounded corners */
+}
+
+/* Text and Heading Styles */
+h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* Margin Adjustments for Different Screen Sizes */
+@media (max-width: 576px) {
+  h4 {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .row {
+    margin: 0 0.5rem;
+  }
+
+  .col-lg-6 {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .row {
+    margin: 0 2rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Larger Screens */
+@media (min-width: 1201px) {
+  .row {
+    margin: 0 4rem;
+  }
+
+  h4 {
+    font-size: 1.7rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Left Margin Adjustments for Images */
+@media (max-width: 768px) {
+  img {
+    margin-left: 0; /* Center images on smaller screens */
+  }
+}
+
+@media (min-width: 769px) {
+  img {
+    margin-left: opx; /* Maintain some margin for larger screens */
+  }
+}
+
+  
+  `}
+
+</style>
+
+
+
+{/* card popup */}
+<style jsx>{`
+        .new-popup-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+        }
+
+        .new-popup-container {
+          display: flex;
+          width: 600px;
+          background: white;
+          border-radius: 10px;
+          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+          overflow: hidden;
+        }
+
+        .popup-image-section {
+          flex: 1;
+          background: #f5f5f5;
+        }
+
+        .popup-form-section {
+          flex: 1;
+        }
+      `}</style>
+
+
 
 
           
@@ -1761,8 +1887,6 @@ width:300px;
     `}
 
 </style>  
-
-
 
 
 

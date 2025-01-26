@@ -7,7 +7,7 @@ import Header2 from './Header2'
 import HeaderNewsletter from "./HeaderNewsletter"
 import PageHead from './PageHead'
 import Sidebar from './Sidebar'
-
+import Menu from "./Menu";
 export default function Layout({ headerStyle, footerStyle, headTitle, children, topBarStyle }) {
     const [scroll, setScroll] = useState(0)
 
@@ -51,7 +51,6 @@ export default function Layout({ headerStyle, footerStyle, headTitle, children, 
 
 
 
-
 <PageHead headTitle={headTitle} />
             <div className="body-overlay-1" onClick={handleMobileMenuClose} />
             {!headerStyle && <Header1 topBarStyle={topBarStyle} scroll={scroll} handleMobileMenuOpen={handleMobileMenuOpen} />}
@@ -76,4 +75,3 @@ export default function Layout({ headerStyle, footerStyle, headTitle, children, 
         </>
     )
 }
-
