@@ -1087,7 +1087,7 @@ margin-right:50px;
     }
 
     .card-button:hover {
-      background-color: #e76a3d;
+      background-color:rgb(204, 113, 21);
     }
 
     /* Responsive Breakpoints */
@@ -1312,7 +1312,7 @@ margin-right:50px;
     <p className="font-md color-grey-900 mb-20 wow animate__animated animate__fadeIn">
       Optimize your business operations with our mobile CRM. Stay ahead with real-time access to your calendar, client invoices, fleet tracking, and driver payouts—all from the palm of your hand. Seamlessly transition between mobile and desktop platforms to access your profile. Plus, enjoy the benefits of global affiliate network at no extra cost.
     </p>
-    <a href="https://b2b.bookinglane.com/">
+    <a href="/loginpage">
       <button className="search-btn">Become our Partner</button>
     </a>
   </div>
@@ -1392,15 +1392,15 @@ margin-right:50px;
       width: 200px;
       height: 40px;
       border-radius: 20px;
-      background: rgb(29, 19, 134);
-      color: white;
+      background: rgb(255, 160, 35);
+      color: black;
       border: none;
       cursor: pointer;
       transition: background 0.3s ease;
     }
 
     .search-btn:hover {
-      background: rgb(24, 12, 100); /* Darker shade on hover */
+      background: rgb(205, 124, 19); /* Darker shade on hover */
     }
 
     .section-right {

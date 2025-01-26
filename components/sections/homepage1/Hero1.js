@@ -98,9 +98,9 @@ export default function Hero1() {
                             </p>
                             <button style={{
                                 padding: "10px 20px", 
-                                background: "#6C60F7", 
-                                color: "#fff", 
-                                borderRadius: "10px", 
+                                background: "orange", 
+                                color: "black", 
+                                borderRadius: "25px", 
                                 border: "none", 
                                 cursor: "pointer",
                                 fontSize: "16px"

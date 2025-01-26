@@ -241,7 +241,7 @@ margin-left:180px;
     }
 
     .cta-button:hover {
-      background-color: rgb(24, 12, 100);
+      background-color: rgb(182, 124, 37);
     }
 
     /* Responsive Breakpoints */

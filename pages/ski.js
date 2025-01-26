@@ -1104,7 +1104,7 @@ margin-right:50px;
     }
 
     .card-button:hover {
-      background-color: #e76a3d;
+      background-color:rgb(207, 128, 37);
     }
 
     /* Responsive Breakpoints */

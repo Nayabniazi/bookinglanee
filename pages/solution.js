@@ -1128,7 +1128,7 @@ margin-right:50px;
     }
 
     .card-button:hover {
-      background-color: #e76a3d;
+      background-color:rgb(213, 139, 36);
     }
 
     /* Responsive Breakpoints */
@@ -1662,7 +1662,7 @@ margin-left:180px;
     }
 
     .cta-button:hover {
-      background-color: rgb(24, 12, 100);
+      background-color: rgb(203, 139, 28);
     }
 
     /* Responsive Breakpoints */
