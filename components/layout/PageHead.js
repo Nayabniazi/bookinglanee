@@ -6,7 +6,7 @@ const PageHead = ({ headTitle }) => {
         
         <Head>
                 <title>
-                    {headTitle ? headTitle : "Bin Bear Website"}
+                    {headTitle ? headTitle : "Travelingoo website"}
                 </title>
                 <link rel="shortcut icon" href="/pic.png.png" />
             </Head>
