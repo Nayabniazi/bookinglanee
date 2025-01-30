@@ -1,6 +1,7 @@
 
 import Link from "next/link";
-import React, { useState } from "react";
+
+import React, { useState, useRef, useEffect } from "react"
 import "react-datepicker/dist/react-datepicker.css";
 import Services1 from "../sections/homepage1/Services1";
 import Info1 from "../sections/homepage1/Info1";
@@ -9,7 +10,7 @@ import { FaSearch } from "react-icons/fa";
 export default function Hero1Slider() {
   const [isOpen, setIsOpen] = useState(false);
   const [isNewPopupOpen, setNewPopupOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("one-way");
+  const [activeTab, setActiveTab] = useState("Flights");
   const [activeForm, setActiveForm] = useState(null);
   const [fromValue, setFromValue] = useState("");
   const [dropoffValue, setDropoffValue] = useState("");
@@ -18,9 +19,50 @@ export default function Hero1Slider() {
 
 
 
+  const [flights, setFlights] = useState([]);
 
 
 
+
+
+
+
+
+  const handleNavbarClick = (tab) => {
+    setActiveTab(tab);
+    setTripType("one-way"); // Reset trip type when switching tabs
+  };
+
+ 
+  const [tripType, setTripType] = useState("one-way");
+  
+  const [preferredAirline, setPreferredAirline] = useState("");
+
+  
+
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const [showControls, setShowControls] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const increaseAdults = () => setAdults(adults + 1);
+  const decreaseAdults = () => adults > 1 && setAdults(adults - 1);
+
+  const increaseChildren = () => setChildren(children + 1);
+  const decreaseChildren = () => children > 0 && setChildren(children - 1);
+
+  // Hide the controls when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowControls(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
 
 
@@ -37,6 +79,18 @@ export default function Hero1Slider() {
       setFromSuggestions([]);
     }
   };
+
+
+
+
+
+
+
+
+
+
+
+
 
   // Handle input changes for "Dropoff"
   const handleDropoffChange = (e) => {
@@ -63,9 +117,6 @@ export default function Hero1Slider() {
     setDropoffValue(suggestion);
     setDropoffSuggestions([]);
   };
-
-
-
 
 
 
@@ -114,6 +165,34 @@ export default function Hero1Slider() {
     setValue(suggestion);
     setSuggestions([]);
   };
+
+
+
+
+  const addFlight = () => {
+    setFlights([...flights, { from: "", to: "", date: "" }]);
+  };
+
+  const updateFlight = (index, field, value) => {
+    const newFlights = [...flights];
+    newFlights[index][field] = value;
+    setFlights(newFlights);
+  };
+
+  const removeFlight = (index) => {
+    const newFlights = flights.filter((_, i) => i !== index);
+    setFlights(newFlights);
+  };
+
+
+
+
+
+
+
+
+
+
 
   return (
     <>
@@ -182,44 +261,77 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
 
 
 
-    <h1>Book your chauffeur service</h1>
+    
 
 
-    <div className="container"style={{marginBottom:'80px'}}>
-  {/* Tabs */}
-  <div className="tabs"  style={{ background: 'rgba(255, 255, 255, 0.8)' ,}}>
-    <button style={{borderRadius:'25px'}}
-      className={activeTab === "one-way" ? "tab active" : "tab"}
-      onClick={() => setActiveTab("one-way")}
-    >
-      One way
-    </button>
-    <button style={{borderRadius:'25px'}}
-      className={activeTab === "round-trip" ? "tab active" : "tab"}
-      onClick={() => setActiveTab("round-trip")}
-    >
-      Round trip
-    </button>
-    <button style={{borderRadius:'25px'}}
-      className={activeTab === "hourly" ? "tab active" : "tab"}
-      onClick={() => setActiveTab("hourly")}
-    >
-      Hourly
-    </button>
-  </div>
+<h1>Book your chauffeur service</h1>
 
-  {/* Search Engine */}
-  <div className="search-box">
-    <div className="autocomplete">
-      <input
-        type="text"
-        placeholder="Flight"
-        className="input"
-        value={fromValue}
-        onChange={handleFromChange}
-      />
-      {fromSuggestions.length > 0 && (
-        <ul className="suggestions">
+<div className="container" style={{ marginBottom: "80px" }}>
+      {/* Navbar */}
+      <div className="navbar">
+        {["Flights", "Hotels", "Cars", "Cruises", "Tours"].map((tab) => (
+          <button
+            key={tab}
+            className={`nav-item ${activeTab === tab ? "active" : ""}`}
+            onClick={() => handleNavbarClick(tab)}
+            style={{
+              backgroundColor: "white",
+              color: "black",
+              fontSize: "16px",
+            }}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+      <hr style={{ marginBottom: "10px" }} />
+
+      {/* Flight Type Tabs (Only for Flights) */}
+      {activeTab === "Flights" && (
+        <div className="tabs" style={{ background: "rgba(255, 255, 255, 0.8)" }}>
+          {["one-way", "round-trip", "multi-city"].map((type) => (
+            <button
+              key={type}
+              className={`tab ${tripType === type ? "active" : ""}`}
+              onClick={() => setTripType(type)}
+              style={{ borderRadius: "25px" }}
+            >
+              {type.replace("-", " ")}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Dynamic Fields */}
+      <div className="search-box">
+        {activeTab === "Flights" && (
+          <>
+            {/* One-Way & Round-Trip (Side by Side Fields) */}
+            {(tripType === "one-way" ) && (
+              <div className="flight-fields">
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div className="input-box">
+                
+                  <input type="text" placeholder="Enter departure city" style={{width:'200px'}} value={fromValue}
+                   onChange={handleFromChange} />
+
+
+
+
+{fromSuggestions.length > 0 && (
+        <ul className="suggestions" style={{width:'220px'}}>
           {fromSuggestions.map((suggestion, index) => (
             <li
               key={index}
@@ -231,19 +343,25 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
           ))}
         </ul>
       )}
-    </div>
 
-    {/* Dropoff Input */}
-    <div className="autocomplete">
-      <input
-        type="text"
-        placeholder="Car Rental"
-        className="input"
-        value={dropoffValue}
-        onChange={handleDropoffChange}
-      />
-      {dropoffSuggestions.length > 0 && (
-        <ul className="suggestions">
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div className="input-box">
+                 
+                  <input type="text" placeholder="Enter destination" style={{width:'200px'}} value={dropoffValue}
+                    onChange={handleDropoffChange}/>
+                    
+{dropoffSuggestions.length > 0 && (
+        <ul className="suggestions" style={{width:'220px'}}>
           {dropoffSuggestions.map((suggestion, index) => (
             <li
               key={index}
@@ -255,18 +373,522 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
           ))}
         </ul>
       )}
+
+
+                </div>
+                <div className="input-box">
+                 
+                  <input type="date" style={{width:'200px'}}/>
+                </div>
+
+
+               
+
+                <div className="passenger-container" ref={dropdownRef}>
+      {/* Input Field - Click to show buttons */}
+      <input
+        type="text" style={{width:'200px'}}
+        className="passenger-input"
+        value={`${adults} Adult${adults > 1 ? "s" : ""} - ${children} Child${children > 1 ? "ren" : ""}`}
+        readOnly
+        onClick={() => setShowControls(!showControls)}
+      />
+
+      {/* Controls - Show when input is clicked */}
+      {showControls && (
+        <div className="passenger-box">
+          <div className="passenger-group">
+            <span>Adults</span>
+            <button className="circle-btn" onClick={decreaseAdults}>−</button>
+            <span className="count">{adults}</span>
+            <button className="circle-btn" onClick={increaseAdults}>+</button>
+          </div>
+
+          <div className="passenger-group">
+            <span>Children</span>
+            <button className="circle-btn" onClick={decreaseChildren}>−</button>
+            <span className="count">{children}</span>
+            <button className="circle-btn" onClick={increaseChildren}>+</button>
+          </div>
+        </div>
+      )}
+    </div> 
+
+
+
+              </div>
+            )}
+
+            {/* Round-Trip: Show "Returning" & Preferred Airline */}
+            {tripType === "round-trip" && (
+              <div className="flight-fields">
+                
+
+
+                <div className="input-box">
+                 
+                  <input type="text" placeholder="Enter departure city" style={{width:'200px'}} value={fromValue}
+                   onChange={handleFromChange} />
+
+
+
+
+{fromSuggestions.length > 0 && (
+        <ul className="suggestions" style={{width:'220px'}}>
+          {fromSuggestions.map((suggestion, index) => (
+            <li
+              key={index}
+              className="suggestion"
+              onClick={() => selectFromSuggestion(suggestion)}
+            >
+              {suggestion}
+            </li>
+          ))}
+        </ul>
+      )}
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div className="input-box">
+                
+                  <input type="text" placeholder="Enter destination" style={{width:'200px'}} value={dropoffValue}
+                    onChange={handleDropoffChange}/>
+                    
+{dropoffSuggestions.length > 0 && (
+        <ul className="suggestions" style={{width:'220px'}}>
+          {dropoffSuggestions.map((suggestion, index) => (
+            <li
+              key={index}
+              className="suggestion"
+              onClick={() => selectDropoffSuggestion(suggestion)}
+            >
+              {suggestion}
+            </li>
+          ))}
+        </ul>
+      )}
+
+
+                </div>
+                <div className="input-box">
+                 
+                  <input type="date" style={{width:'200px'}}/>
+                </div>
+
+
+                
+
+                <div className="passenger-container" ref={dropdownRef}>
+      {/* Input Field - Click to show buttons */}
+      <input
+        type="text" style={{width:'200px'}}
+        className="passenger-input"
+        value={`${adults} Adult${adults > 1 ? "s" : ""} - ${children} Child${children > 1 ? "ren" : ""}`}
+        readOnly
+        onClick={() => setShowControls(!showControls)}
+      />
+
+      {/* Controls - Show when input is clicked */}
+      {showControls && (
+        <div className="passenger-box">
+          <div className="passenger-group">
+            <span>Adults</span>
+            <button className="circle-btn" onClick={decreaseAdults}>−</button>
+            <span className="count">{adults}</span>
+            <button className="circle-btn" onClick={increaseAdults}>+</button>
+          </div>
+
+          <div className="passenger-group">
+            <span>Children</span>
+            <button className="circle-btn" onClick={decreaseChildren}>−</button>
+            <span className="count">{children}</span>
+            <button className="circle-btn" onClick={increaseChildren}>+</button>
+          </div>
+        </div>
+      )}
+    </div>  
+
+    
+                
+                  <input style={{width:'200px',marginRight:'343px'}}
+                    type="text"
+                    placeholder="Enter airline"
+                    value={preferredAirline}
+                    onChange={(e) => setPreferredAirline(e.target.value)}
+                  />
+                
+
+
+
     </div>
 
-    <div className="date-picker">
-      <input type="date" defaultValue="2025-01-20" />
-    </div>
-    <div className="time-picker">
-      <input type="time" defaultValue="04:40" />
-    </div>
-       
+                
+              
+            )}
+
+            {/* Multi-City: Allow Adding More Flights */}
+            {tripType === "multi-city" && (
+              <div className="multi-city-section">
+                <div className="flight-fields">
+                  <div className="input-box">
+                 
+                    <input type="text" placeholder="Departure city" value={fromValue}
+                   onChange={handleFromChange}/>
+                  
+
+{fromSuggestions.length > 0 && (
+        <ul className="suggestions" style={{width:'220px'}}>
+          {fromSuggestions.map((suggestion, index) => (
+            <li
+              key={index}
+              className="suggestion"
+              onClick={() => selectFromSuggestion(suggestion)}
+            >
+              {suggestion}
+            </li>
+          ))}
+        </ul>
+      )}
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                  <div className="input-box">
+                   
+                    <input type="text" placeholder="Destination" value={dropoffValue}
+                    onChange={handleDropoffChange} />
+
              
-  </div>
+{dropoffSuggestions.length > 0 && (
+        <ul className="suggestions" style={{width:'220px'}}>
+          {dropoffSuggestions.map((suggestion, index) => (
+            <li
+              key={index}
+              className="suggestion"
+              onClick={() => selectDropoffSuggestion(suggestion)}
+            >
+              {suggestion}
+            </li>
+          ))}
+        </ul>
+      )}
+
+
+
+
+                  </div>
+                  <div className="input-box">
+                   
+                    <input type="date" />
+                  </div>
+                </div>
+
+                <div className="flight-fields">
+                 
+
+                <div className="passenger-container" ref={dropdownRef}>
+      {/* Input Field - Click to show buttons */}
+      <input
+        type="text" style={{width:'220px'}}
+        className="passenger-input"
+        value={`${adults} Adult${adults > 1 ? "s" : ""} - ${children} Child${children > 1 ? "ren" : ""}`}
+        readOnly
+        onClick={() => setShowControls(!showControls)}
+      />
+
+      {/* Controls - Show when input is clicked */}
+      {showControls && (
+        <div className="passenger-box">
+          <div className="passenger-group">
+            <span>Adults</span>
+            <button className="circle-btn" onClick={decreaseAdults}>−</button>
+            <span className="count">{adults}</span>
+            <button className="circle-btn" onClick={increaseAdults}>+</button>
+          </div>
+
+          <div className="passenger-group">
+            <span>Children</span>
+            <button className="circle-btn" onClick={decreaseChildren}>−</button>
+            <span className="count">{children}</span>
+            <button className="circle-btn" onClick={increaseChildren}>+</button>
+          </div>
+        </div>
+      )}
+    </div> 
+                </div>
+                
+
+
+                <button className="add-flight-btn" style={{marginBottom:'2px',background:' rgb(41, 145, 235)',color:'white'}} onClick={addFlight}>
+        Add Flight 
+      </button>
+
+      {/* Dynamically Added Flight Fields */}
+      {flights.map((flight, index) => (
+        <div key={index} className="flight-field" style={{marginBottom:'10px'}}>
+          <input
+            type="text"
+            placeholder="Flying From"
+            value={flight.from}
+            onChange={(e) => updateFlight(index, "from", e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Flying To"
+            value={flight.to}
+            onChange={(e) => updateFlight(index, "to", e.target.value)}
+          />
+          <input
+            type="date"
+            value={flight.date}
+            onChange={(e) => updateFlight(index, "date", e.target.value)}
+          />
+          <button className="remove-flight-btn" onClick={() => removeFlight(index)}>
+            ❌
+          </button>
+        </div>
+      ))}
+    
+
+
+
+
+
+              </div>
+            )}
+             
+
+            {/* Passenger & Coach Selection */}
+            <div className="flight-fields">
+              
+              
+            </div>
+
+            {/* Submit Button */}
+            <button className="top-btn" style={{width:'200px',marginRight:'60px',borderRadius:'25px',color:'black',backgroundColor:'orange'}}>Submit</button>
+          </>
+        )}
+
+        {/* Hotels Fields */}
+        {activeTab === "Hotels" && (
+          <>
+           
+
+
+           <div className="input-box">
+                
+                <input type="text" placeholder="Enter departure city" style={{width:'200px',marginTop:'10px'}} value={fromValue}
+                 onChange={handleFromChange} />
+
+
+
+
+{fromSuggestions.length > 0 && (
+      <ul className="suggestions" style={{width:'220px'}}>
+        {fromSuggestions.map((suggestion, index) => (
+          <li
+            key={index}
+            className="suggestion"
+            onClick={() => selectFromSuggestion(suggestion)}
+          >
+            {suggestion}
+          </li>
+        ))}
+      </ul>
+    )}
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+              <div className="input-box">
+               
+                <input type="text" placeholder="Enter destination" style={{width:'200px',marginTop:'10px'}} value={dropoffValue}
+                  onChange={handleDropoffChange}/>
+                  
+{dropoffSuggestions.length > 0 && (
+      <ul className="suggestions" style={{width:'220px'}}>
+        {dropoffSuggestions.map((suggestion, index) => (
+          <li
+            key={index}
+            className="suggestion"
+            onClick={() => selectDropoffSuggestion(suggestion)}
+          >
+            {suggestion}
+          </li>
+        ))}
+      </ul>
+    )}
+
+
+              </div>
+              <div className="input-box">
+               
+                <input type="date" style={{width:'200px',marginTop:'10px'}}/>
+              </div>
+
+
+             
+
+              <div className="passenger-container" ref={dropdownRef}>
+    {/* Input Field - Click to show buttons */}
+    <input
+      type="text" style={{width:'200px',marginTop:'20px'}}
+      className="passenger-input"
+      value={`${adults} Adult${adults > 1 ? "s" : ""} - ${children} Child${children > 1 ? "ren" : ""}`}
+      readOnly
+      onClick={() => setShowControls(!showControls)}
+    />
+
+    {/* Controls - Show when input is clicked */}
+    {showControls && (
+      <div className="passenger-box">
+        <div className="passenger-group">
+          <span>Adults</span>
+          <button className="circle-btn" onClick={decreaseAdults}>−</button>
+          <span className="count">{adults}</span>
+          <button className="circle-btn" onClick={increaseAdults}>+</button>
+        </div>
+
+        <div className="passenger-group">
+          <span>Children</span>
+          <button className="circle-btn" onClick={decreaseChildren}>−</button>
+          <span className="count">{children}</span>
+          <button className="circle-btn" onClick={increaseChildren}>+</button>
+        </div>
+      </div>
+    )}
+  </div> 
+
+
+  <button className="top-btn" style={{width:'200px',marginRight:'60px',borderRadius:'25px',color:'black',backgroundColor:'orange',marginTop:'10px'}}>Submit</button>
+         
+
+          </>
+        )}
+
+        {/* Cars Fields */}
+        {activeTab === "Cars" && (
+          <>
+            
+           <div className="input-box">
+                
+                <input type="text" placeholder="Picking up" style={{width:'200px',marginTop:'10px'}} value={fromValue}
+                 onChange={handleFromChange} />
+
+
+
+
+{fromSuggestions.length > 0 && (
+      <ul className="suggestions" style={{width:'220px'}}>
+        {fromSuggestions.map((suggestion, index) => (
+          <li
+            key={index}
+            className="suggestion"
+            onClick={() => selectFromSuggestion(suggestion)}
+          >
+            {suggestion}
+          </li>
+        ))}
+      </ul>
+    )}
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+              
+              <div className="input-box">
+               
+                
+
+
+              <input type="text" placeholder="Drop-Off" style={{width:'200px',marginTop:'10px'}} value={dropoffValue}
+                  onChange={handleDropoffChange}/>
+                  
+{dropoffSuggestions.length > 0 && (
+      <ul className="suggestions" style={{width:'220px'}}>
+        {dropoffSuggestions.map((suggestion, index) => (
+          <li
+            key={index}
+            className="suggestion"
+            onClick={() => selectDropoffSuggestion(suggestion)}
+          >
+            {suggestion}
+          </li>
+        ))}
+      </ul>
+    )}
+
 </div>
+              
+             
+              <div className="input-box">
+               
+                <input type="date" style={{width:'200px',marginTop:'10px'}}/>
+              </div>
+
+              <button className="top-btn" style={{width:'200px',marginRight:'60px',borderRadius:'25px',color:'black',backgroundColor:'orange',marginTop:'10px'}}>Submit</button>
+
+          </>
+        )}
+
+        {/* Cruises Fields */}
+        {activeTab === "Cruises" && (
+          <>
+            
+           <div className="input-box">
+                
+                <input type="text" placeholder="Enter departure city" style={{width:'200px',marginTop:'10px'}} value={fromValue}
+                 onChange={handleFromChange} />
+
+
+
+
+{fromSuggestions.length > 0 && (
+      <ul className="suggestions" style={{width:'220px'}}>
+        {fromSuggestions.map((suggestion, index) => (
+          <li
+            key={index}
+            className="suggestion"
+            onClick={() => selectFromSuggestion(suggestion)}
+          >
+            {suggestion}
+          </li>
+        ))}
+      </ul>
+    )}
 
 
 
@@ -274,6 +896,159 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
 
 
 
+
+
+
+
+              </div>
+              <div className="input-box">
+               
+                
+
+
+              <input type="text" placeholder="Enter Destination" style={{width:'200px',marginTop:'10px'}} value={dropoffValue}
+                  onChange={handleDropoffChange}/>
+                  
+{dropoffSuggestions.length > 0 && (
+      <ul className="suggestions" style={{width:'220px'}}>
+        {dropoffSuggestions.map((suggestion, index) => (
+          <li
+            key={index}
+            className="suggestion"
+            onClick={() => selectDropoffSuggestion(suggestion)}
+          >
+            {suggestion}
+          </li>
+        ))}
+      </ul>
+    )}
+
+</div>
+              <div className="input-box">
+               
+                <input type="date" style={{width:'200px',marginTop:'10px'}}/>
+              </div>
+
+
+             
+
+              <div className="passenger-container" ref={dropdownRef}>
+    {/* Input Field - Click to show buttons */}
+    <input
+      type="text" style={{width:'200px',marginTop:'20px'}}
+      className="passenger-input"
+      value={`${adults} Adult${adults > 1 ? "s" : ""} - ${children} Child${children > 1 ? "ren" : ""}`}
+      readOnly
+      onClick={() => setShowControls(!showControls)}
+    />
+
+    {/* Controls - Show when input is clicked */}
+    {showControls && (
+      <div className="passenger-box">
+        <div className="passenger-group">
+          <span>Adults</span>
+          <button className="circle-btn" onClick={decreaseAdults}>−</button>
+          <span className="count">{adults}</span>
+          <button className="circle-btn" onClick={increaseAdults}>+</button>
+        </div>
+
+        <div className="passenger-group">
+          <span>Children</span>
+          <button className="circle-btn" onClick={decreaseChildren}>−</button>
+          <span className="count">{children}</span>
+          <button className="circle-btn" onClick={increaseChildren}>+</button>
+        </div>
+      </div>
+    )}
+  </div> 
+
+
+  <button className="top-btn" style={{width:'200px',marginRight:'60px',borderRadius:'25px',color:'black',backgroundColor:'orange',marginTop:'10px'}}>Submit</button>
+         
+
+          </>
+        )}
+
+        {/* Tours Fields */}
+        {activeTab === "Tours" && (
+          <>
+              
+              <div className="input-box">
+                
+                <input type="text" placeholder="Enter Departure city" style={{width:'200px',marginTop:'10px'}} value={fromValue}
+                 onChange={handleFromChange} />
+
+
+
+
+{fromSuggestions.length > 0 && (
+      <ul className="suggestions" style={{width:'220px'}}>
+        {fromSuggestions.map((suggestion, index) => (
+          <li
+            key={index}
+            className="suggestion"
+            onClick={() => selectFromSuggestion(suggestion)}
+          >
+            {suggestion}
+          </li>
+        ))}
+      </ul>
+    )}
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+              
+              <div className="input-box">
+               
+                <input type="date" style={{width:'200px',marginTop:'10px'}}/>
+              </div>
+
+              <div className="input-box">
+               
+                
+
+
+               <input type="text" placeholder="Enter Destination" style={{width:'200px',marginTop:'10px'}} value={dropoffValue}
+                   onChange={handleDropoffChange}/>
+                   
+ {dropoffSuggestions.length > 0 && (
+       <ul className="suggestions" style={{width:'220px'}}>
+         {dropoffSuggestions.map((suggestion, index) => (
+           <li
+             key={index}
+             className="suggestion"
+             onClick={() => selectDropoffSuggestion(suggestion)}
+           >
+             {suggestion}
+           </li>
+         ))}
+       </ul>
+     )}
+ 
+ </div>
+             
+              <div className="input-box">
+               
+                <input type="date" style={{width:'200px',marginTop:'10px'}}/>
+              </div>
+
+              <button className="top-btn" style={{width:'200px',marginRight:'60px',borderRadius:'25px',color:'black',backgroundColor:'orange',marginTop:'10px'}}>Submit</button>
+
+          </>
+        )}
+      </div>
+    </div>
+
+      
     {/* Information Section */}
     <div className="info-section">
       <div className="info">
@@ -292,412 +1067,761 @@ Stay tuned and get ready to redefine your travel experience with Bookinglane!{ac
 
 
 
+
+<style jsx>{`
+
+.flight-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.add-flight-btn {
+  padding: 10px 15px;
+  border: none;
+  background: orange;
+  color: black;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-flight-btn:hover {
+  background: darkorange;
+}
+
+.flight-fields {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.flight-fields input {
+  width: 30%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.remove-flight-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.remove-flight-btn:hover {
+  background: darkred;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .flight-fields {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .flight-fields input {
+    width: 100%;
+  }
+}
+
+
+
+`
+}</style>
 <style jsx>{
   `
-  /* Form Container */
-.form-container {
+
+.flight-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0px auto;
+  text-align: center;
+}
+
+.add-flight-btn {
+
+  padding: 10px 15px;
+  border: none;
+  background: orange;
+  color: black;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-flight-btn:hover {
+  background: darkorange;
+}
+
+.flight-field {
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-
-
-
-
-
-
-
-
-
-
-}
-
-.form-content {
-  display: flex;
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 800px;
-  flex-wrap: wrap; /* Added flex-wrap for responsiveness */
-}
-
-.image-section {
-  flex: 1;
-  padding-right: 20px;
-}
-
-.form-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.form-section {
-  flex: 1;
-}
-
-h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.form-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.signup-btn {
-  width: 100%;
-  padding: 10px;
-  background-color:rgb(32, 32, 150);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.signup-btn:hover {
-  background-color:rgb(47, 48, 145);
-}
-
-.close-btn {
+  justify-content: space-between;
   margin-top: 10px;
-  padding: 10px;
-  background-color:rgb(255, 255, 255);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
+  gap: 10px;
 }
+.flight-field input {
 
-.close-btn:hover {
-  background-color:rgb(255, 255, 255);
-}
-
-/* Top buttons (Chauffeur, Flight, Hotel) */
-.top-buttons {
-  margin-bottom: 20px;
-  margin-left:25px;
-  border-radius: 100px;
   width: 30%;
-  background-color: rgba(39, 30, 30, 0.8);
-  display: flex;
-  justify-content: center; /* Center buttons */
-  gap: 1rem;
-}
-
-.top-btn {
-  padding: 10px 20px;
-  background-color: rgb(57, 56, 51);
-  color: white;
-  border: none;
-  border-radius: 24px;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 0 10px;
-  transition: background-color 0.3s ease;
-}
-
-.top-btn:hover {
-  background-color:rgb(70, 120, 191);
-}
-
-/* Autocomplete Text Fields */
-.autocomplete {
-  position: relative;
-  flex: 1;
-  min-width: 200px;
-}
-
-.input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.suggestions {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-top: none;
-  position: absolute;
-  width: 100%;
-  z-index: 10;
-}
-
-.suggestion {
   padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.flight-fields {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0px;
+  gap: 10px;
+}
+
+
+.remove-flight-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.remove-flight-btn:hover {
+  background: darkred;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .flight-fields {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .flight-fields input {
+    width: 100%;
+  }
+}
+.passenger-container {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+}
+
+.passenger-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
   cursor: pointer;
 }
 
-.suggestion:hover {
-  background-color:rgb(28, 135, 193);
-}
-
-/* Date and Time Pickers */
-.date-picker,
-.time-picker {
-  flex: 1;
-  min-width: 150px;
-}
-
-.date-picker input,
-.time-picker input {
+.passenger-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
   width: 100%;
+  background: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  margin-bottom: 10px;
+  z-index: 1000;
 }
 
-/* CSS Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.search-box {
+.passenger-group {
   display: flex;
-  align-items: center; /* Vertically center the items */
-  justify-content: space-between; /* Distribute space between items */
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
 }
 
-.autocomplete {
-  margin-right: 10px; /* Space between the inputs */
+.circle-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  font-size: 18px;
+  background: orange;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.date-picker,
-.time-picker {
-  margin-right: 10px; /* Space between the date/time pickers and other elements */
+.circle-btn:hover {
+  background: darkorange;
 }
 
-.search-btn {
-  border-radius: 20px;
-  margin-left: 10px; /* Space between the search button and other inputs */
-  padding: 10px;
-  background-color: rgb(41, 145, 235);
-  color: white;
+.count {
+  width: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .passenger-container {
+    max-width: 100%;
+  }
+}
+
+
+
+  
+  `}
+
+</style>
+<style jsx> {
+  `/* General Styles */
+.container {
+  width: 80%;
+  margin: auto;
+  max-width: 1100px;
+}
+
+.navbar {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  padding: 10px 15px;
   border: none;
   cursor: pointer;
 }
 
-.search-btn:hover {
-  background-color:rgb(43, 114, 164);
-}
-
-.container {
-  margin-left: 250px;
-  width: 900px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.nav-item.active {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 /* Tabs */
 .tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .tab {
-  padding: 10px 20px;
-  background: transparent;
-  border: 1px solid #ddd;
-  margin-right: 10px;
+  padding: 8px 15px;
   cursor: pointer;
 }
 
-.tab.active {
-  background-color: rgb(41, 141, 229);
-  color: white;
+/* Search Box */
+.search-box {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
 }
 
-
-.hero {
-  position: relative; /* Ensure positioning for the pseudo-element */
-  padding: 2rem;
-  height: 100vh; /* Full viewport height */
-  
-  align-items: center;
-  justify-content: center;
-  color: #black; /* Ensure content stands out */
-  overflow: hidden; /* Prevent pseudo-element overflow */
-  z-index: 1; /* Keep content above the pseudo-element */
-}
-
-.hero::before {
-  content: ""; /* Add a pseudo-element */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/img/header.png'); /* Background image */
-  background-size: cover; /* Adjust to fit */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent tiling */
-  z-index: -2; /* Send behind everything */
-}
-
-.hero::after {
-  content: ""; /* Add the black transparent overlay */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(9, 0, 0, 0.5); /* Black with transparency */
-  z-index: -1; /* Place above the image but below content */
-}
-
-
-
-
-.hero h1 {
-  margin-left: 250px;
-  color: white;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-}
-
-/* Top Buttons */
-.top-buttons {
+/* Flight Input Fields */
+.flight-fields {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-/* Info Section */
-.info-section {
-margin-left:50px;
-margin-right:50px;
-  background-color: rgba(56, 54, 54, 0.8);
-  display: flex;
+  gap: 10px;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 1rem;
-  color: white;
+  margin-bottom: 15px;
+}
+
+.input-box {
+  flex: 1;
+  min-width: 220px; /* Prevents too-small fields */
+}
+
+.input-box label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input-box input,
+.input-box select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  gap: 1rem;
 }
 
-.info {
-  max-width: 300px;
-  text-align: left;
-  font-size: 0.9rem;
+/* Submit Button */
+.top-btn {
+  width: 100%;
+  background: rgba(57, 53, 53, 0.9);
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color:white;
+  
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
-    margin-left: 0; /* Remove left margin for smaller screens */
-  }
-
-  .search-box {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .autocomplete {
-    margin-right: 0;
-  }
-
-  .input,
-  .date-picker input,
-  .time-picker input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .info-section {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .tabs .tab {
-    font-size: 1rem;
-  }
-
+/* Mobile & Tablet Adjustments */
+@media (max-width: 1024px) {
   .container {
-    margin-left: 0;
-    width: 100%;
+    width: 95%;
   }
 
-  .top-buttons {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  .flight-fields {
+    flex-direction: column; /* Stack input fields */
   }
 
   .top-btn {
     width: 100%;
-    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .search-btn {
-    width: 100%;
-    margin-left: 0;
+  .tabs {
+    flex-direction: column;
+  }
+
+  .search-box {
+    padding: 15px;
+  }
+
+  .top-btn {
+    font-size: 14px;
     padding: 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .hero h1 {
-    font-size: 1.5rem;
+  .input-box {
+    min-width: 100%;
   }
 
-  .tabs .tab {
-    font-size: 0.9rem;
+  .flight-fields {
+    flex-direction: column;
   }
 
   .top-btn {
-    padding: 0.5rem 1rem;
+    width: 100%;
+    padding: 14px;
     font-size: 14px;
   }
-
-  .form-content {
-    flex-direction: column; /* Stack image and form for smaller screens */
-    padding: 15px;
-    width: 90%;
-  }
-
-  .image-section {
-    padding-right: 0;
-    flex: none;
-  }
-
-  .form-section {
-    flex: none;
-  }
 }
+
+
+
+  `}
+
+</style>
+<style jsx>{
+  `
+  /* Form Container */
+
+
+
+
+
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  }
+  
+  .form-content {
+    display: flex;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    flex-wrap: wrap; /* Added flex-wrap for responsiveness */
+  }
+  
+  .image-section {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .form-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .form-section {
+    flex: 1;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .signup-btn {
+    width: 100%;
+    padding: 10px;
+    background-color:rgb(32, 32, 150);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .signup-btn:hover {
+    background-color:rgb(47, 48, 145);
+  }
+  
+  .close-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background-color:rgb(255, 255, 255);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    background-color:rgb(255, 255, 255);
+  }
+  
+  /* Top buttons (Chauffeur, Flight, Hotel) */
+  .top-buttons {
+    margin-bottom: 20px;
+    margin-left:25px;
+    border-radius: 100px;
+    width: 30%;
+    background-color: rgba(39, 30, 30, 0.8);
+    display: flex;
+    justify-content: center; /* Center buttons */
+    gap: 1rem;
+  }
+  
+  .top-btn:hover {
+    background-color:rgb(70, 120, 191);
+  }
+  
+  /* Autocomplete Text Fields */
+  .autocomplete {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .suggestions {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  .suggestion {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .suggestion:hover {
+    background-color:rgb(28, 135, 193);
+  }
+  
+  /* Date and Time Pickers */
+  .date-picker,
+  .time-picker {
+    flex: 1;
+    min-width: 150px;
+  }
+  
+  .date-picker input,
+  .time-picker input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* CSS Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .search-box {
+    display: flex;
+    align-items: center; /* Vertically center the items */
+    justify-content: space-between; /* Distribute space between items */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  }
+  
+  .autocomplete {
+    margin-right: 10px; /* Space between the inputs */
+  }
+  
+  .date-picker,
+  .time-picker {
+    margin-right: 10px; /* Space between the date/time pickers and other elements */
+  }
+  
+  .search-btn {
+    border-radius: 20px;
+    margin-left: 10px; /* Space between the search button and other inputs */
+    padding: 10px;
+    background-color: rgb(41, 145, 235);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-btn:hover {
+    background-color:rgb(43, 114, 164);
+  }
+  
+  .container {
+    margin-left: 250px;
+    width: 900px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Tabs */
+  .tabs {
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .tab.active {
+    background-color: rgb(41, 141, 229);
+    color: white;
+  }
+  
+  
+  .hero {
+    position: relative; /* Ensure positioning for the pseudo-element */
+    padding: 2rem;
+    height: 150vh; /* Full viewport height */
+    
+    align-items: center;
+    justify-content: center;
+    color: #black; /* Ensure content stands out */
+    overflow: hidden; /* Prevent pseudo-element overflow */
+    z-index: 1; /* Keep content above the pseudo-element */
+  }
+  
+  .hero::before {
+    content: ""; /* Add a pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/header.png'); /* Background image */
+    background-size: cover; /* Adjust to fit */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    z-index: -2; /* Send behind everything */
+  }
+  
+  .hero::after {
+    content: ""; /* Add the black transparent overlay */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(9, 0, 0, 0.5); /* Black with transparency */
+    z-index: -1; /* Place above the image but below content */
+  }
+  
+  
+  
+  
+  .hero h1 {
+    margin-left: 250px;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: rem;
+  }
+  
+  /* Top Buttons */
+  .top-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Info Section */
+  .info-section {
+  margin-left:50px;
+  margin-right:50px;
+    background-color: rgba(56, 54, 54, 0.8);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1rem;
+    color: white;
+    border-radius: 5px;
+    gap: 1rem;
+  }
+  
+  .info {
+    max-width: 300px;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+      margin-left: 0; /* Remove left margin for smaller screens */
+    }
+  
+    .search-box {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .autocomplete {
+      margin-right: 0;
+    }
+  
+    .input,
+    .date-picker input,
+    .time-picker input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .info-section {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .tabs .tab {
+      font-size: 1rem;
+    }
+  
+    .container {
+      margin-left: 0;
+      width: 100%;
+    }
+  
+    .top-buttons {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .top-btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .search-btn {
+      width: 100%;
+      margin-left: 0;
+      padding: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 1.5rem;
+    }
+  
+    .tabs .tab {
+      font-size: 0.9rem;
+    }
+  
+    .top-btn {
+      padding: 0.5rem 1rem;
+      font-size: 14px;
+    }
+  
+    .form-content {
+      flex-direction: column; /* Stack image and form for smaller screens */
+      padding: 15px;
+      width: 90%;
+    }
+  
+    .image-section {
+      padding-right: 0;
+      flex: none;
+    }
+  
+    .form-section {
+      flex: none;
+    }
+  }
+  
+  
 
 
   
